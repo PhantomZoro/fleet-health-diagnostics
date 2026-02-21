@@ -176,7 +176,7 @@ Navigation and layout.
 - VIEW-04: Dashboard with summary cards, aggregation lists, critical vehicles
 - VIEW-05: Loading + empty states
 
-**Plans:** 3/4 plans executed
+**Plans:** 4/4 plans complete
 
 Plans:
 - [ ] 04-01-PLAN.md — Shared UI components (FilterPanel, SeverityBadge, Pagination, LoadingSpinner)
@@ -256,4 +256,4 @@ End-to-end smoke test and cleanup.
 | 1. Backend Data Layer | Complete | 2 plans |
 | 2. Backend API Layer | Complete | 2 plans |
 | 3. Frontend Foundation | Complete | 3 plans |
-| 4. Frontend Views | 3/4 | In Progress|  | 5. Integration & Delivery | Not started | 0/3 plans |
+| 4. Frontend Views | 4/4 | Complete   | 2026-02-21 | 5. Integration & Delivery | Not started | 0/3 plans |

@@ -1,13 +1,13 @@
 # State
 
-**Phase:** 4 of 5 (Frontend Views) — IN PROGRESS
-**Plan:** 3 of 4 complete
-**Status:** Phase 4 Plan 03 complete — Dashboard view built with summary cards and critical vehicle navigation
-**Progress:** [█████████░] 91%
+**Phase:** 4 of 5 (Frontend Views) — COMPLETE
+**Plan:** 4 of 4 complete
+**Status:** Phase 4 Plan 04 complete — HTTP error interceptor, toast notifications, OnPush/ARIA/semantic HTML audit, keyboard navigation
+**Progress:** [██████████] 100%
 
 ## Last Activity
 
-2026-02-21 — Completed Phase 4 Plan 03 (Dashboard View). DashboardComponent smart container implemented at /dashboard: providers:[DiagnosticsStore], OnPush, summary cards (Total Events/Vehicles/Critical/Most Common Code), proportional bar chart for errors-per-vehicle, top error codes list with SeverityBadge, critical vehicles panel with click-to-navigate to /events?vehicleId=X. EventsComponent updated to read vehicleId queryParam on init via ActivatedRoute. Build passes with zero errors.
+2026-02-21 — Completed Phase 4 Plan 04 (Error Handling + Polish). HttpErrorInterceptor functional interceptor registered via withInterceptors([httpErrorInterceptor]) in provideHttpClient. NotificationService BehaviorSubject singleton with 5s auto-dismiss. ToastComponent at app root level with aria-live, role=alert, slide-in animation. FilterPanel wrapped in form for Enter key submission. All 7 Phase 4 components verified: OnPush, semantic HTML (main/nav/section/table/fieldset), ARIA (aria-label/aria-live/role on all interactive elements). Build passes zero errors zero warnings.
 
 ## Decisions
 
@@ -37,6 +37,11 @@
 - [Phase 04-frontend-views]: export type on all core/models/index.ts re-exports — required for isolatedModules:true TS compatibility
 - [Phase 04-frontend-views]: cross-view navigation via queryParams — isolated component-level stores cannot share state, queryParams is the correct Angular transport
 - [Phase 04-frontend-views]: take(1) on ActivatedRoute.queryParams — one-shot init read prevents memory leak from never-completing queryParams observable
+- [Phase 04-frontend-views]: throwError(() => error) in interceptor catchError — re-propagates to store's inner catchError for error$ state update
+- [Phase 04-frontend-views]: HttpInterceptorFn with inject() inside function — Angular 19 functional interceptor pattern, no class needed
+- [Phase 04-frontend-views]: withInterceptors([httpErrorInterceptor]) in provideHttpClient — tree-shakeable functional interceptor registration
+- [Phase 04-frontend-views]: <form (ngSubmit)> wrapping FilterPanel — native Enter key submission, requires name attributes on all ngModel inputs
+- [Phase 04-frontend-views]: Date.now() as notification id — unique, monotonically increasing, zero external dependencies
 
 ## Blockers
 

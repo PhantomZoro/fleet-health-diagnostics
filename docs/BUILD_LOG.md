@@ -253,7 +253,7 @@ This is the section BMW will grill on. Each pattern with the exact reasoning:
 
 ## Phase 4: Frontend Views
 
-**Status:** In progress (3/4 plans complete)
+**Status:** Complete (4/4 plans complete)
 
 ### What Was Built & Why
 
@@ -366,6 +366,45 @@ The dashboard introduces `map` as a derived-observable pattern on top of the sto
 
 ---
 
+**Plan 04-04 — HTTP Error Handling, Toast Notifications, and Quality Polish**
+
+Added the final layer of production polish to the frontend: an HTTP error interceptor that catches all failed API calls and displays user-friendly toast notifications, plus a full audit of all Phase 4 components for OnPush change detection, semantic HTML, ARIA compliance, and keyboard navigation.
+
+Three new files:
+- `NotificationService`: `providedIn: 'root'` singleton managing a `BehaviorSubject<Notification[]>` stream. `show()` adds with `Date.now()` id and schedules `setTimeout(() => this.dismiss(id), 5000)` for auto-removal. `dismiss()` filters by id — immutable array updates ensure OnPush components detect changes.
+- `HttpErrorInterceptor`: Functional interceptor (Angular 19 `HttpInterceptorFn`) using `inject(NotificationService)` inside the interceptor function. Status-code switch: 0 (no connection), 5xx (server error), 400 (bad request with message), 404 (not found), default. Always re-throws via `throwError(() => error)` so the store's `catchError` also fires.
+- `ToastComponent`: Fixed-position top-right container using `@for` with `track notification.id`. Slide-in CSS animation. `aria-live="polite"` on container, `role="alert"` on each toast, dismiss button with `aria-label`.
+
+### Key Decisions (Plan 04-04)
+| Decision | Why | Alternative Considered |
+|----------|-----|----------------------|
+| `throwError(() => error)` after interceptor `catchError` | Propagates error to store's inner `catchError` so state can update `error$`. Without re-throw, the store effect never knows the request failed. | Swallow error in interceptor — store would see successful empty response, error state never set |
+| `inject()` inside functional interceptor | Angular 19 functional interceptor pattern — no class needed. `inject()` works in any injection context including `HttpInterceptorFn`. | Class-based interceptor with `@Injectable()` and `implements HttpInterceptor` — deprecated pattern |
+| `withInterceptors([httpErrorInterceptor])` in `provideHttpClient` | Tree-shakeable, functional interceptor API — registers interceptor at app config level | `HTTP_INTERCEPTORS` token — class-based, more boilerplate |
+| `<form (ngSubmit)="onApply()">` wrapping FilterPanel | Enables Enter key in any text input to submit the filter form natively — browser handles key event propagation. Required `name` attributes on all ngModel inputs inside a form. | `(keydown.enter)="onApply()"` on fieldset — less standard, requires manual event handling |
+| `Date.now()` as notification id | Unique, monotonically increasing, zero-dependency. Used as both `id` and `timestamp`. | UUID library — unnecessary dependency for a simple notification system |
+
+### Tricky Parts & Solutions (Plan 04-04)
+
+**NG8107 warning in dashboard template (pre-existing):** The `agg.topCodes[0]?.code` in `dashboard.component.html` triggered Angular template type checker warning NG8107 ("optional chain not needed — type doesn't include null/undefined"). Inside an `@if (agg)` block, Angular narrows `agg` but considers `topCodes[0]` non-null after the guard. Fixed by replacing with ternary `agg.topCodes[0] ? agg.topCodes[0].code : 'N/A'` — clearer intent and zero warnings (Rule 1 auto-fix).
+
+**FormsModule `name` attribute requirement:** Wrapping FilterPanel inputs in `<form>` required adding `name` attributes to all `ngModel` inputs. Angular template-driven forms require `name` on each control inside a `<form>` element — without it, Angular cannot register the control in the form's `NgForm` model and throws a runtime error. The `name` attribute was added to all 5 inputs (vehicleId, code, level, dateFrom, dateTo).
+
+### RxJS Patterns — Error Handling (Plan 04-04)
+
+- **`BehaviorSubject` for notification state:** Starts with empty array `[]` — new subscribers immediately get current notifications (important for components mounted after notifications are added). `asObservable()` prevents external code from calling `.next()` directly — encapsulation.
+- **Immutable array updates:** `[...this.notificationsSubject.value, notification]` for show, `.filter(n => n.id !== id)` for dismiss — new array references trigger OnPush change detection in `ToastComponent`.
+- **`catchError` in HTTP interceptor (outer pipe):** Unlike ComponentStore effects where `catchError` on the outer stream kills it, `HttpInterceptorFn` returns a cold observable per request — each request gets its own pipe. `catchError` here doesn't kill anything permanently.
+
+### Patterns Demonstrated (Plan 04-04)
+
+- **Functional HTTP interceptor:** `HttpInterceptorFn` — the Angular 19 preferred pattern. No class, no `@Injectable()`, just a function. `inject()` works inside the function body.
+- **Global notification pattern:** `NotificationService` singleton, `ToastComponent` at app root level (outside router-outlet). Notifications from any component/service/interceptor appear regardless of current route.
+- **OnPush with BehaviorSubject:** `ToastComponent` uses `async` pipe on `notifications$` — every `next()` on the subject creates a new array reference, triggering the OnPush check. No manual `ChangeDetectorRef.markForCheck()` needed.
+- **Full ARIA compliance audit:** 7 components verified — all interactive elements have `aria-label`, all live regions have `aria-live`, all structural elements use semantic HTML. Tab navigation flows naturally through filter fields to Apply button.
+
+---
+
 ## Phase 5: Integration & Delivery
 
 **Status:** Not started
@@ -416,4 +455,4 @@ _Multi-stage build strategy, nginx configuration, container networking_
 - **Critical pitfall avoided:** Never `catchError` on outer effect stream — it kills the stream permanently.
 
 ---
-*Last updated: 2026-02-21 (04-03)*
+*Last updated: 2026-02-21 (04-04)*

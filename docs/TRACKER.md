@@ -28,7 +28,7 @@
 - [x] **04-01 Shared UI Components** — FilterPanel, SeverityBadge, Pagination, LoadingSpinner (all OnPush, dumb components)
 - [x] **04-02 Events View** — Smart component with events table, filter panel, pagination, loading/empty states
 - [x] **04-03 Dashboard View** — Summary cards, errors-per-vehicle bars, top codes list, critical vehicles with navigation
-- [ ] **04-04 Error Handling + Polish** — HTTP interceptor, toast notifications, semantic HTML audit, keyboard nav
+- [x] **04-04 Error Handling + Polish** — HTTP interceptor, toast notifications, semantic HTML audit, keyboard nav
 
 ## Phase 5: Integration & Delivery
 > Runs from `docker-compose up`, fully documented for BMW reviewer.
@@ -46,10 +46,10 @@
 | 1. Backend Data Layer | Complete | 4/4 |
 | 2. Backend API Layer | Complete | 2/2 |
 | 3. Frontend Foundation | In progress | 3/4 |
-| 4. Frontend Views | In progress | 3/4 |
+| 4. Frontend Views | Complete | 4/4 |
 | 5. Integration & Delivery | Not started | 0/3 |
 
-**Overall: 12/17 plans complete**
+**Overall: 13/17 plans complete**
 
 ---
-*Last updated: 2026-02-21 (04-03)*
+*Last updated: 2026-02-21 (04-04)*
