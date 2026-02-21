@@ -1,66 +1,73 @@
-<fieldset class="filter-panel">
-  <legend>Filters</legend>
+<form (ngSubmit)="onApply()">
+  <fieldset class="filter-panel">
+    <legend>Filters</legend>
 
-  <div class="filter-fields">
-    <div class="filter-field">
-      <label for="filter-vehicle-id">Vehicle ID</label>
-      <input
-        id="filter-vehicle-id"
-        type="text"
-        [(ngModel)]="vehicleId"
-        placeholder="e.g. VH-1001"
-        aria-label="Filter by Vehicle ID"
-      />
-    </div>
+    <div class="filter-fields">
+      <div class="filter-field">
+        <label for="filter-vehicle-id">Vehicle ID</label>
+        <input
+          id="filter-vehicle-id"
+          type="text"
+          [(ngModel)]="vehicleId"
+          name="vehicleId"
+          placeholder="e.g. VH-1001"
+          aria-label="Filter by Vehicle ID"
+        />
+      </div>
 
-    <div class="filter-field">
-      <label for="filter-code">Error Code</label>
-      <input
-        id="filter-code"
-        type="text"
-        [(ngModel)]="code"
-        placeholder="e.g. P0300"
-        aria-label="Filter by Error Code"
-      />
-    </div>
+      <div class="filter-field">
+        <label for="filter-code">Error Code</label>
+        <input
+          id="filter-code"
+          type="text"
+          [(ngModel)]="code"
+          name="code"
+          placeholder="e.g. P0300"
+          aria-label="Filter by Error Code"
+        />
+      </div>
 
-    <div class="filter-field">
-      <label for="filter-severity">Severity</label>
-      <select
-        id="filter-severity"
-        [(ngModel)]="level"
-        aria-label="Filter by Severity"
-      >
-        <option value="">All</option>
-        @for (opt of levelOptions; track opt) {
-          <option [value]="opt">{{ opt }}</option>
-        }
-      </select>
-    </div>
+      <div class="filter-field">
+        <label for="filter-severity">Severity</label>
+        <select
+          id="filter-severity"
+          [(ngModel)]="level"
+          name="level"
+          aria-label="Filter by Severity"
+        >
+          <option value="">All</option>
+          @for (opt of levelOptions; track opt) {
+            <option [value]="opt">{{ opt }}</option>
+          }
+        </select>
+      </div>
 
-    <div class="filter-field">
-      <label for="filter-date-from">Date From</label>
-      <input
-        id="filter-date-from"
-        type="datetime-local"
-        [(ngModel)]="dateFrom"
-        aria-label="Filter from date"
-      />
-    </div>
+      <div class="filter-field">
+        <label for="filter-date-from">Date From</label>
+        <input
+          id="filter-date-from"
+          type="datetime-local"
+          [(ngModel)]="dateFrom"
+          name="dateFrom"
+          aria-label="Filter from date"
+        />
+      </div>
 
-    <div class="filter-field">
-      <label for="filter-date-to">Date To</label>
-      <input
-        id="filter-date-to"
-        type="datetime-local"
-        [(ngModel)]="dateTo"
-        aria-label="Filter to date"
-      />
-    </div>
+      <div class="filter-field">
+        <label for="filter-date-to">Date To</label>
+        <input
+          id="filter-date-to"
+          type="datetime-local"
+          [(ngModel)]="dateTo"
+          name="dateTo"
+          aria-label="Filter to date"
+        />
+      </div>
 
-    <div class="filter-actions">
-      <button type="button" class="btn-primary" (click)="onApply()">Apply</button>
-      <button type="button" class="btn-secondary" (click)="onReset()">Reset</button>
+      <div class="filter-actions">
+        <button type="submit" class="btn-primary">Apply</button>
+        <button type="button" class="btn-secondary" (click)="onReset()">Reset</button>
+      </div>
     </div>
-  </div>
-</fieldset>
+  </fieldset>
+</form>
