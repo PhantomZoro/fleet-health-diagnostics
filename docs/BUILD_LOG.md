@@ -110,18 +110,34 @@ Built three aggregation endpoints for the frontend dashboard: errors-per-vehicle
 
 ## Phase 3: Frontend Foundation
 
-**Status:** Not started
+**Status:** In progress (1/4 plans complete)
 
 ### What Was Built & Why
-_To be filled after phase completion_
+
+**Plan 03-01 — Angular Project Scaffold, App Shell, and Global Styles**
+
+Bootstrapped the entire Angular 19 frontend: scaffolded a standalone-component project with SCSS and routing via Angular CLI 19, configured an API proxy so `/api/*` requests forward to `localhost:3000`, installed `@ngrx/component-store@^19.0.0`, and built the app shell — a fixed sidebar nav with lazy-loaded route stubs for Dashboard and Events.
+
+Global CSS custom properties establish the BMW-inspired design token system (`--primary: #1C69D4`, surface colors, text colors, border colors) that all subsequent plan components consume via `var()` references. The sidebar collapses to a horizontal top bar on mobile via a single media query.
 
 ### Key Decisions
 | Decision | Why | Alternative Considered |
 |----------|-----|----------------------|
-| | | |
+| `@ngrx/component-store@^19.0.0` explicit version | npm `latest` tag resolves to Angular 21 aligned version (^21.x) which is incompatible with Angular 19 | `@latest` — breaks peer dep resolution |
+| `provideAnimationsAsync()` in app.config | Lazy loads animation browser module only when needed — improves initial bundle size | `provideAnimations()` — eager import, heavier initial load |
+| Lazy `loadComponent` for routes | Code-splits dashboard and events into separate JS chunks — 388 bytes and 380 bytes respectively | Eager `component:` reference — bundles everything into main |
+| CSS custom properties for design tokens | All components share tokens via `var(--primary)` without a dedicated theming library | SCSS variables — can't change at runtime, no browser dev tools inspectability |
+| `@angular/animations` manual install | `provideAnimationsAsync()` requires `@angular/animations` but the CLI 19 scaffold doesn't install it automatically | Skip animations — needed for future Material UI patterns |
 
 ### Tricky Parts & Solutions
-_Problems encountered during implementation and how they were resolved_
+
+**Missing `@angular/animations` package:** The Angular CLI 19 scaffold does not include `@angular/animations` by default, but `provideAnimationsAsync()` in `app.config.ts` dynamically imports `@angular/animations/browser` at runtime. The build failed with "Could not resolve @angular/animations/browser" until explicitly installing `@angular/animations@^19.0.0`. Fixed as a Rule 3 deviation (blocking build issue).
+
+**Angular CLI 19 project in existing directory:** The existing empty `frontend/` directory was already tracked by git. Running `ng new frontend --directory=frontend` scaffolded into the correct location without conflict.
+
+### RxJS Patterns — Deep Dive
+
+RxJS patterns are implemented in Plan 03-03 (DiagnosticsStore). See the pre-written analysis below for full interview talking points.
 
 ### RxJS Patterns — Deep Dive
 
