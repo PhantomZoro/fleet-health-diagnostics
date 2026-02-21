@@ -1,13 +1,13 @@
 # State
 
-**Phase:** 4 of 5 (Frontend Views) — COMPLETE
-**Plan:** 4 of 4 complete
-**Status:** Phase 4 complete, ready for Phase 5
-**Progress:** [████████░░] 80%
+**Phase:** 5 of 5 (Integration & Delivery)
+**Plan:** 1 of 3 complete
+**Status:** Phase 5 in progress — Docker containerization complete
+**Progress:** [█████████░] 86%
 
 ## Last Activity
 
-2026-02-21 — Completed Phase 4 Plan 04 (Error Handling + Polish). HttpErrorInterceptor functional interceptor registered via withInterceptors([httpErrorInterceptor]) in provideHttpClient. NotificationService BehaviorSubject singleton with 5s auto-dismiss. ToastComponent at app root level with aria-live, role=alert, slide-in animation. FilterPanel wrapped in form for Enter key submission. All 7 Phase 4 components verified: OnPush, semantic HTML (main/nav/section/table/fieldset), ARIA (aria-label/aria-live/role on all interactive elements). Build passes zero errors zero warnings.
+2026-02-21 — Completed Phase 5 Plan 01 (Docker Containerization). Multi-stage Dockerfiles for backend (Node 20 alpine, tsc, npm ci --omit=dev for better-sqlite3 native module) and frontend (ng build, nginx:alpine). nginx.conf with SPA fallback and /api proxy to backend:3000. docker-compose.yml orchestrates both services on shared fleet-network with named volume for SQLite persistence. database.ts synchronize now environment-aware (process.env['NODE_ENV'] !== 'production'). docker compose config validates cleanly.
 
 ## Decisions
 
@@ -42,11 +42,15 @@
 - [Phase 04-frontend-views]: withInterceptors([httpErrorInterceptor]) in provideHttpClient — tree-shakeable functional interceptor registration
 - [Phase 04-frontend-views]: <form (ngSubmit)> wrapping FilterPanel — native Enter key submission, requires name attributes on all ngModel inputs
 - [Phase 04-frontend-views]: Date.now() as notification id — unique, monotonically increasing, zero external dependencies
+- [Phase 05-integration-delivery]: npm ci --omit=dev in production Dockerfile stage — better-sqlite3 native module must compile in runtime image
+- [Phase 05-integration-delivery]: nginx:alpine for frontend — static serving + reverse proxy in single lightweight image
+- [Phase 05-integration-delivery]: Named volume for SQLite persistence across container restarts
+- [Phase 05-integration-delivery]: synchronize: process.env['NODE_ENV'] !== 'production' — dev convenience, production safety
 
 ## Blockers
 
 - Use `@ngrx/component-store@^19.0.0` — NOT `latest` (npm latest is Angular 21 aligned) [RESOLVED in 03-01]
 - Use `swagger-ui-express` v5 — required for Express 5 compatibility
 - catchError INSIDE switchMap inner pipe only (tapResponse removed from v19) — outer catchError kills effect stream [RESOLVED in 03-03: catchError+EMPTY inside inner pipe]
-- TypeORM `synchronize: true` dev only — disable in Docker build
+- TypeORM `synchronize: true` dev only — disable in Docker build [RESOLVED in 05-01: process.env['NODE_ENV'] !== 'production']
 - export type (not export) for all interface re-exports in barrel files when isolatedModules:true [RESOLVED in 04-02]

@@ -407,21 +407,68 @@ Three new files:
 
 ## Phase 5: Integration & Delivery
 
-**Status:** Not started
+**Status:** In progress (1/3 plans)
 
 ### What Was Built & Why
-_To be filled after phase completion_
+
+**Plan 05-01 — Docker Containerization**
+
+Created the complete Docker infrastructure for one-command startup: `docker-compose up` builds and runs both backend and frontend containers from a clean clone, without requiring the reviewer to install Node, npm, or Angular CLI.
+
+Four files:
+- **backend/Dockerfile:** Multi-stage Node 20 alpine build. Stage 1 compiles TypeScript with `tsc`. Stage 2 installs production-only dependencies (critical for `better-sqlite3` native module — must `npm ci` in the runtime alpine image, NOT copy `node_modules` from build stage). Copies `data/seed.log` for runtime seeding; `fleet.db` is created by TypeORM at startup.
+- **frontend/Dockerfile:** Multi-stage build. Stage 1 builds Angular 19 with `ng build --configuration production` (output at `dist/frontend/browser/` per the `application` builder). Stage 2 copies built assets into `nginx:alpine` and applies custom nginx config.
+- **frontend/nginx.conf:** Listens on port 4200. SPA fallback via `try_files $uri $uri/ /index.html`. Proxies `/api` and `/api-docs` to `backend:3000` using Docker service name resolution.
+- **docker-compose.yml:** Two services (backend, frontend) on a shared `fleet-network` bridge. Named `backend-data` volume persists SQLite database across container restarts. `depends_on` ensures backend starts before frontend. `NODE_ENV=production` disables TypeORM `synchronize`.
+
+Also updated `backend/src/config/database.ts` to make `synchronize` environment-aware: `process.env['NODE_ENV'] !== 'production'` (enabled in dev, disabled in Docker production). Created root `.dockerignore` to exclude `node_modules`, `dist`, `.db`, `.planning`, `.claude`, `.git`.
 
 ### Key Decisions
 | Decision | Why | Alternative Considered |
 |----------|-----|----------------------|
-| | | |
+| `npm ci --omit=dev` in production stage (not copy from build) | `better-sqlite3` is a native C++ addon compiled during `npm install`. Must be compiled in the same alpine image that runs it — copying `node_modules` from build stage would have wrong native bindings | Copy node_modules from build — native module ABI mismatch |
+| Node 20 alpine for both stages | Matches LTS, minimal image size (~180MB vs ~1GB for full node:20) | node:20 (Debian) — 5x larger image |
+| nginx:alpine for frontend serving | Static file serving + reverse proxy in a single lightweight image (~40MB) | node:20-alpine running `npx serve` — heavier, no proxy capability |
+| Port 4200 for nginx | Matches Angular dev server port for consistency — reviewer sees same port in dev and prod | Port 80 — would conflict with other local services |
+| Named volume for backend-data | SQLite database persists across `docker-compose down/up` cycles — no data loss on restart | Bind mount — ties to host filesystem structure |
+| `synchronize: process.env['NODE_ENV'] !== 'production'` | Keeps dev convenience (auto-creates tables) while preventing accidental schema changes in production containers | Always false — would require migrations for dev |
+| Removed obsolete `version: "3.8"` from docker-compose | Docker Compose V2 warns that `version` attribute is obsolete and ignored | Keep it — cosmetic warning on every compose command |
 
 ### Tricky Parts & Solutions
-_Problems encountered during implementation and how they were resolved_
+
+**better-sqlite3 native module strategy:** The critical gotcha with containerizing this backend is `better-sqlite3`. It compiles native C++ code during `npm install` that is ABI-specific to the Node.js version and OS. If you `npm ci` in the build stage (Node 20 alpine) and copy `node_modules` to the production stage, the native `.node` binary is compatible because both stages use the same base image. However, the plan correctly separates concerns: build stage compiles TypeScript only, production stage does its own `npm ci --omit=dev` to get a clean production dependency tree with correctly compiled native modules. This avoids copying devDependencies into production.
+
+**Angular 19 application builder output path:** The `application` builder (not the legacy `browser` builder) outputs to `dist/frontend/browser/` — not `dist/frontend/` directly. The frontend Dockerfile copies from the correct nested path.
 
 ### Docker Architecture
-_Multi-stage build strategy, nginx configuration, container networking_
+
+```
+Host Machine
+  |
+  +-- docker-compose.yml (orchestrator)
+       |
+       +-- backend (Node 20 alpine)
+       |     Port: 3000
+       |     Volume: backend-data -> /app/data (SQLite DB)
+       |     ENV: NODE_ENV=production, PORT=3000
+       |
+       +-- frontend (nginx:alpine)
+       |     Port: 4200
+       |     /api/* -> proxy_pass http://backend:3000
+       |     /api-docs/* -> proxy_pass http://backend:3000
+       |     /* -> try_files (SPA fallback)
+       |
+       +-- fleet-network (bridge)
+             Enables container-to-container DNS resolution
+```
+
+### Patterns Demonstrated
+
+- **Multi-stage Docker builds:** Separate build and runtime stages reduce final image size — no TypeScript compiler, no devDependencies in production
+- **Native module handling:** `npm ci` in runtime stage ensures correct ABI for `better-sqlite3` — a common pitfall in Node.js containerization
+- **Nginx reverse proxy:** Single entry point on port 4200 serves both static Angular assets and proxies API requests — no CORS needed in production
+- **Environment-aware configuration:** `synchronize` toggle via `NODE_ENV` — same codebase works in dev (auto-create tables) and production (stable schema)
+- **Docker Compose service networking:** Named bridge network with DNS resolution via service names (`backend:3000`) — no hardcoded IPs
 
 ---
 
@@ -455,4 +502,4 @@ _Multi-stage build strategy, nginx configuration, container networking_
 - **Critical pitfall avoided:** Never `catchError` on outer effect stream — it kills the stream permanently.
 
 ---
-*Last updated: 2026-02-21 (04-04)*
+*Last updated: 2026-02-21 (05-01)*
