@@ -49,7 +49,7 @@ fleet-health-diagnostics/
 - DATA-02: Seed ~500 realistic events across 15-20 vehicles on first startup
 - DATA-03: Store in SQLite via TypeORM with indexes
 
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 
 Plans:
 - [ ] 01-01-PLAN.md — Scaffold backend project, TypeORM entity, and database config
@@ -324,8 +324,7 @@ End-to-end smoke test and cleanup.
 
 | Phase | Status | Plans |
 |-------|--------|-------|
-| 1. Backend Data Layer | Planning complete | 2 plans |
-| 2. Backend API Layer | Not started | 4 plans |
+| 1. Backend Data Layer | 1/2 | In Progress|  | 2. Backend API Layer | Not started | 4 plans |
 | 3. Frontend Foundation | Not started | 4 plans |
 | 4. Frontend Views | Not started | 4 plans |
 | 5. Integration & Delivery | Not started | 3 plans |
