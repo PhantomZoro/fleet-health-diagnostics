@@ -7,3 +7,20 @@ export interface ParsedLogEntry {
   code: string;
   message: string;
 }
+
+export interface PaginatedResponse<T> {
+  data: T[];
+  total: number;
+  page: number;
+  limit: number;
+}
+
+export interface EventQueryParams {
+  vehicleId?: string;
+  code?: string;
+  level?: DiagnosticLevel;
+  from?: string;
+  to?: string;
+  page?: number;
+  limit?: number;
+}
