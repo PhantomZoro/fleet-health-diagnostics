@@ -24,3 +24,28 @@ export interface EventQueryParams {
   page?: number;
   limit?: number;
 }
+
+export interface ErrorsPerVehicle {
+  vehicleId: string;
+  errorCount: number;
+  warnCount: number;
+  infoCount: number;
+  total: number;
+}
+
+export interface TopCode {
+  code: string;
+  count: number;
+  level: DiagnosticLevel;
+}
+
+export interface CriticalVehicle {
+  vehicleId: string;
+  errorCount: number;
+  latestError: string;
+}
+
+export interface AggregationTimeRange {
+  from?: string;
+  to?: string;
+}
