@@ -287,6 +287,45 @@ Built four presentational (dumb) components that are reused across the Events an
 
 ---
 
+**Plan 04-02 — Events View (Smart Container)**
+
+Built the primary data exploration view — `EventsComponent` as a smart container at `/events` that connects all shared dumb components to `DiagnosticsStore`. This is the central demonstration of the smart/dumb split and RxJS-driven state flow.
+
+EventsComponent is the single smart component responsible for wiring state to presentation. It provides its own `DiagnosticsStore` instance via `providers: [DiagnosticsStore]`, exposes all store observables to the template via `async` pipe, and delegates user actions (filter apply, filter reset, page change) back to the store via three methods. The dumb components (FilterPanel, SeverityBadge, Pagination, LoadingSpinner) receive data through `@Input` bindings and emit events via `@Output` — they have zero knowledge of the store.
+
+### Key Decisions (Plan 04-02)
+| Decision | Why | Alternative Considered |
+|----------|-----|----------------------|
+| `AsyncPipe` imported explicitly | Standalone components need explicit imports for every pipe used in the template — `async` is not auto-available | `CommonModule` import — brings in too many directives unnecessarily |
+| `providers: [DiagnosticsStore]` at component level | Each feature route gets its own isolated store instance with its own state. Store is destroyed when component unmounts — clean lifecycle | `providedIn: 'root'` singleton — shares state across routes, breaking isolation |
+| `export type` on all model barrel re-exports | `isolatedModules: true` in tsconfig requires `export type` for interfaces (types, not values). All models in `core/models/` are TypeScript interfaces | `export` without `type` — causes TS1205 error with isolatedModules |
+| Angular 19 `@if`/`@for` template syntax | New control flow syntax (not `*ngIf`/`*ngFor`). Built-in, no import required. `@if (x; as y)` alias pattern reduces redundant async pipe subscriptions | `*ngIf`/`*ngFor` with NgIf/NgFor imports — deprecated, more verbose |
+| Conditional pagination (`@if (total$ | async); as total`) | Only renders PaginationComponent when there is data (`total > 0` implicit since 0 is falsy) — avoids empty Prev/Next controls on initial load | Always-visible pagination — shows disabled controls when no data, confusing UX |
+
+### Tricky Parts & Solutions (Plan 04-02)
+
+**Missing `AsyncPipe` import caused NG8004 build error:** The plan specified `imports: [CommonModule, ...]` but the implementation used `AsyncPipe` and `DatePipe` individually (tree-shakeable approach). The `async` pipe is not available without either `CommonModule` or explicit `AsyncPipe` import. Fixed by adding `AsyncPipe` to the imports array (Rule 3 auto-fix).
+
+**Pre-existing `isolatedModules` type re-export error:** `core/models/index.ts` used value-syntax re-exports (`export { X }`) for TypeScript interfaces. With `isolatedModules: true` in tsconfig, this causes TS1205. All re-exports were updated to `export type { X }`. This was a build-blocking pre-existing issue triggered when the build ran against the full codebase for the first time in this phase (Rule 3 auto-fix).
+
+### RxJS Patterns — Events View (Plan 04-02)
+
+The Events view is the consumer end of the full RxJS data flow. No new RxJS operators are introduced here — instead, it demonstrates how the patterns from Plan 03-03 are consumed by the view layer:
+
+- **`async` pipe:** All observables are subscribed in the template via Angular's built-in `async` pipe. Each `| async` subscription is automatically cleaned up when the component is destroyed — no `takeUntilDestroyed()` needed in the component class because there are no manual subscriptions.
+- **`@if (obs$ | async); as value`:** Angular 19 template syntax creates a local alias without subscribing twice. Equivalent to `*ngIf="obs$ | async as value"` but with cleaner syntax.
+- **Zero manual subscriptions:** The component class has no `ngOnInit`, no `subscribe()` calls, no `Subject`, no `BehaviorSubject`. All state flows from store → template via `async` pipe. This is the Angular 19 idiomatic pattern.
+- **`??` null-coalescing in template:** `(filters$ | async) ?? {}` and `(page$ | async) ?? 1` provide safe defaults for the `@Input` bindings. The `async` pipe emits `null` on initial subscription before the store emits — the null-coalescing operator prevents passing `null` to child component inputs.
+
+### Patterns Demonstrated (Plan 04-02)
+
+- **Smart/dumb split in full effect:** EventsComponent (smart) coordinates state and actions; FilterPanel/SeverityBadge/Pagination/LoadingSpinner (dumb) are pure presentation components. The template binds @Input and handles @Output — no logic in between.
+- **Component-level store provision:** `providers: [DiagnosticsStore]` in the component decorator, not in the route config or root. This gives the route its own store lifecycle tied to component mount/unmount.
+- **Semantic HTML table:** `<section>` contains `<table>` with `<thead>/<tbody>/<tr>/<th>/<td>`. Code values use `<code>` element for monospace rendering. Empty state uses `role="status"` for accessibility.
+- **Angular 19 `@for` with `track`:** `@for (event of events; track event.id)` uses the entity's `id` as the track key. Angular uses this for efficient DOM reconciliation — only changed rows are re-rendered.
+
+---
+
 ## Phase 5: Integration & Delivery
 
 **Status:** Not started
@@ -337,4 +376,4 @@ _Multi-stage build strategy, nginx configuration, container networking_
 - **Critical pitfall avoided:** Never `catchError` on outer effect stream — it kills the stream permanently.
 
 ---
-*Last updated: 2026-02-21*
+*Last updated: 2026-02-21 (04-02)*

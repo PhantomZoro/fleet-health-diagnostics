@@ -1,13 +1,13 @@
 # State
 
 **Phase:** 4 of 5 (Frontend Views) — IN PROGRESS
-**Plan:** 1 of 4 complete
-**Status:** Phase 4 Plan 01 complete — shared dumb components built
-**Progress:** [███████░░░] 73%
+**Plan:** 2 of 4 complete
+**Status:** Phase 4 Plan 02 complete — Events view smart container built
+**Progress:** [████████░░] 82%
 
 ## Last Activity
 
-2026-02-21 — Completed Phase 4 Plan 01 (Shared UI Components). Four standalone OnPush dumb components created: FilterPanel (vehicleId/code/severity/dateFrom/dateTo fields with EventFilters output), SeverityBadge (red/orange/blue colored badges for ERROR/WARN/INFO), Pagination (Prev/Next with boundary guards, pageChange output), LoadingSpinner (CSS-only animated overlay). All compile with zero errors. No store injection in any shared component.
+2026-02-21 — Completed Phase 4 Plan 02 (Events View). EventsComponent smart container implemented at /events: providers:[DiagnosticsStore], OnPush, Angular 19 @if/@for template syntax, async pipe throughout (zero manual subscriptions), semantic <table> with five columns, <app-filter-panel>/<app-severity-badge>/<app-pagination>/<app-loading-spinner> wired, empty state "No events match your filters". Fixed pre-existing isolatedModules error in core/models/index.ts (export type for all interfaces). Build passes with zero errors.
 
 ## Decisions
 
@@ -32,6 +32,9 @@
 - [Phase 03-frontend-foundation]: DiagnosticsStore @Injectable() without providedIn — ComponentStore per-feature instance pattern
 - [Phase 04-frontend-views]: FormsModule + ngModel for FilterPanel — simple two-way binding, no reactive forms overhead for five independent filter fields
 - [Phase 04-frontend-views]: OnPush on all dumb components — inputs-only re-render, prevents zone-triggered cycles in event table rows
+- [Phase 04-frontend-views]: AsyncPipe imported explicitly (not CommonModule) — tree-shakeable, standalone component pattern
+- [Phase 04-frontend-views]: providers:[DiagnosticsStore] at component level — isolated store instance per route with lifecycle tied to component
+- [Phase 04-frontend-views]: export type on all core/models/index.ts re-exports — required for isolatedModules:true TS compatibility
 
 ## Blockers
 
@@ -39,3 +42,4 @@
 - Use `swagger-ui-express` v5 — required for Express 5 compatibility
 - catchError INSIDE switchMap inner pipe only (tapResponse removed from v19) — outer catchError kills effect stream [RESOLVED in 03-03: catchError+EMPTY inside inner pipe]
 - TypeORM `synchronize: true` dev only — disable in Docker build
+- export type (not export) for all interface re-exports in barrel files when isolatedModules:true [RESOLVED in 04-02]
