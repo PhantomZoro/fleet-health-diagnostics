@@ -253,23 +253,37 @@ This is the section BMW will grill on. Each pattern with the exact reasoning:
 
 ## Phase 4: Frontend Views
 
-**Status:** Not started
+**Status:** In progress (1/4 plans complete)
 
 ### What Was Built & Why
-_To be filled after phase completion_
+
+**Plan 04-01 — Shared UI Components (FilterPanel, SeverityBadge, Pagination, LoadingSpinner)**
+
+Built four presentational (dumb) components that are reused across the Events and Dashboard views. These components establish the smart/dumb component split pattern that is central to the BMW assignment demonstration.
+
+- **FilterPanelComponent:** A standalone fieldset-based filter form with five fields (vehicleId, code, severity, dateFrom, dateTo). Uses FormsModule `ngModel` for two-way binding. Emits `EventFilters` on Apply and `void` on Reset via `@Output()`. Initializes from `@Input() filters` via `ngOnChanges` — supports pre-populating filters when navigating from dashboard.
+- **SeverityBadgeComponent:** Inline-template component that renders a colored `<span>` badge. Three CSS classes map to severity levels: `badge--error` (red #D32F2F), `badge--warn` (orange #F57C00), `badge--info` (blue #1976D2) using RGBA backgrounds for subtle tinting.
+- **PaginationComponent:** Navigation component with Prev/Next buttons. Computes `totalPages` from `Math.ceil(total/limit)`, exposes `hasPrev`/`hasNext` getters, and disables buttons at boundaries via `[disabled]`. Emits page number via `@Output() pageChange`.
+- **LoadingSpinnerComponent:** CSS-only animated overlay with `position: absolute; inset: 0` positioning. `border-top-color: var(--primary)` on a spinning 36px circle creates the animation via `@keyframes spin 0.8s linear infinite`.
 
 ### Key Decisions
 | Decision | Why | Alternative Considered |
 |----------|-----|----------------------|
-| | | |
+| `FormsModule` + `ngModel` for FilterPanel | Simple two-way binding for filter fields — no complex form validation needed. No reactive forms overhead. | `ReactiveFormsModule` with `FormGroup` — overkill for five independent string/date fields |
+| `ngOnChanges` for filter initialization | Allows parent to pre-populate filter values reactively — e.g., clicking a vehicle on dashboard navigates to Events with vehicleId pre-filled | `ngOnInit` only — would miss updates when parent changes `@Input filters` after init |
+| Inline template for SeverityBadge and LoadingSpinner | Single-element templates — no benefit to a separate .html file. Reduces file count, easier to read | External .html files — unnecessary for single-line templates |
+| `[class]` binding with `badge--` prefix | Dynamic class name from level input, lowercase — `'badge badge--' + level.toLowerCase()` merges base and modifier classes | `[ngClass]` with object — more verbose for a single dynamic class |
+| OnPush for all four components | Dumb components only re-render when inputs change — no zone-triggered re-renders. Critical for event table rows using SeverityBadge | Default change detection — unnecessary re-renders on every zone event |
 
 ### Tricky Parts & Solutions
-_Problems encountered during implementation and how they were resolved_
+
+**No issues encountered.** All four components compiled cleanly on first build attempt. The CSS custom property design token system established in Phase 3 (Plan 03-01) made styling straightforward — components consume `var(--primary)`, `var(--border-light)`, `var(--radius)` etc. without needing to redeclare values.
 
 ### Component Architecture
-- **Smart vs Dumb split:** Smart components (EventsComponent, DashboardComponent) inject the store. Dumb components (FilterPanel, SeverityBadge, Pagination) use only @Input/@Output.
+- **Smart vs Dumb split:** Smart components (EventsComponent, DashboardComponent) inject the store. Dumb components (FilterPanel, SeverityBadge, Pagination, LoadingSpinner) use only @Input/@Output.
 - **Why OnPush everywhere:** Reduces change detection cycles. Angular only checks the component when its inputs change or an event fires within it. Critical for performance with large event tables.
 - **Why standalone components:** Angular 19 default. No NgModules needed. Each component declares its own imports. Simpler dependency graph, better tree-shaking.
+- **Why semantic HTML in FilterPanel:** `<fieldset>` + `<legend>` is the correct HTML for a group of related form controls. `<nav>` with `role="navigation"` in PaginationComponent provides the correct ARIA landmark. All inputs have `aria-label` attributes for screen reader accessibility.
 
 ---
 
