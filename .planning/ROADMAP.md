@@ -101,6 +101,13 @@ Plans:
 - STATE-04: Filters + page combined into single API call (combineLatest)
 - STATE-05: Selectors use shareReplay + distinctUntilChanged
 
+**Plans:** 3 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Angular project scaffold, app shell, routing, and global styles
+- [ ] 03-02-PLAN.md — Shared TypeScript models and DiagnosticsApiService
+- [ ] 03-03-PLAN.md — DiagnosticsStore with full RxJS pattern demonstration
+
 ### Plan 03-01: Angular Project Scaffold
 
 New Angular 19 project with routing and proxy.
