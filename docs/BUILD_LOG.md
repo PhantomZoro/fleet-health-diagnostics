@@ -6,7 +6,7 @@ Chronological record of what was built, why, and how. Written for interview prep
 
 ## Phase 1: Backend Data Layer
 
-**Status:** In progress (1/4 plans complete)
+**Status:** Complete (4/4 plans complete)
 
 ### What Was Built & Why
 
@@ -39,6 +39,32 @@ The scaffold is intentionally minimal — no routes yet, just the foundation tha
 - **TypeORM column typing without any:** All entity columns use explicit types (`'datetime'`, `'varchar'`, `'text'`) — no `any` types anywhere per strict mode requirement
 - **Non-null assertion on entity fields:** TypeORM initializes decorated fields — using `!` assertion is idiomatic and avoids false TypeScript errors
 - **Index decorator on all filterable fields:** Each queryable dimension (timestamp, vehicleId, level, code) gets `@Index()` — database-first performance thinking
+
+**Plan 01-02 — Log Parser, Seed Data, Seed Runner & Health Endpoint**
+
+Built the complete data pipeline: a regex-based log parser that extracts structured fields from log lines, a 500-event seed file with realistic OBD-II diagnostic codes across 20 BMW vehicles, a startup seeder with duplicate protection, and a health check endpoint to verify the database is populated.
+
+This completes Phase 1 — the server now starts, initializes the database, parses and seeds realistic diagnostic data, and serves a health endpoint confirming the event count.
+
+### Key Decisions (Plan 01-02)
+| Decision | Why | Alternative Considered |
+|----------|-----|----------------------|
+| Structured log format with bracketed fields | Clean regex extraction, each field delimited — realistic yet parseable | CSV/JSON — less realistic for diagnostic logs |
+| parseLogLine returns null for bad lines | Graceful degradation — malformed lines skip with warning, parser never throws | Throw on bad lines — too brittle for real log data |
+| Count guard in seeder (not upsert) | Simpler than unique constraints for seed-only scenario — check count, skip if > 0 | Upsert with unique key — unnecessary complexity |
+| Chunk insert (100 per batch) | SQLite max 999 variables — 100 entities × 6 columns = 600 per batch, safe margin | Single insert — would hit variable limit at 167+ entities |
+| Events unsorted in seed.log | Realistic — logs arrive out of order in production systems | Sorted by timestamp — would be unrealistic |
+
+### Tricky Parts & Solutions (Plan 01-02)
+
+**No issues encountered.** The plan was well-specified and executed cleanly. The regex pattern matched all 500 seed lines with zero parse failures.
+
+### Patterns Demonstrated (Plan 01-02)
+
+- **Router-per-domain:** Each route group (health, future events, future aggregations) exports its own Express Router, mounted in index.ts — keeps routing modular
+- **Functional + OO parser API:** `parseLogLine()` and `parseLogFile()` as pure functions, plus `LogParser` class wrapper — consumer chooses style
+- **Seed idempotency via count guard:** `repo.count() > 0` check before seeding — simple, effective, no schema changes needed
+- **Async bootstrap sequence:** DataSource.initialize() → seedDatabase() → express.listen() — ordered startup ensures DB is ready before accepting requests
 
 ---
 

@@ -4,9 +4,9 @@
 > Diagnostic events exist in a queryable SQLite database, populated from realistic log data on first startup.
 
 - [x] **01-01 Project Scaffolding** — Monorepo skeleton with working Express 5 server, TypeScript strict mode, tsx dev runner
-- [ ] **01-02 Entity + Database Config** — TypeORM DiagnosticEvent entity with indexed fields, SQLite DataSource with WAL mode
-- [ ] **01-03 Log Parser + Seed Data** — Regex parser for structured log format, ~500 realistic events across 15-20 vehicles with OBD-II codes
-- [ ] **01-04 Seed Runner + Health Endpoint** — Startup seeder with duplicate protection, `GET /health` returns event count
+- [x] **01-02 Entity + Database Config** — TypeORM DiagnosticEvent entity with indexed fields, SQLite DataSource with WAL mode
+- [x] **01-03 Log Parser + Seed Data** — Regex parser for structured log format, ~500 realistic events across 15-20 vehicles with OBD-II codes
+- [x] **01-04 Seed Runner + Health Endpoint** — Startup seeder with duplicate protection, `GET /health` returns event count
 
 ## Phase 2: Backend API Layer
 > Full REST API with combinable filters, aggregations, validation, and Swagger docs.
@@ -45,13 +45,13 @@
 
 | Phase | Status | Plans |
 |-------|--------|-------|
-| 1. Backend Data Layer | In progress | 1/4 |
+| 1. Backend Data Layer | Complete | 4/4 |
 | 2. Backend API Layer | Not started | 0/4 |
 | 3. Frontend Foundation | Not started | 0/4 |
 | 4. Frontend Views | Not started | 0/4 |
 | 5. Integration & Delivery | Not started | 0/3 |
 
-**Overall: 1/19 plans complete**
+**Overall: 4/19 plans complete**
 
 ---
 *Last updated: 2026-02-21*
