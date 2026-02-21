@@ -34,7 +34,7 @@
 > Runs from `docker-compose up`, fully documented for BMW reviewer.
 
 - [x] **05-01 Docker** — Multi-stage Dockerfiles (backend + frontend), nginx proxy, docker-compose
-- [ ] **05-02 Documentation** — REQUIREMENTS.md, ARCHITECTURE.md, README.md
+- [x] **05-02 Documentation** — REQUIREMENTS.md, ARCHITECTURE.md, README.md
 - [ ] **05-03 Final Polish** — End-to-end smoke test, cleanup, formatting, git history review
 
 ---
@@ -47,9 +47,9 @@
 | 2. Backend API Layer | Complete | 2/2 |
 | 3. Frontend Foundation | Complete | 4/4 |
 | 4. Frontend Views | Complete | 4/4 |
-| 5. Integration & Delivery | In progress | 1/3 |
+| 5. Integration & Delivery | In progress | 2/3 |
 
-**Overall: 15/17 plans complete**
+**Overall: 16/17 plans complete**
 
 ---
-*Last updated: 2026-02-21 (05-01)*
+*Last updated: 2026-02-21 (05-02)*

@@ -407,7 +407,7 @@ Three new files:
 
 ## Phase 5: Integration & Delivery
 
-**Status:** In progress (1/3 plans)
+**Status:** In progress (2/3 plans)
 
 ### What Was Built & Why
 
@@ -470,6 +470,34 @@ Host Machine
 - **Environment-aware configuration:** `synchronize` toggle via `NODE_ENV` — same codebase works in dev (auto-create tables) and production (stable schema)
 - **Docker Compose service networking:** Named bridge network with DNS resolution via service names (`backend:3000`) — no hardcoded IPs
 
+**Plan 05-02 -- Deliverable Documentation (REQUIREMENTS.md, ARCHITECTURE.md, README.md)**
+
+Created three documentation deliverables that serve as the BMW reviewer's entry points to understanding the project.
+
+Three files:
+- **docs/REQUIREMENTS.md:** Business-facing specification with 8 business requirements (BR-01 through BR-08), 6 assumptions with rationale (DB-relative time, SQLite sufficiency, no auth), and 6 out-of-scope items with reasoning (no WebSocket, no auth, no export).
+- **docs/ARCHITECTURE.md:** Technical architecture document covering the full stack: backend layered architecture (routes-services-entities), data model with indexes, API endpoint table, Zod validation flow, frontend component tree with smart/dumb split, NgRx ComponentStore data flow diagram, 8-operator RxJS rationale table, 7-item key trade-offs table, and Docker multi-stage build architecture.
+- **README.md:** Project entry point enabling clone-to-running-app in under 5 minutes. Docker quick start (one command), manual development setup (two terminals), project structure overview, "What Works" feature list, "What I Would Add" future improvements, and links to the other two docs.
+
+### Key Decisions
+| Decision | Why | Alternative Considered |
+|----------|-----|----------------------|
+| Separate REQUIREMENTS.md from ARCHITECTURE.md | Business spec (what) vs technical design (how) -- different audiences. Requirements readable by non-technical stakeholders, architecture by engineers. | Single combined document -- loses audience focus |
+| RxJS rationale table with 8 operators | Proactively addresses the "why this operator?" interview question. Each row explains the chosen operator, where it's used, AND why alternatives would be wrong. | Simple operator list -- misses the reasoning that demonstrates seniority |
+| "What I Would Add" in README | Shows awareness of production gaps without pretending the demo is production-ready. Demonstrates scope judgment -- knowing what NOT to build for a time-boxed assignment. | Omit it -- leaves reviewer wondering if gaps are intentional |
+| DB-relative time assumption documented explicitly | The critical vehicles endpoint uses MAX(timestamp) - 24h, not system time. Without this documented, a reviewer running the app months later might think the feature is broken. | Assume reviewer reads the code -- risky for a timed evaluation |
+| All content verified against actual codebase | Every file path, endpoint, operator, and pattern referenced in docs was cross-checked against source files. No fictional features. | Write from plan spec only -- risks documenting planned but unimplemented features |
+
+### Tricky Parts & Solutions
+
+**No issues encountered.** Documentation plans are low-risk when the codebase is stable. The main challenge was ensuring accuracy -- every claim in the docs was verified against the actual source code (entity fields, route paths, store operators, Docker config).
+
+### Patterns Demonstrated
+
+- **Senior-level requirements writing:** Assumptions are not hidden -- they are explicit with rationale. Out-of-scope items include reasoning, not just a list.
+- **Architecture documentation as interview prep:** The RxJS rationale table is designed for the "tell me about your RxJS choices" question. Each row is a complete answer.
+- **README as user empathy:** Two setup paths (Docker, manual) cover both "I just want to see it" and "I want to develop" reviewers. Under-2-minute scan, under-5-minute setup.
+
 ---
 
 ## Interview Quick Reference
@@ -502,4 +530,4 @@ Host Machine
 - **Critical pitfall avoided:** Never `catchError` on outer effect stream — it kills the stream permanently.
 
 ---
-*Last updated: 2026-02-21 (05-01)*
+*Last updated: 2026-02-21 (05-02)*

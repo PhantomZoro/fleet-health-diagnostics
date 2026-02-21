@@ -1,13 +1,13 @@
 # State
 
 **Phase:** 5 of 5 (Integration & Delivery)
-**Plan:** 1 of 3 complete
-**Status:** Phase 5 in progress — Docker containerization complete
-**Progress:** [█████████░] 86%
+**Plan:** 2 of 3 complete
+**Status:** Phase 5 in progress — Documentation deliverables complete
+**Progress:** [█████████░] 93%
 
 ## Last Activity
 
-2026-02-21 — Completed Phase 5 Plan 01 (Docker Containerization). Multi-stage Dockerfiles for backend (Node 20 alpine, tsc, npm ci --omit=dev for better-sqlite3 native module) and frontend (ng build, nginx:alpine). nginx.conf with SPA fallback and /api proxy to backend:3000. docker-compose.yml orchestrates both services on shared fleet-network with named volume for SQLite persistence. database.ts synchronize now environment-aware (process.env['NODE_ENV'] !== 'production'). docker compose config validates cleanly.
+2026-02-21 — Completed Phase 5 Plan 02 (Documentation). Created three deliverable documents: docs/REQUIREMENTS.md (8 business requirements, 6 assumptions with rationale, 6 out-of-scope items), docs/ARCHITECTURE.md (backend layered architecture, frontend component tree, 8-operator RxJS rationale table, 7 key trade-offs, Docker architecture), README.md (Docker one-command startup, manual two-terminal dev setup, feature list, future improvements). All content verified against actual codebase.
 
 ## Decisions
 
@@ -46,6 +46,10 @@
 - [Phase 05-integration-delivery]: nginx:alpine for frontend — static serving + reverse proxy in single lightweight image
 - [Phase 05-integration-delivery]: Named volume for SQLite persistence across container restarts
 - [Phase 05-integration-delivery]: synchronize: process.env['NODE_ENV'] !== 'production' — dev convenience, production safety
+- [Phase 05-integration-delivery]: Separate REQUIREMENTS.md from ARCHITECTURE.md — different audiences (business vs technical)
+- [Phase 05-integration-delivery]: 8-operator RxJS rationale table with 'why not alternatives' column — interview preparation
+- [Phase 05-integration-delivery]: README optimized for under-2-minute scan and under-5-minute setup
+- [Phase 05-integration-delivery]: All doc content verified against actual source code — no fictional features
 
 ## Blockers
 
