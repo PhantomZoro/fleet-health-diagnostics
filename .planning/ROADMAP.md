@@ -176,47 +176,13 @@ Navigation and layout.
 - VIEW-04: Dashboard with summary cards, aggregation lists, critical vehicles
 - VIEW-05: Loading + empty states
 
-### Plan 04-01: Shared UI Components
+**Plans:** 4 plans
 
-Reusable presentational components.
-
-- `FilterPanelComponent` — vehicle ID input, error code input, severity dropdown (multi-select), date range (from/to), Apply + Reset buttons. @Output emits EventFilters. Semantic HTML with `<fieldset>`.
-- `SeverityBadgeComponent` — @Input level string, renders colored `<span>` (red=ERROR, orange=WARN, blue=INFO)
-- `PaginationComponent` — @Input total/page/limit, @Output pageChange. Prev/Next buttons, page info text.
-- `LoadingSpinnerComponent` — CSS-only spinner overlay
-- All components: OnPush change detection, no store injection (dumb components)
-
-### Plan 04-02: Events View
-
-Raw events table at `/events`.
-
-- `EventsComponent` (smart) — injects DiagnosticsStore, subscribes to `events$`, `loading$`, `total$`, `filters$`
-- Template: FilterPanel + data table + Pagination
-- Table: `<table>` with columns: Timestamp, Vehicle ID, Severity (SeverityBadge), Code, Message
-- Loading: show LoadingSpinner while fetching
-- Empty state: "No events match your filters" when results empty
-- `takeUntilDestroyed()` for subscription cleanup
-
-### Plan 04-03: Dashboard View
-
-Aggregated summary at `/dashboard`.
-
-- `DashboardComponent` (smart) — injects DiagnosticsStore, subscribes to `aggregations$`, `loading$`
-- Summary cards row: Total Events, Total Vehicles, Critical Vehicles, Most Common Code
-- Errors per vehicle: ranked list with vehicle ID + count bar (CSS width proportional to max)
-- Top error codes: ranked list with code + count + severity breakdown
-- Critical vehicles: highlighted section, each vehicle clickable → navigates to `/events` with vehicleId pre-filled in filters (via `router.navigate` + store `setFilters`)
-- FilterPanel at top for time range filtering on aggregations
-
-### Plan 04-04: Error Handling + Polish
-
-HTTP interceptor and UX refinements.
-
-- `HttpErrorInterceptor` (functional interceptor) — catches HTTP errors, pushes to a notification service
-- Simple toast notification component (auto-dismiss after 5s)
-- OnPush change detection audit on all components
-- Semantic HTML check: `<main>`, `<nav>`, `<section>`, `<table>`, ARIA labels on interactive elements
-- Basic keyboard navigation: Tab through filter panel, Enter to apply
+Plans:
+- [ ] 04-01-PLAN.md — Shared UI components (FilterPanel, SeverityBadge, Pagination, LoadingSpinner)
+- [ ] 04-02-PLAN.md — Events view with table, filters, pagination, and states
+- [ ] 04-03-PLAN.md — Dashboard view with summary cards, aggregation lists, and critical vehicle navigation
+- [ ] 04-04-PLAN.md — HTTP error interceptor, toast notifications, and polish audit
 
 **Phase 4 Success Criteria:**
 1. Filter panel triggers debounced API calls visible in network tab
@@ -289,5 +255,6 @@ End-to-end smoke test and cleanup.
 |-------|--------|-------|
 | 1. Backend Data Layer | Complete | 2 plans |
 | 2. Backend API Layer | Complete | 2 plans |
-| 3. Frontend Foundation | 3/3 | Complete   | 2026-02-21 | 4. Frontend Views | Not started | 0/4 plans |
+| 3. Frontend Foundation | Complete | 3 plans |
+| 4. Frontend Views | Planned | 4 plans |
 | 5. Integration & Delivery | Not started | 0/3 plans |
