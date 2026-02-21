@@ -75,55 +75,11 @@ Plans:
 - API-05: Input validation with 400 responses
 - API-06: Swagger at /api-docs
 
-### Plan 02-01: Events Query Endpoint
+**Plans:** 2 plans
 
-`GET /api/events` with dynamic filtering and pagination.
-
-- `backend/src/services/event.service.ts`:
-  - QueryBuilder with dynamic WHERE clauses
-  - Filters: `vehicleId` (exact), `code` (exact), `level` (exact), `from`/`to` (timestamp range)
-  - **Guard against undefined**: only add WHERE clause if param is defined (TypeORM returns ALL rows for `findBy({ field: undefined })`)
-  - Pagination: `page` (default 1), `limit` (default 20, max 100)
-  - Order by timestamp DESC
-- `backend/src/routes/events.router.ts`:
-  - GET /api/events → calls service, returns `{ data: Event[], total, page, limit }`
-- Wire router in `index.ts`
-
-### Plan 02-02: Aggregation Endpoints
-
-Three aggregation routes.
-
-- `backend/src/services/aggregation.service.ts`:
-  - `errorsPerVehicle(from?, to?)` — GROUP BY vehicleId, COUNT by level, filterable by time range
-  - `topCodes(level?, from?, to?)` — GROUP BY code, ORDER BY count DESC, LIMIT 10
-  - `criticalVehicles()` — vehicles with COUNT(level='ERROR') >= 3 in last 24h relative to latest event timestamp
-- `backend/src/routes/aggregations.router.ts`:
-  - `GET /api/aggregations/errors-per-vehicle`
-  - `GET /api/aggregations/top-codes`
-  - `GET /api/aggregations/critical-vehicles`
-
-### Plan 02-03: Validation + Error Handling
-
-Zod schemas and Express middleware.
-
-- `backend/src/middleware/validate.ts` — Generic Zod validation middleware for query params
-- Zod schemas for:
-  - Events query: level enum, ISO date strings, positive integers for page/limit
-  - Aggregation queries: optional time range, optional level
-- `backend/src/middleware/error-handler.ts`:
-  - Global error handler: `{ error: string, statusCode: number, details?: ZodError }`
-  - 404 handler for unknown routes
-  - Express 5 handles async errors natively — no asyncHandler needed
-
-### Plan 02-04: Swagger Documentation
-
-OpenAPI docs auto-generated from JSDoc annotations.
-
-- Install `swagger-jsdoc` + `swagger-ui-express` v5
-- `backend/src/config/swagger.ts` — swagger-jsdoc config with API info, server URL
-- JSDoc `@openapi` annotations on all route handlers
-- Mount `swagger-ui-express` at `GET /api-docs`
-- Document: all endpoints, query params, response schemas, example values, error responses
+Plans:
+- [ ] 02-01-PLAN.md — Events query endpoint with validation middleware and error handling
+- [ ] 02-02-PLAN.md — Aggregation endpoints and Swagger documentation
 
 **Phase 2 Success Criteria:**
 1. `GET /api/events?vehicleId=X&level=ERROR&from=...&to=...` returns only matching events with pagination envelope
@@ -324,7 +280,8 @@ End-to-end smoke test and cleanup.
 
 | Phase | Status | Plans |
 |-------|--------|-------|
-| 1. Backend Data Layer | 1/2 | In Progress|  | 2. Backend API Layer | Not started | 4 plans |
+| 1. Backend Data Layer | Complete | 2 plans |
+| 2. Backend API Layer | Planned | 2 plans |
 | 3. Frontend Foundation | Not started | 4 plans |
 | 4. Frontend Views | Not started | 4 plans |
 | 5. Integration & Delivery | Not started | 3 plans |
