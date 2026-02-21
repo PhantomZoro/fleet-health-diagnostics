@@ -20,7 +20,7 @@
 - [x] **03-01 Angular Project Scaffold** — Angular 19 standalone, SCSS, proxy config, route stubs
 - [x] **03-02 Shared Models + API Service** — TypeScript interfaces, HttpClient wrappers for all endpoints
 - [x] **03-03 DiagnosticsStore** — NgRx ComponentStore with debounceTime, switchMap, combineLatest, tapResponse, takeUntilDestroyed
-- [ ] **03-04 App Shell + Routing** — Sidebar navigation, BMW-inspired CSS custom properties, responsive layout
+- [x] **03-04 App Shell + Routing** — Sidebar navigation, BMW-inspired CSS custom properties, responsive layout *(completed as part of 03-01)*
 
 ## Phase 4: Frontend Views
 > Operations engineers can search, filter, browse events, and view aggregated diagnostics.
@@ -45,11 +45,11 @@
 |-------|--------|-------|
 | 1. Backend Data Layer | Complete | 4/4 |
 | 2. Backend API Layer | Complete | 2/2 |
-| 3. Frontend Foundation | In progress | 3/4 |
+| 3. Frontend Foundation | Complete | 4/4 |
 | 4. Frontend Views | Complete | 4/4 |
 | 5. Integration & Delivery | Not started | 0/3 |
 
-**Overall: 13/17 plans complete**
+**Overall: 14/17 plans complete**
 
 ---
 *Last updated: 2026-02-21 (04-04)*

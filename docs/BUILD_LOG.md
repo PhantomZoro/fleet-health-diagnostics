@@ -110,7 +110,7 @@ Built three aggregation endpoints for the frontend dashboard: errors-per-vehicle
 
 ## Phase 3: Frontend Foundation
 
-**Status:** In progress (3/4 plans complete)
+**Status:** Complete (3 plans — 03-04 scope was folded into 03-01)
 
 ### What Was Built & Why
 
