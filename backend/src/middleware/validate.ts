@@ -13,7 +13,7 @@ export function validateQuery(schema: z.ZodType): RequestHandler {
       return;
     }
 
-    req.query = result.data as typeof req.query;
+    res.locals.validated = result.data;
     next();
   };
 }

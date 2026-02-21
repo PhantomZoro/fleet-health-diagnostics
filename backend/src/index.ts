@@ -4,6 +4,8 @@ import cors from 'cors';
 import { AppDataSource } from './config/database.js';
 import { seedDatabase } from './seed/seed-runner.js';
 import { healthRouter } from './routes/health.router.js';
+import { eventsRouter } from './routes/events.router.js';
+import { notFoundHandler, errorHandler } from './middleware/error-handler.js';
 
 async function bootstrap(): Promise<void> {
   await AppDataSource.initialize();
@@ -16,6 +18,10 @@ async function bootstrap(): Promise<void> {
   app.use(express.json());
 
   app.use(healthRouter);
+  app.use(eventsRouter);
+
+  app.use(notFoundHandler);
+  app.use(errorHandler);
 
   const PORT = process.env['PORT'] ?? 3000;
   app.listen(PORT, () => {
