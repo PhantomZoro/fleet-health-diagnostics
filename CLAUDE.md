@@ -41,10 +41,34 @@ docs/      — Requirements, architecture docs
 - `synchronize: true` in TypeORM is for dev seeding only — it rebuilds tables on schema changes.
 - Express 5 handles async errors natively — no need for `asyncHandler` wrapper.
 
+## Doc Updates (Enforced by Hook)
+
+After completing each plan (before the metadata commit), update these two files:
+
+1. **`docs/TRACKER.md`** — Check off the completed plan: `- [ ]` → `- [x]`
+2. **`docs/BUILD_LOG.md`** — Fill in the phase section with:
+   - What was built and why
+   - Key decisions made during implementation (table: Decision | Why | Alternative)
+   - Tricky parts and how they were solved
+   - RxJS patterns used and why (Phase 3+)
+   - Patterns demonstrated (architecture, component design, etc.)
+
+Include both files in the plan metadata commit. A PostToolUse hook (`gsd-doc-enforcer.js`) will block the commit if these aren't updated.
+
 ## GSD Workflow
 
-This project uses the Get Shit Done (GSD) framework for development.
+Planning artifacts in `.planning/` (3 docs + config):
+- `PROJECT.md` — WHAT: project identity, constraints, decisions, scope
+- `ROADMAP.md` — HOW: phases, detailed tasks, requirements, success criteria (all-in-one)
+- `STATE.md` — WHERE: current position, blockers
+- `config.json` — engine settings (research OFF, plan-check OFF — detail is pre-planned)
 
-- Planning artifacts: `.planning/`
-- Commands: `/gsd:plan-phase`, `/gsd:execute-phase`, `/gsd:verify-work`
-- Config: `.planning/config.json`
+**Core build loop:**
+- `/gsd:plan-phase N` — format ROADMAP detail into executable PLAN.md files
+- `/gsd:execute-phase N` — build everything in that plan
+- `/gsd:verify-work` — validate phase works after building
+
+**Utilities:**
+- `/gsd:progress` — see where we are, route to next action
+- `/gsd:quick` — small fixes outside the phase workflow
+- `/gsd:pause-work` / `/gsd:resume-work` — session continuity across days
