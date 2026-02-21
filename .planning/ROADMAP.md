@@ -203,6 +203,13 @@ Plans:
 - DOC-03: README with setup instructions
 - DOC-04: Docker containerization
 
+**Plans:** 3 plans
+
+Plans:
+- [ ] 05-01-PLAN.md — Docker containerization (backend + frontend Dockerfiles, nginx, docker-compose)
+- [ ] 05-02-PLAN.md — Documentation (REQUIREMENTS.md, ARCHITECTURE.md, README.md)
+- [ ] 05-03-PLAN.md — Final polish (code cleanup, smoke test, verification)
+
 ### Plan 05-01: Docker
 
 Containerize both services.
@@ -256,4 +263,5 @@ End-to-end smoke test and cleanup.
 | 1. Backend Data Layer | Complete | 2 plans |
 | 2. Backend API Layer | Complete | 2 plans |
 | 3. Frontend Foundation | Complete | 3 plans |
-| 4. Frontend Views | 4/4 | Complete   | 2026-02-21 | 5. Integration & Delivery | Not started | 0/3 plans |
+| 4. Frontend Views | Complete | 4 plans |
+| 5. Integration & Delivery | Planned | 3 plans |
