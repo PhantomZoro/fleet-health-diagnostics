@@ -1,0 +1,22 @@
+<div class="app-layout">
+  <nav class="sidebar" role="navigation" aria-label="Main navigation">
+    <div class="sidebar-header">
+      <h1>Fleet Diagnostics</h1>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a routerLink="/dashboard" routerLinkActive="active" aria-current="page">
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a routerLink="/events" routerLinkActive="active" aria-current="page">
+          Events
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <main class="content">
+    <router-outlet />
+  </main>
+</div>
