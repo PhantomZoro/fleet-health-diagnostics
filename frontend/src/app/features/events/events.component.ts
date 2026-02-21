@@ -4,6 +4,8 @@ import {
   inject,
 } from '@angular/core';
 import { AsyncPipe, DatePipe } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { take } from 'rxjs';
 import { DiagnosticsStore } from '../../store/diagnostics.store';
 import { FilterPanelComponent } from '../../shared/filter-panel/filter-panel.component';
 import { SeverityBadgeComponent } from '../../shared/severity-badge/severity-badge.component';
@@ -29,6 +31,7 @@ import { EventFilters } from '../../core/models';
 })
 export class EventsComponent {
   private readonly store = inject(DiagnosticsStore);
+  private readonly route = inject(ActivatedRoute);
 
   readonly events$ = this.store.events$;
   readonly loading$ = this.store.loading$;
@@ -38,6 +41,15 @@ export class EventsComponent {
   readonly error$ = this.store.error$;
 
   readonly limit = 20;
+
+  constructor() {
+    this.route.queryParams.pipe(take(1)).subscribe(params => {
+      const vehicleId = params['vehicleId'];
+      if (vehicleId) {
+        this.store.setFilters({ vehicleId });
+      }
+    });
+  }
 
   onFiltersApply(filters: EventFilters): void {
     this.store.setFilters(filters);
