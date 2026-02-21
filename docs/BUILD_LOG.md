@@ -110,7 +110,7 @@ Built three aggregation endpoints for the frontend dashboard: errors-per-vehicle
 
 ## Phase 3: Frontend Foundation
 
-**Status:** In progress (2/4 plans complete)
+**Status:** In progress (3/4 plans complete)
 
 ### What Was Built & Why
 
@@ -141,6 +141,55 @@ The `DiagnosticsApiService` wraps `HttpClient` with four typed methods. Query pa
 - **Dynamic HttpParams pattern:** `new HttpParams().set(...)` then conditional `.set()` only for truthy values — prevents `?field=undefined` query strings.
 - **Barrel export pattern:** `core/models/index.ts` re-exports all interfaces — consumers use `import { DiagnosticEvent } from '../models'` not `'../models/diagnostic-event.model'`.
 - **Angular 19 inject() idiom:** `private readonly http = inject(HttpClient)` — function-based injection, no constructor needed.
+
+---
+
+**Plan 03-03 — DiagnosticsStore: NgRx ComponentStore with Full RxJS Pattern Demonstration**
+
+Built the core state management layer — the primary demonstration of senior RxJS competency in this assignment. `DiagnosticsStore` extends `ComponentStore<DiagnosticsState>` and implements all 5 STATE requirements.
+
+Two files: `diagnostics-state.model.ts` (state interfaces + initial value) and `diagnostics.store.ts` (store class with updaters, selectors, and effects).
+
+### Key Decisions (Plan 03-03)
+| Decision | Why | Alternative Considered |
+|----------|-----|----------------------|
+| `catchError` inside `switchMap` inner pipe (not `tapResponse`) | `tapResponse` was removed from `@ngrx/component-store` v19 and is now in the separately installed `@ngrx/operators`. `catchError` inside the inner pipe returns `EMPTY`, keeping the outer stream alive — identical behavior to `tapResponse` | Import `@ngrx/operators` — adds a dependency for a single utility |
+| `catchError` returns `EMPTY` | `EMPTY` completes the inner observable without error — outer `combineLatest`/`select` stream stays alive and will re-emit on next filter change | `of(null)` — would emit a value we don't need to handle |
+| `combineLatest([filters$, page$, limit$])` for event loading | All three dimensions must be current for a valid API call. Either changing triggers a re-fetch with the latest state of all three | `withLatestFrom(page$, limit$)` — only fires when filters change, ignores page-only changes |
+| Effects wired in constructor (`this.loadEventsEffect()`) | Ensures effects start when store is provided. Called after `super(initialState)` — state is initialized before subscriptions begin | Using `@ngrx/component-store` `effect()` pattern — requires different calling convention |
+| `@Injectable()` without `providedIn` | ComponentStore pattern — each feature component that needs it declares it in its own `providers` array. Gives each route its own store instance with isolated state | `providedIn: 'root'` — singleton would share state across routes, breaking isolation |
+| `takeUntilDestroyed(this.destroyRef)` on all effects | Automatic unsubscription when store is destroyed (component unmounts). No manual `ngOnDestroy` or `Subject` + `takeUntil` required | `takeUntil(this.destroy$)` + `ngOnDestroy` — 4 extra lines per effect, easy to forget |
+
+### Tricky Parts & Solutions (Plan 03-03)
+
+**`tapResponse` not in `@ngrx/component-store` v19:** The plan specified `tapResponse` from `@ngrx/component-store`. This export was removed in newer NgRx versions (moved to `@ngrx/operators`). Checked `node_modules/@ngrx/component-store/public_api.d.ts` — no `tapResponse` export. The solution is `catchError` inside the `switchMap` inner pipe returning `EMPTY` — this is exactly what `tapResponse` does internally. The outer stream remains alive. Documented as a Rule 1 auto-fix (library API divergence from plan spec).
+
+### RxJS Patterns — Deep Dive (Plan 03-03)
+
+All 5 STATE requirements are satisfied and demonstrable:
+
+#### STATE-01: Observable state slices
+All 7 state dimensions (`filters$`, `events$`, `total$`, `page$`, `loading$`, `error$`, `aggregations$`) are exposed as `Observable<T>` — components never touch raw state directly.
+
+#### STATE-02: `debounceTime(300)` before API calls
+Both `loadEventsEffect` and `loadAggregationsEffect` apply `debounceTime(300)` before `switchMap`. Rapid filter typing fires only one API call after 300ms of inactivity.
+
+#### STATE-03: `switchMap` cancels in-flight requests
+`switchMap` in both effects: when filters/page emit while an HTTP request is in-flight, RxJS cancels the previous `HttpClient` request (unsubscribes from its `Observable`) and starts a new one with the latest values. No stale results, no race conditions.
+
+#### STATE-04: `combineLatest` merges filter dimensions
+`combineLatest([filters$, page$, limit$])` in `loadEventsEffect`: three independent state slices merge into a single stream. Any of the three changing triggers a re-fetch with all three current values.
+
+#### STATE-05: `distinctUntilChanged` + `shareReplay(1)` on all selectors
+Every selector has both operators chained. `distinctUntilChanged` suppresses emissions when the slice hasn't changed (reference equality). `shareReplay(1)` gives late-subscribing components the current value immediately.
+
+### Patterns Demonstrated (Plan 03-03)
+
+- **ComponentStore pattern:** Extends `ComponentStore<T>` with explicit state interface — type-safe `patchState`, `updater`, `select`
+- **Updater reset pattern:** `setFilters` resets `page: 1` — prevents out-of-range pagination on filter change
+- **Inner-pipe error isolation:** `catchError` scoped to the inner `switchMap` observable returns `EMPTY` — errors surface to state without killing the effect
+- **Effect auto-wiring:** Both effects called in constructor — no external trigger needed, effects start on store initialization
+- **DestroyRef injection:** `inject(DestroyRef)` passed to `takeUntilDestroyed()` — works in any injection context, not just in component lifecycle
 
 **Plan 03-01 — Angular Project Scaffold, App Shell, and Global Styles**
 
@@ -264,7 +313,7 @@ _Multi-stage build strategy, nginx configuration, container networking_
 3. `filters$` selector emits (distinctUntilChanged skips if same)
 4. `combineLatest([filters$, page$])` fires -> `debounceTime(300)` waits
 5. `switchMap` cancels any in-flight request, fires new `api.getEvents()`
-6. `tapResponse` handles success (update state) or error (set error state)
+6. `tap` handles success (update state), `catchError` inside `switchMap` inner pipe handles error (set error state, return `EMPTY`)
 7. `events$` selector emits -> smart component template re-renders via `async` pipe
 
 ### "How do you handle errors?"

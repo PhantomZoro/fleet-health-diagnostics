@@ -1,13 +1,13 @@
 # State
 
 **Phase:** 3 of 5 (Frontend Foundation) — In Progress
-**Plan:** 2 of 3
-**Status:** Phase 3 in progress, plan 03-02 complete
-**Progress:** [█████████░] 86%
+**Plan:** 3 of 3
+**Status:** Phase 3 in progress, plan 03-03 complete
+**Progress:** [██████████] 100%
 
 ## Last Activity
 
-2026-02-21 — Completed Phase 3 Plan 02 (Shared Models + API Service). TypeScript interfaces created mirroring backend API response shapes (DiagnosticEvent, EventFilters, PaginatedResponse<T>, ErrorsPerVehicle, TopCode, CriticalVehicle). DiagnosticsApiService with 4 typed HttpClient methods using dynamic HttpParams, truthy checks skip undefined/empty filter values. Barrel export at core/models/index.ts.
+2026-02-21 — Completed Phase 3 Plan 03 (DiagnosticsStore). NgRx ComponentStore with 7 typed selectors (all with distinctUntilChanged + shareReplay), 3 updaters (setFilters resets page to 1), and 2 effects demonstrating debounceTime(300), switchMap, combineLatest, catchError inside inner pipe. All 5 STATE requirements satisfied. tapResponse adapted to catchError+EMPTY (tapResponse not in @ngrx/component-store v19).
 
 ## Decisions
 
@@ -28,10 +28,12 @@
 - Truthy checks for HttpParams — skips undefined AND empty strings, matches Zod backend validation
 - inject() over constructor injection — Angular 19 preferred pattern for standalone services
 - Base URL /api — works in dev (proxy) and prod (nginx) without environment-specific URLs
+- [Phase 03-frontend-foundation]: catchError inside switchMap inner pipe returns EMPTY — tapResponse not in @ngrx/component-store v19, identical stream-safe behavior
+- [Phase 03-frontend-foundation]: DiagnosticsStore @Injectable() without providedIn — ComponentStore per-feature instance pattern
 
 ## Blockers
 
 - Use `@ngrx/component-store@^19.0.0` — NOT `latest` (npm latest is Angular 21 aligned) [RESOLVED in 03-01]
 - Use `swagger-ui-express` v5 — required for Express 5 compatibility
-- catchError INSIDE switchMap inner pipe only (use tapResponse) — outer catchError kills effect stream
+- catchError INSIDE switchMap inner pipe only (tapResponse removed from v19) — outer catchError kills effect stream [RESOLVED in 03-03: catchError+EMPTY inside inner pipe]
 - TypeORM `synchronize: true` dev only — disable in Docker build
