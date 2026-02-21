@@ -1,0 +1,17 @@
+<nav class="pagination" role="navigation" aria-label="Pagination">
+  <button
+    (click)="onPrev()"
+    [disabled]="!hasPrev"
+    aria-label="Previous page"
+  >&#8592; Prev</button>
+
+  <span class="page-info">Page {{ page }} of {{ totalPages }}</span>
+
+  <button
+    (click)="onNext()"
+    [disabled]="!hasNext"
+    aria-label="Next page"
+  >Next &#8594;</button>
+
+  <span class="total-info">{{ total }} total events</span>
+</nav>
