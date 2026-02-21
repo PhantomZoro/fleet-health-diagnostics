@@ -253,7 +253,7 @@ This is the section BMW will grill on. Each pattern with the exact reasoning:
 
 ## Phase 4: Frontend Views
 
-**Status:** In progress (1/4 plans complete)
+**Status:** In progress (3/4 plans complete)
 
 ### What Was Built & Why
 
@@ -326,6 +326,46 @@ The Events view is the consumer end of the full RxJS data flow. No new RxJS oper
 
 ---
 
+**Plan 04-03 — Dashboard View (Smart Container with Aggregation Visualization)**
+
+Built the operational overview page at `/dashboard` — a smart `DashboardComponent` that consumes all three aggregation endpoints from `DiagnosticsStore` and presents data in four visual sections. This is the second smart component demonstrating the smart/dumb split pattern alongside EventsComponent.
+
+The dashboard is the primary visualization surface: summary cards for at-a-glance fleet health metrics, a proportional horizontal bar chart for errors-per-vehicle (stacked error/warn/info segments), a top error codes list with severity badges, and a critical vehicles section where clicking a vehicle navigates to the Events view with the vehicleId filter pre-populated via query params.
+
+### Key Decisions (Plan 04-03)
+| Decision | Why | Alternative Considered |
+|----------|-----|----------------------|
+| Cross-view navigation via queryParams | Each route has its own isolated `DiagnosticsStore` instance (component-level providers). Cannot share state directly between Dashboard and Events stores. Query params are the correct transport for cross-route communication in Angular. | Shared singleton store — would break the component-level provider isolation pattern |
+| `ActivatedRoute.queryParams.pipe(take(1))` in EventsComponent constructor | Reads query params exactly once on component init — applies vehicleId filter if navigated from Dashboard. `take(1)` prevents memory leak from the never-completing queryParams observable | `ngOnInit` with subscribe — equivalent but less idiomatic for Angular 19 inject() pattern |
+| `map` on `aggregations$` for derived summary values | Derives `totalVehicles$`, `criticalCount$`, `mostCommonCode$` without adding state to the store — keeps the store's state minimal | Adding derived state to store — unnecessary when it can be derived from existing state in the component |
+| Proportional bar widths use first vehicle's `total` as max | First item in `errorsPerVehicle` array has the highest total (backend returns ordered by total DESC) — gives correct proportional scaling without needing a separate max calculation | `Math.max(...agg.errorsPerVehicle.map(v => v.total))` — works but unnecessarily complex when backend ordering guarantees first item is max |
+| `getBarWidth` returns `'0%'` for zero maxTotal | Prevents division by zero on empty data — safe fallback | `|| 1` denominator — masks the empty state |
+
+### Tricky Parts & Solutions (Plan 04-03)
+
+**No blocking issues encountered.** The build completed on the first attempt with zero errors. One NG8107 warning was emitted for `agg.topCodes[0]?.code` — Angular's template type checker considers `topCodes[0]` non-nullable inside the `@if (agg)` block (after the `@if` guard TypeScript knows `agg` exists but can't narrow the array index access). This is a cosmetic warning, not an error, and does not affect runtime behavior.
+
+**EventsComponent query param reading** was added as a small extension described in the plan: injecting `ActivatedRoute` and reading `vehicleId` in the constructor. No architectural changes were needed — the pattern fits naturally into the existing component structure.
+
+### RxJS Patterns — Dashboard View (Plan 04-03)
+
+The dashboard introduces `map` as a derived-observable pattern on top of the store's `aggregations$` selector:
+
+- **`map` for derived observables:** Three derived observables (`totalVehicles$`, `criticalCount$`, `mostCommonCode$`) are created in the component class using `aggregations$.pipe(map(...))`. This avoids adding derived state to the store and keeps the store's state shape minimal. The `async` pipe in the template subscribes once per derived observable.
+- **Multiple `async` subscriptions from a single source:** The template uses `(aggregations$ | async)` once via the `@if (... as agg)` pattern — Angular resolves the single observable and provides the `agg` alias throughout the block. No redundant subscriptions for the primary data.
+- **`total$` subscription in summary card:** `(total$ | async) ?? 0` reads from the events total selector — the events effect runs concurrently with the aggregations effect in the store, so total event count is available without additional API calls.
+- **`take(1)` on queryParams:** In EventsComponent, `this.route.queryParams.pipe(take(1))` completes after the first emission — no `takeUntilDestroyed` needed since `take(1)` auto-completes and prevents memory leak.
+
+### Patterns Demonstrated (Plan 04-03)
+
+- **Cross-view navigation with query params:** `router.navigate(['/events'], { queryParams: { vehicleId } })` on critical vehicle click, read back in EventsComponent constructor via `ActivatedRoute.queryParams.pipe(take(1))` — clean one-shot cross-route communication.
+- **Proportional bar chart in pure CSS + Angular bindings:** `[style.width]="getBarWidth(...)"` with `flex` layout on `.bar-track` creates a stacked horizontal bar chart without any charting library. Three `div.bar-fill` elements render error/warn/info segments proportionally.
+- **Smart/dumb split in dashboard context:** DashboardComponent (smart) injects store and router. FilterPanel, SeverityBadge, LoadingSpinner (dumb) receive data through @Input only — no direct store access.
+- **Semantic HTML with ARIA:** `<section class="panel">` for each data group, `<ul>/<li>` for lists, `<button>` (not `<div>`) for clickable critical vehicles, `[attr.aria-label]` on each button describing the navigation target.
+- **Empty state patterns:** All three data sections handle the empty list case with `@else { <p class="empty-state">...</p> }` — the UI never shows blank panels.
+
+---
+
 ## Phase 5: Integration & Delivery
 
 **Status:** Not started
@@ -376,4 +416,4 @@ _Multi-stage build strategy, nginx configuration, container networking_
 - **Critical pitfall avoided:** Never `catchError` on outer effect stream — it kills the stream permanently.
 
 ---
-*Last updated: 2026-02-21 (04-02)*
+*Last updated: 2026-02-21 (04-03)*

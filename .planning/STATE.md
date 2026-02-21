@@ -1,13 +1,13 @@
 # State
 
 **Phase:** 4 of 5 (Frontend Views) — IN PROGRESS
-**Plan:** 2 of 4 complete
-**Status:** Phase 4 Plan 02 complete — Events view smart container built
-**Progress:** [████████░░] 82%
+**Plan:** 3 of 4 complete
+**Status:** Phase 4 Plan 03 complete — Dashboard view built with summary cards and critical vehicle navigation
+**Progress:** [█████████░] 91%
 
 ## Last Activity
 
-2026-02-21 — Completed Phase 4 Plan 02 (Events View). EventsComponent smart container implemented at /events: providers:[DiagnosticsStore], OnPush, Angular 19 @if/@for template syntax, async pipe throughout (zero manual subscriptions), semantic <table> with five columns, <app-filter-panel>/<app-severity-badge>/<app-pagination>/<app-loading-spinner> wired, empty state "No events match your filters". Fixed pre-existing isolatedModules error in core/models/index.ts (export type for all interfaces). Build passes with zero errors.
+2026-02-21 — Completed Phase 4 Plan 03 (Dashboard View). DashboardComponent smart container implemented at /dashboard: providers:[DiagnosticsStore], OnPush, summary cards (Total Events/Vehicles/Critical/Most Common Code), proportional bar chart for errors-per-vehicle, top error codes list with SeverityBadge, critical vehicles panel with click-to-navigate to /events?vehicleId=X. EventsComponent updated to read vehicleId queryParam on init via ActivatedRoute. Build passes with zero errors.
 
 ## Decisions
 
@@ -35,6 +35,8 @@
 - [Phase 04-frontend-views]: AsyncPipe imported explicitly (not CommonModule) — tree-shakeable, standalone component pattern
 - [Phase 04-frontend-views]: providers:[DiagnosticsStore] at component level — isolated store instance per route with lifecycle tied to component
 - [Phase 04-frontend-views]: export type on all core/models/index.ts re-exports — required for isolatedModules:true TS compatibility
+- [Phase 04-frontend-views]: cross-view navigation via queryParams — isolated component-level stores cannot share state, queryParams is the correct Angular transport
+- [Phase 04-frontend-views]: take(1) on ActivatedRoute.queryParams — one-shot init read prevents memory leak from never-completing queryParams observable
 
 ## Blockers
 
