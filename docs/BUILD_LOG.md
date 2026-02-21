@@ -110,9 +110,37 @@ Built three aggregation endpoints for the frontend dashboard: errors-per-vehicle
 
 ## Phase 3: Frontend Foundation
 
-**Status:** In progress (1/4 plans complete)
+**Status:** In progress (2/4 plans complete)
 
 ### What Was Built & Why
+
+**Plan 03-02 — Shared Models + API Service**
+
+Created the typed contract layer between Angular frontend and Express backend: TypeScript interfaces mirroring the backend API response shapes and an `HttpClient`-based API service with methods for all 4 endpoints.
+
+Five model files in `frontend/src/app/core/models/`: `DiagnosticEvent` (with `DiagnosticLevel` type), `EventFilters`, `PaginatedResponse<T>`, and three aggregation interfaces (`ErrorsPerVehicle`, `TopCode`, `CriticalVehicle`). A barrel `index.ts` re-exports all models from a single import path.
+
+The `DiagnosticsApiService` wraps `HttpClient` with four typed methods. Query params are built dynamically using `HttpParams` — undefined and empty-string values are skipped using truthy checks, which matches the backend Zod validation that rejects empty strings.
+
+### Key Decisions (Plan 03-02)
+| Decision | Why | Alternative Considered |
+|----------|-----|----------------------|
+| Frontend interfaces separate from backend types | Monorepo but separate packages — no code sharing. Frontend timestamp is `string` (JSON serialization), backend entity uses `Date` | Shared types package — unnecessary coupling, different serialization shapes |
+| Truthy checks for HttpParams (`if (filters.vehicleId)`) | Skips both `undefined` AND empty strings — aligns with backend Zod validation which rejects empty strings | `!== undefined` check — would send `?vehicleId=` to backend, causing Zod validation failure |
+| `inject()` function over constructor injection | Angular 19 preferred pattern for standalone components and services. Cleaner, works without constructor | Constructor injection — verbose, extra boilerplate |
+| `providedIn: 'root'` on service | Tree-shakeable singleton — if nothing imports the service in production, it's excluded from bundle | Feature-level providers — unnecessary scope restriction for a shared API service |
+| Base URL `/api` | Angular dev proxy rewrites `/api/*` → `http://localhost:3000/api/*`. No hardcoded port or host — same code works in prod behind nginx | Hardcoded `http://localhost:3000` — breaks in Docker/production |
+
+### Tricky Parts & Solutions (Plan 03-02)
+
+**No issues encountered.** The plan was well-specified with exact interface shapes. The backend types in `backend/src/types/index.ts` provided the reference, and the only adaptation needed was `timestamp: string` (frontend) vs `Date` (backend entity).
+
+### Patterns Demonstrated (Plan 03-02)
+
+- **Typed HTTP contract:** All 4 service methods use generic `Observable<T>` return types. No `any` anywhere — TypeScript will catch shape mismatches at compile time.
+- **Dynamic HttpParams pattern:** `new HttpParams().set(...)` then conditional `.set()` only for truthy values — prevents `?field=undefined` query strings.
+- **Barrel export pattern:** `core/models/index.ts` re-exports all interfaces — consumers use `import { DiagnosticEvent } from '../models'` not `'../models/diagnostic-event.model'`.
+- **Angular 19 inject() idiom:** `private readonly http = inject(HttpClient)` — function-based injection, no constructor needed.
 
 **Plan 03-01 — Angular Project Scaffold, App Shell, and Global Styles**
 

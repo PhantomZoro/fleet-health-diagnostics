@@ -1,13 +1,13 @@
 # State
 
 **Phase:** 3 of 5 (Frontend Foundation) — In Progress
-**Plan:** 1 of 3
-**Status:** Phase 3 in progress, plan 03-01 complete
-**Progress:** [████▒░░░░░] 47%
+**Plan:** 2 of 3
+**Status:** Phase 3 in progress, plan 03-02 complete
+**Progress:** [█████████░] 86%
 
 ## Last Activity
 
-2026-02-21 — Completed Phase 3 Plan 01 (Angular Foundation). Angular 19 standalone project scaffolded with proxy config (/api/* -> localhost:3000), @ngrx/component-store@19.2.1 installed, app shell with sidebar nav (Dashboard/Events), lazy-loaded route stubs, BMW-inspired CSS custom properties in styles.scss.
+2026-02-21 — Completed Phase 3 Plan 02 (Shared Models + API Service). TypeScript interfaces created mirroring backend API response shapes (DiagnosticEvent, EventFilters, PaginatedResponse<T>, ErrorsPerVehicle, TopCode, CriticalVehicle). DiagnosticsApiService with 4 typed HttpClient methods using dynamic HttpParams, truthy checks skip undefined/empty filter values. Barrel export at core/models/index.ts.
 
 ## Decisions
 
@@ -24,6 +24,10 @@
 - @ngrx/component-store@^19.0.0 pinned — npm latest resolves to Angular 21 aligned v21.x
 - Lazy loadComponent for all routes — separate JS chunks per feature route
 - CSS custom properties over SCSS variables — browser-inspectable, runtime-changeable design tokens
+- timestamp: string on frontend (not Date) — JSON.stringify converts backend Date to ISO string over the wire
+- Truthy checks for HttpParams — skips undefined AND empty strings, matches Zod backend validation
+- inject() over constructor injection — Angular 19 preferred pattern for standalone services
+- Base URL /api — works in dev (proxy) and prod (nginx) without environment-specific URLs
 
 ## Blockers
 
