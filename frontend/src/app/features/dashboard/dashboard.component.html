@@ -28,7 +28,7 @@
           <span class="card-label">Critical Vehicles</span>
         </div>
         <div class="card">
-          <span class="card-value">{{ agg.topCodes[0]?.code ?? 'N/A' }}</span>
+          <span class="card-value">{{ agg.topCodes[0] ? agg.topCodes[0].code : 'N/A' }}</span>
           <span class="card-label">Most Common Code</span>
         </div>
       </div>
