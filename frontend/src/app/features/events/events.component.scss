@@ -1,0 +1,71 @@
+.events-view {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: var(--text-dark);
+}
+
+.table-container {
+  position: relative;
+  min-height: 200px;
+  margin-top: 16px;
+  background: var(--surface-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  border-bottom: 2px solid var(--border-light);
+  background: var(--surface-card);
+}
+
+tbody td {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+tbody tr:hover {
+  background-color: rgba(28, 105, 212, 0.04);
+}
+
+td code {
+  font-family: monospace;
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.04);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-secondary);
+
+  p:first-child {
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+.empty-hint {
+  font-size: 13px;
+  margin-top: 8px;
+}

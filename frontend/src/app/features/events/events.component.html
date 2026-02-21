@@ -1,0 +1,58 @@
+<section class="events-view">
+  <h2>Diagnostic Events</h2>
+
+  <app-filter-panel
+    [filters]="(filters$ | async) ?? {}"
+    (filtersApply)="onFiltersApply($event)"
+    (filtersReset)="onFiltersReset()">
+  </app-filter-panel>
+
+  <div class="table-container">
+    @if (loading$ | async) {
+      <app-loading-spinner />
+    }
+
+    @if ((events$ | async); as events) {
+      @if (events.length > 0) {
+        <table>
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Vehicle ID</th>
+              <th>Severity</th>
+              <th>Code</th>
+              <th>Message</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (event of events; track event.id) {
+              <tr>
+                <td>{{ event.timestamp | date:'short' }}</td>
+                <td>{{ event.vehicleId }}</td>
+                <td><app-severity-badge [level]="event.level" /></td>
+                <td><code>{{ event.code }}</code></td>
+                <td>{{ event.message }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      } @else {
+        @if (!(loading$ | async)) {
+          <div class="empty-state" role="status">
+            <p>No events match your filters.</p>
+            <p class="empty-hint">Try adjusting your search criteria or resetting filters.</p>
+          </div>
+        }
+      }
+    }
+  </div>
+
+  @if ((total$ | async); as total) {
+    <app-pagination
+      [total]="total"
+      [page]="(page$ | async) ?? 1"
+      [limit]="limit"
+      (pageChange)="onPageChange($event)">
+    </app-pagination>
+  }
+</section>
