@@ -1,0 +1,104 @@
+.filter-panel {
+  border: none;
+  border-bottom: 1px solid var(--border-light);
+  padding: 16px;
+  margin: 0;
+
+  legend {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0 4px;
+  }
+}
+
+.filter-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.filter-field {
+  flex: 1 1 180px;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  input,
+  select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    font-size: 14px;
+    background: var(--surface-card);
+    color: var(--text-dark);
+    font-family: inherit;
+
+    &:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+  }
+
+  select {
+    cursor: pointer;
+  }
+}
+
+.filter-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  padding: 8px 20px;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 14px;
+  font-family: inherit;
+
+  &:hover {
+    background: var(--primary-dark);
+  }
+
+  &:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--border-light);
+  padding: 8px 20px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text-dark);
+
+  &:hover {
+    background: var(--surface-main);
+  }
+
+  &:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}
