@@ -11,10 +11,8 @@
 ## Phase 2: Backend API Layer
 > Full REST API with combinable filters, aggregations, validation, and Swagger docs.
 
-- [ ] **02-01 Events Query Endpoint** — `GET /api/events` with dynamic filtering (vehicleId, code, level, date range) + pagination
-- [ ] **02-02 Aggregation Endpoints** — Errors per vehicle, top error codes, critical vehicles (3+ ERRORs in 24h)
-- [ ] **02-03 Validation + Error Handling** — Zod schemas for query params, global error handler, 400 responses with details
-- [ ] **02-04 Swagger Documentation** — OpenAPI docs at `/api-docs` with JSDoc annotations on all routes
+- [x] **02-01 Events Query Endpoint** — `GET /api/events` with dynamic filtering (vehicleId, code, level, date range) + pagination + Zod validation + error handling
+- [x] **02-02 Aggregation Endpoints + Swagger** — Three aggregation endpoints + OpenAPI docs at `/api-docs` with JSDoc annotations
 
 ## Phase 3: Frontend Foundation
 > Angular app runs, proxies to backend, ComponentStore manages all state with required RxJS patterns.
@@ -46,12 +44,12 @@
 | Phase | Status | Plans |
 |-------|--------|-------|
 | 1. Backend Data Layer | Complete | 4/4 |
-| 2. Backend API Layer | Not started | 0/4 |
+| 2. Backend API Layer | Complete | 2/2 |
 | 3. Frontend Foundation | Not started | 0/4 |
 | 4. Frontend Views | Not started | 0/4 |
 | 5. Integration & Delivery | Not started | 0/3 |
 
-**Overall: 4/19 plans complete**
+**Overall: 6/17 plans complete**
 
 ---
 *Last updated: 2026-02-21*

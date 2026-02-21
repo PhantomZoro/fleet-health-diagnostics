@@ -1,13 +1,13 @@
 # State
 
-**Phase:** 1 of 5 (Backend Data Layer) — COMPLETE
-**Plan:** 2 of 2 (plans consolidated from original 4)
-**Status:** Phase 1 complete, ready for Phase 2
-**Progress:** [██░░░░░░░░] 20%
+**Phase:** 2 of 5 (Backend API Layer) — COMPLETE
+**Plan:** 2 of 2
+**Status:** Phase 2 complete, ready for Phase 3
+**Progress:** [████░░░░░░] 40%
 
 ## Last Activity
 
-2026-02-21 — Completed Phase 1 (Backend Data Layer). All plans done: Express 5 server starts, seeds 500 events from parsed log file, serves GET /health with event count. No duplication on restart.
+2026-02-21 — Completed Phase 2 (Backend API Layer). All plans done: GET /api/events with 5 combinable filters + pagination, 3 aggregation endpoints (errors-per-vehicle, top-codes, critical-vehicles), Zod validation with 400 responses, global error handling, Swagger UI at /api-docs.
 
 ## Decisions
 
@@ -18,6 +18,9 @@
 - NodeNext module resolution — .js extensions on relative imports, required for ESM
 - better-sqlite3 over sqlite3 — synchronous, better TypeORM integration
 - synchronize:true for dev — auto-creates tables, disabled in Docker prod
+- QueryBuilder over findBy — findBy with undefined silently returns all rows
+- res.locals.validated — Zod middleware stores parsed params for route handlers
+- DB-relative time for critical vehicles — MAX(timestamp) - 24h, not system time
 
 ## Blockers
 

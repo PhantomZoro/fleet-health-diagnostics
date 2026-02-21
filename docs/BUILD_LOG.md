@@ -70,21 +70,41 @@ This completes Phase 1 — the server now starts, initializes the database, pars
 
 ## Phase 2: Backend API Layer
 
-**Status:** Not started
+**Status:** Complete (2/2 plans)
 
 ### What Was Built & Why
-_To be filled after phase completion_
+
+**Plan 02-01 — Events Query Endpoint + Validation + Error Handling**
+
+Built the primary data API: `GET /api/events` with five combinable filters (vehicleId, code, level, from, to) and pagination. Established the validation infrastructure with a reusable Zod middleware and global error handling (400/404/500 all return structured JSON).
+
+**Plan 02-02 — Aggregation Endpoints + Swagger Documentation**
+
+Built three aggregation endpoints for the frontend dashboard: errors-per-vehicle (grouped counts by severity), top error codes (top 10 by frequency), and critical vehicles (3+ ERRORs in a 24h window). Added Swagger UI at `/api-docs` with full OpenAPI documentation generated from JSDoc annotations.
 
 ### Key Decisions
 | Decision | Why | Alternative Considered |
 |----------|-----|----------------------|
-| | | |
+| TypeORM QueryBuilder over repository.findBy | `findBy({ field: undefined })` silently returns ALL rows — QueryBuilder with explicit undefined guards is safe | findBy — dangerous silent behavior |
+| res.locals.validated pattern | Zod middleware parses/coerces query params, stores typed result — route handlers get clean data | Mutating req.query — Express types fight you |
+| DB-relative time for critical vehicles | Uses MAX(timestamp) - 24h, not system time — seed data has fixed timestamps | `new Date()` — would return zero results |
+| getRawMany + Number() for aggregations | TypeORM raw queries return strings for SUM/COUNT — explicit casting ensures typed output | getRawMany without casting — runtime type mismatch |
+| GROUP BY code AND level for top-codes | Different severity levels may share the same OBD-II code — grouping by both gives accurate per-level counts | GROUP BY code only — loses severity context |
+| swagger-jsdoc with JSDoc annotations | Documentation lives next to code, auto-generates spec — single source of truth | Separate OpenAPI YAML file — drifts from code |
 
 ### Tricky Parts & Solutions
-_Problems encountered during implementation and how they were resolved_
+
+**Express 5 + Zod validation middleware:** Express 5 handles async errors natively but the validation middleware needed careful typing. Used `RequestHandler` from express and stored parsed data on `res.locals.validated` to avoid fighting with `req.query` types.
+
+**Aggregation number casting:** TypeORM's `getRawMany()` returns all values as strings from SQLite. Without explicit `Number()` casting, the response would contain `"5"` instead of `5`. Each raw result is mapped through a typed conversion.
 
 ### Patterns Demonstrated
-_Architecture and code patterns established in this phase_
+
+- **Layered architecture enforced:** routes → services → TypeORM entities. Routes never touch the database directly. Services never import Express types.
+- **Reusable validation middleware:** `validateQuery(schema)` is generic — pass any Zod schema, get validated typed output. Used by both events and aggregation routes.
+- **Dynamic WHERE with undefined guards:** Every filter param gets an explicit `!== undefined` check before adding to QueryBuilder — prevents the TypeORM "returns all rows" pitfall.
+- **Conditional SQL aggregation:** `SUM(CASE WHEN level = 'X' THEN 1 ELSE 0 END)` for per-level counts in a single query — avoids N+1 queries per vehicle.
+- **OpenAPI co-located with routes:** `@openapi` JSDoc on each route handler — documentation is always in sync with implementation.
 
 ---
 

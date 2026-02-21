@@ -281,7 +281,7 @@ End-to-end smoke test and cleanup.
 | Phase | Status | Plans |
 |-------|--------|-------|
 | 1. Backend Data Layer | Complete | 2 plans |
-| 2. Backend API Layer | Planned | 2 plans |
+| 2. Backend API Layer | Complete | 2 plans |
 | 3. Frontend Foundation | Not started | 4 plans |
 | 4. Frontend Views | Not started | 4 plans |
 | 5. Integration & Delivery | Not started | 3 plans |
