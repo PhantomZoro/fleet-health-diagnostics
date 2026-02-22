@@ -1,36 +1,32 @@
 # Fleet Health Diagnostics Console — User Guide
 
-## Application Overview
+## What This Is
 
-The Fleet Health Diagnostics Console is a web-based tool built for operations engineers to monitor vehicle health across the BMW fleet. It provides three core capabilities:
+A web dashboard for monitoring vehicle health across the BMW fleet. Three things it does:
 
-- **Monitor vehicle health** — See at a glance which vehicles are healthy, which have warnings, and which are in critical condition.
-- **Search diagnostic events** — Filter and sort through diagnostic event logs by vehicle, error code, severity, and date range.
-- **Explore error patterns** — Identify the most common error codes, spot vehicles with recurring critical failures, and drill into per-vehicle breakdowns.
+- **Monitor health** — See which vehicles are healthy, which have warnings, and which are critical.
+- **Search events** — Filter diagnostic logs by vehicle, error code, severity, and date range.
+- **Spot patterns** — Find the most common error codes, vehicles with recurring failures, and per-vehicle breakdowns.
 
-The console covers the full BMW Group fleet including BMW sedans, MINI Coopers, Rolls Royce, X5 SUVs, i4 electrics, M3 performance cars, iX electric SUVs, and 7 Series vehicles.
+The fleet includes BMW sedans, MINI Coopers, Rolls Royce, X5 SUVs, i4 electrics, M3 performance cars, iX electric SUVs, and 7 Series vehicles.
 
 ---
 
 ## Getting Started
 
-### Running with Docker (Recommended)
-
-From the project root, run:
+### Docker (Recommended)
 
 ```bash
 docker compose up --build
 ```
 
-Once the containers are running:
+Once running:
 
 - **Frontend:** [http://localhost:4200](http://localhost:4200)
 - **Backend API:** [http://localhost:3000](http://localhost:3000)
 - **Swagger Docs:** [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
 
-### Running in Development Mode
-
-Start the backend and frontend separately:
+### Development Mode
 
 ```bash
 # Terminal 1 — Backend (port 3000)
@@ -42,116 +38,98 @@ cd frontend
 ng serve
 ```
 
-The backend seeds the database with sample fleet data on first startup, so you will see vehicles and events immediately.
+The backend seeds sample data on first startup, so you'll see vehicles and events right away.
 
 ---
 
 ## Navigation
 
-The application uses a sidebar layout with three main pages:
+Sidebar with three pages:
 
-| Icon | Page | Purpose |
-|------|------|---------|
-| Dashboard | **Dashboard** | Fleet-wide overview, aggregated stats, and filtered results |
-| Directions Car | **Vehicles** | Browse and search the vehicle fleet, view individual vehicle details |
-| List | **Events** | Full event log with filtering, sorting, and pagination |
-
-The sidebar features BMW M-stripe branding at the top (the iconic blue, dark blue, red tricolor). Click any item in the sidebar to navigate between pages.
+| Page | What it's for |
+|------|---------------|
+| **Dashboard** | Fleet-wide stats, aggregated views, filtered results |
+| **Vehicles** | Browse the fleet, search by ID, view individual vehicle profiles |
+| **Events** | Full event log with filtering, sorting, and pagination |
 
 ---
 
-## Dashboard Page
+## Dashboard
 
-The Dashboard is your primary monitoring view. It is divided into three sections: **Filtered Results**, **Fleet-Wide Overview**, and **Critical Vehicles**.
+The Dashboard is your main monitoring view. It has three sections.
 
-### Filter Panel
+### Filters
 
-At the top of the Dashboard, you will find a filter panel with five fields:
+Five fields at the top:
 
-| Field | Type | Description |
-|-------|------|-------------|
-| Vehicle ID | Text input | Filter by vehicle identifier (e.g., `BMW-1001`) |
-| Error Code | Text input | Filter by diagnostic code (e.g., `P0420`) |
-| Severity | Dropdown | Select a severity level: Critical, Warn, or Info |
-| Date From | Date picker | Start of the date range |
-| Date To | Date picker | End of the date range |
+| Field | What it does |
+|-------|-------------|
+| Vehicle ID | Filter by vehicle (e.g., `BMW-1001`) |
+| Error Code | Filter by diagnostic code (e.g., `P0420`) |
+| Severity | Pick a level: Critical, Warn, or Info |
+| Date From | Start of date range |
+| Date To | End of date range |
 
-**Important:** All text filters are **case-insensitive**. You can type `p0420` or `P0420`, `bmw-1003` or `BMW-1003` — the results will be the same.
+All text filters are **case-insensitive** — `p0420` and `P0420` give the same results.
 
-- Click **Apply** to execute your filters.
-- Click **Reset** to clear all filters and return to the unfiltered view.
-- When filters are active, the filter panel border turns **blue** as a visual indicator.
-- An **active filter chips bar** appears below the panel showing each applied filter. Click the **"Clear all"** button to remove them all at once.
-- A **toast notification** confirms when filters are applied or cleared.
+- **Apply** runs the filters. **Reset** clears everything.
+- When filters are active, the panel border turns blue and filter chips appear below it.
+- **Clear all** on the chip bar removes all filters at once.
 
-### Filtered Results Section
+### Filtered Results
 
-This section responds to **all** filters you have set:
+Responds to **all** your filters:
 
-- **Total Events** card — Displays the count of events matching your current filters.
-- **Most Common Code** card — Shows the most frequently occurring error code in the filtered results. This card is **hidden** when you are already filtering by a specific error code (since you already know which code you are looking at).
-- **Top Error Codes** panel — A ranked list of the most common diagnostic codes within the filtered results.
+- **Total Events** — Count of events matching your filters.
+- **Most Common Code** — Top error code in filtered results. Hidden when you're already filtering by code (since you already know).
+- **Top Error Codes** — Ranked list of most frequent codes.
 
-### Fleet-Wide Overview Section
+### Fleet-Wide Overview
 
-This section provides a broader view of the fleet. The cards and chart here respond **only to date range filters** (Date From / Date To), not to Vehicle ID, Error Code, or Severity filters. This ensures you always have a stable fleet-level picture.
+Responds **only to date range filters** — not vehicle ID, code, or severity. Gives you a stable fleet picture regardless of what you're investigating.
 
-- **Total Vehicles** card — Number of vehicles in the fleet (within the selected date range).
-- **Critical Vehicles** card — Number of vehicles currently in critical status.
-- **Severity Legend** — A reference explaining the three severity levels:
-  - **Critical** (red) — Critical failure requiring immediate attention
-  - **Warn** (orange) — Potential issue detected
-  - **Info** (blue) — Routine diagnostic event
-- **Errors Per Vehicle** chart — Horizontal stacked bar chart showing the error distribution across vehicles. Each bar is broken down by severity. Click any **vehicle ID** label on the chart to navigate directly to that vehicle's detail page.
+- **Total Vehicles** and **Critical Vehicles** counts.
+- **Severity Legend** — What the colors mean (red = critical, orange = warn, blue = info).
+- **Errors Per Vehicle** chart — Stacked bar chart by severity. Click a vehicle ID label to jump to its detail page.
 
-### Critical Vehicles Section
+### Critical Vehicles
 
-At the bottom of the Dashboard, you will find a list of vehicles with **3 or more critical events in the last 24 hours**. These are the vehicles that need immediate attention. Click any vehicle in this list to navigate to its detail page.
+Vehicles with **3+ critical events in the last 24 hours**. These need immediate attention. Click any one to see its detail page.
 
 ---
 
 ## Vehicles Page
 
-### Search Bar
+### Search
 
-The Vehicles page features a live search bar at the top:
+Type to search by vehicle ID. Cards filter as you type.
 
-- Type to search vehicles by ID — the vehicle cards **filter live as you type**.
-- An **autocomplete dropdown** appears showing up to 6 matching vehicle IDs as you type.
-- The search is **case-insensitive** — typing `bmw`, `BMW`, or `Bmw` all produce the same results.
-- Press **Enter** to dismiss the autocomplete dropdown and keep the filtered results visible.
-- Press **Escape** to close the autocomplete dropdown without changing the filter.
-- Click the **X** button in the search field to clear the search entirely.
-- A **result count** is displayed below the search bar, for example: *"3 vehicles matching 'BMW'"*.
+- **Autocomplete** shows up to 6 matches.
+- Case-insensitive — `bmw`, `BMW`, `Bmw` all work.
+- **Enter** dismisses the dropdown. **Escape** closes it. **X** clears the search.
+- Result count shows below the bar (e.g., "3 vehicles matching 'BMW'").
 
 ### Vehicle Cards
 
-Vehicles are displayed in a responsive grid of cards. Each card shows:
+Responsive grid. Each card shows:
 
-- **Vehicle ID** (e.g., BMW-1001)
-- **Health status**, color-coded:
-  - **Blue** — Healthy (no critical or warning events)
-  - **Orange** — Warning (has warning-level events but no critical)
-  - **Red** — Critical (has critical-level events)
-- **Event counts** — Number of error, warning, and info events
-- **Total events** count
+- Vehicle ID (e.g., BMW-1001)
+- Health status with color: **Blue** = healthy, **Orange** = warning, **Red** = critical
+- Event counts by severity
+- Total events
 
-Click any card to open that vehicle's **detail page**.
+Click a card to open that vehicle's detail page.
 
-### Vehicle Detail Page
+### Vehicle Detail
 
-When you click into a specific vehicle, you see its full diagnostic profile:
+Full diagnostic profile for one vehicle:
 
-- **Breadcrumb navigation** — Click to go back to the Fleet Overview.
-- **Health status chip** — Displays CRITICAL, WARNING, or HEALTHY with corresponding color.
-- **Stats row** — Four key metrics:
-  - Error count
-  - Warning count
-  - Info count
-  - First Seen / Last Active dates
-- **Error Code Breakdown** — The top diagnostic codes recorded for this specific vehicle.
-- **Recent Events table** — The latest diagnostic events for the vehicle.
-- **"View All Events" link** — Navigates to the Events page, pre-filtered to show only this vehicle's events.
+- **Breadcrumb** — Click to go back to the fleet grid.
+- **Health chip** — CRITICAL, WARNING, or HEALTHY with matching color.
+- **Stats row** — Error count, warning count, info count, first seen, last active.
+- **Error Code Breakdown** — Top codes for this vehicle.
+- **Recent Events** — Latest diagnostic events.
+- **"View All Events"** — Goes to the Events page pre-filtered for this vehicle.
 
 ---
 
@@ -159,47 +137,33 @@ When you click into a specific vehicle, you see its full diagnostic profile:
 
 ### Filtering
 
-The Events page includes the same filter panel as the Dashboard:
-
-- Vehicle ID, Error Code, Severity, Date From, Date To
-- All text inputs are **case-insensitive**
-- Active filter chips bar shows current filters with a "Clear all" option
-- Toast notifications confirm filter actions
+Same filter panel as the Dashboard: Vehicle ID, Error Code, Severity, Date From, Date To. All case-insensitive. Filter chips and toast confirmations work the same way.
 
 ### Results
 
-Below the filter panel, you will find:
-
-- **Result summary bar** — Shows context-aware counts:
-  - When filtered: *"Showing 5 of 20 filtered results"*
-  - When unfiltered: *"142 total events"*
-- **Sortable data table** with columns:
-  - **Timestamp** — When the event occurred
-  - **Vehicle ID** — Which vehicle reported the event (clickable link to vehicle detail)
-  - **Severity** — Critical, Warn, or Info badge
-  - **Code** — The diagnostic error code
-  - **Message** — Description of the event
-- Click any **column header** to sort by that column. Click again to toggle between ascending and descending order.
-- **Pagination** at the bottom lets you navigate through large result sets.
+- **Result bar** — Shows "5 of 20 filtered results" or "142 total events" depending on whether filters are active.
+- **Table columns:** Timestamp, Vehicle ID (clickable link to detail), Severity badge, Code, Message.
+- Click column headers to sort. Click again to flip the order.
+- **Pagination** at the bottom for navigating large results.
 
 ---
 
 ## Severity Levels
 
-| Level | Badge Color | Meaning |
-|-------|-------------|---------|
-| CRITICAL | Red | Critical failure requiring immediate attention |
-| WARN | Orange | Potential issue detected |
+| Level | Color | Meaning |
+|-------|-------|---------|
+| CRITICAL | Red | Needs immediate attention |
+| WARN | Orange | Possible issue |
 | INFO | Blue | Routine diagnostic event |
 
 ---
 
-## Fleet Vehicle Types (Seed Data)
+## Fleet Vehicle Types
 
-The application ships with seed data covering eight vehicle lines across the BMW Group:
+Seed data covers eight vehicle lines:
 
-| Prefix | Type | Example ID |
-|--------|------|------------|
+| Prefix | Type | Example |
+|--------|------|---------|
 | BMW-1xxx | BMW Sedans | BMW-1001 |
 | MNI-2xxx | MINI Cooper | MNI-2001 |
 | RR-3xxx | Rolls Royce | RR-3001 |
@@ -213,27 +177,26 @@ The application ships with seed data covering eight vehicle lines across the BMW
 
 ## API Endpoints
 
-For engineers who want to query the backend directly or integrate with other tools:
+For anyone querying the backend directly or integrating with other tools:
 
-| Endpoint | Description |
+| Endpoint | What it does |
 |----------|-------------|
-| `GET /api/events` | Paginated events list with query parameter filters |
-| `GET /api/aggregations/errors-per-vehicle` | Error counts grouped by vehicle |
-| `GET /api/aggregations/top-codes` | Top diagnostic codes (supports `vehicleId`, `code`, `level` filters) |
-| `GET /api/aggregations/critical-vehicles` | Vehicles with 3+ critical events in the last 24 hours |
-| `GET /api/vehicles/:id/summary` | Detailed summary for a single vehicle |
-| `GET /api-docs` | Interactive Swagger UI documentation |
-| `GET /health` | Health check endpoint (returns status and event count) |
+| `GET /api/events` | Paginated events with query param filters |
+| `GET /api/aggregations/errors-per-vehicle` | Error counts by vehicle |
+| `GET /api/aggregations/top-codes` | Top diagnostic codes (supports filters) |
+| `GET /api/aggregations/critical-vehicles` | Vehicles with 3+ critical events in 24h |
+| `GET /api/vehicles/:id/summary` | Single vehicle summary |
+| `GET /api-docs` | Swagger UI |
+| `GET /health` | Health check |
 
-Full API documentation with request/response schemas is available at [http://localhost:3000/api-docs](http://localhost:3000/api-docs) when the backend is running.
+Full docs with schemas at [http://localhost:3000/api-docs](http://localhost:3000/api-docs).
 
 ---
 
 ## Tips
 
-- **Combine filters for precision.** Use the severity dropdown together with a vehicle ID to see only critical events for a specific vehicle — useful when triaging a known problem vehicle.
-- **Dashboard sections serve different purposes.** The "Filtered Results" section responds to all your filters, while the "Fleet-Wide Overview" section only responds to date range filters. This separation ensures you always have a stable fleet-level picture alongside your focused investigation.
-- **Toast notifications confirm every action.** When you apply or clear filters, a toast notification appears so you always know the current filter state.
-- **Case does not matter.** All filter text inputs are case-insensitive. Type in whatever case is comfortable — `BMW-1001`, `bmw-1001`, or `Bmw-1001` all work identically.
-- **Click through from anywhere.** Vehicle IDs are clickable throughout the application — in the Events table, on the Dashboard chart, and on Vehicle cards — so you can always drill into a specific vehicle from any context.
-- **Use the Swagger docs.** If you need to build custom queries or integrate with other monitoring tools, the interactive API documentation at `/api-docs` provides full request/response schemas you can try directly in the browser.
+- **Combine filters** — Use severity + vehicle ID together to see only critical events for a specific vehicle.
+- **Dashboard sections are intentionally separate.** "Filtered Results" reacts to all your filters. "Fleet-Wide Overview" only reacts to date range. You always keep a stable fleet picture while investigating specifics.
+- **Case doesn't matter.** `BMW-1001`, `bmw-1001`, `Bmw-1001` all work the same.
+- **Click vehicle IDs anywhere** — In the Events table, on the Dashboard chart, on Vehicle cards. They always link to the detail page.
+- **Use the Swagger docs** if you need to build custom queries or hook into other tools. Try requests directly in the browser at `/api-docs`.

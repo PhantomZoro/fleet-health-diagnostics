@@ -2,51 +2,42 @@
 
 # Fleet Health & Diagnostics Console
 
-**Real-time fleet monitoring for operations engineers**
+**Fleet monitoring dashboard for operations engineers**
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Angular](https://img.shields.io/badge/Angular-19-DD0031?logo=angular&logoColor=white)](https://angular.dev/)
 [![Express](https://img.shields.io/badge/Express-5.x-000000?logo=express&logoColor=white)](https://expressjs.com/)
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
 
----
-
-*A fullstack operations console that ingests structured diagnostic logs from fleet vehicles, surfaces error patterns through aggregated views, and gives each vehicle a dedicated health profile — enabling engineers to spot critical issues in seconds, not hours.*
-
 </div>
 
 ---
 
-## What This Tool Does
+## What It Does
 
-Fleet Health & Diagnostics Console is an internal operations dashboard built for BMW fleet engineers. It solves a core problem in fleet management: **when you have hundreds of vehicles generating thousands of diagnostic events, how do you find the ones that need attention?**
+Hundreds of fleet vehicles generate thousands of diagnostic events. This dashboard helps engineers find the ones that need attention — fast.
 
-The tool approaches this from three angles:
+It works in three layers:
 
-1. **Fleet-wide scanning** — A grid of vehicle cards color-coded by health status (Critical / Warning / Healthy) lets operators visually scan the entire fleet in one glance
-2. **Vehicle-level investigation** — Each vehicle has a dedicated profile page showing severity breakdowns, top error codes, and recent events — everything needed to diagnose a problem without jumping between screens
-3. **Event-level analysis** — A searchable, filterable, sortable event table with combinable filters (vehicle ID, error code, severity, date range) for deep investigation
+1. **Fleet grid** — All vehicles at a glance, color-coded by health (critical / warning / healthy). Spot problems in seconds.
+2. **Vehicle detail** — Pick a vehicle, see its severity breakdown, top error codes, and recent events. Everything on one page.
+3. **Events table** — Searchable, filterable, paginated log of every diagnostic event. Combine filters (vehicle, code, severity, date range) to dig into specifics.
 
-The drill-down flow is intentional: **Fleet Grid** (scan) -> **Vehicle Detail** (investigate) -> **Events Table** (analyze).
+The intended workflow: **scan the grid** -> **investigate a vehicle** -> **analyze its events**.
 
 ---
 
 ## Features
 
-### Fleet Overview
-> Responsive grid of vehicle cards with health status indicators. Cards are color-coded: red border for critical vehicles (3+ errors in 24h), orange for warnings, green for healthy. Click any card to drill into that vehicle's detail page.
+**Fleet Overview** — Responsive card grid with health indicators. Red = critical (3+ errors in 24h), orange = warning, green = healthy. Click any card to drill in.
 
-### Vehicle Detail
-> Dedicated profile for each vehicle — 5-stat summary row (errors, warnings, info, first seen, last active), error code breakdown with severity badges, recent events table, and a direct link to the full filtered events view.
+**Vehicle Detail** — Per-vehicle profile: 5-stat summary, error code breakdown with severity badges, recent events, and a link to the full filtered events view.
 
-### Dashboard
-> Operational summary with 4 KPI cards (total events, total vehicles, critical count, most common code), per-vehicle bar chart with stacked severity segments, top 10 recurring diagnostic codes, and critical vehicle alerts with click-through navigation.
+**Dashboard** — KPI cards (total events, vehicles, critical count, most common code), per-vehicle bar chart with stacked severity, top 10 codes, and a critical vehicle alert list.
 
-### Events Table
-> Paginated, sortable table with 5 combinable filters. Severity badges provide instant visual triage. Vehicle IDs link directly to vehicle detail pages. Supports URL query params for deep-linking (e.g., `/events?vehicleId=VH-1001`).
+**Events Table** — Paginated table with 5 combinable filters. Severity badges for visual triage. Vehicle IDs link to detail pages. Supports deep-linking via URL params (e.g., `/events?vehicleId=VH-1001`).
 
-### API Documentation
-> Auto-generated Swagger UI at `/api-docs` with full OpenAPI specs for all endpoints — try queries directly from the browser.
+**API Docs** — Swagger UI at `/api-docs` with full OpenAPI specs. Try queries right in the browser.
 
 ---
 
@@ -69,7 +60,7 @@ docker-compose up --build
 | API           | http://localhost:3000/api       |
 | Swagger Docs  | http://localhost:4200/api-docs  |
 
-The database seeds automatically with ~510 diagnostic events across 20 vehicles on first startup.
+The database seeds itself with ~510 diagnostic events across 20 vehicles on first startup.
 
 ### Manual Development
 
@@ -89,15 +80,15 @@ npm start            # http://localhost:4200
 
 ## Tech Stack
 
-| Layer            | Technology                                          | Why                                                                               |
-| ---------------- | --------------------------------------------------- | --------------------------------------------------------------------------------- |
-| **Backend**      | Express 5 + TypeScript (strict)                     | Raw architecture over framework magic — layered design is a deliberate choice     |
-| **Database**     | SQLite + TypeORM 0.3.x                              | Zero-config, single-file DB with production-grade ORM patterns                    |
-| **Validation**   | Zod v4                                              | Runtime validation AND compile-time types from a single schema definition         |
-| **Frontend**     | Angular 19 (standalone components, SCSS)             | Modern Angular with no NgModules — cleaner imports, better tree-shaking           |
-| **State**        | NgRx ComponentStore + RxJS                           | Right-sized reactive state — same patterns as full NgRx without 15 boilerplate files |
-| **API Docs**     | swagger-jsdoc + swagger-ui-express                   | Documentation lives next to code, auto-generated — single source of truth        |
-| **Deployment**   | Docker multi-stage builds + nginx reverse proxy      | One command from clone to running app, no local dependencies required             |
+| Layer            | Tech                                                | Why                                                               |
+| ---------------- | --------------------------------------------------- | ----------------------------------------------------------------- |
+| **Backend**      | Express 5 + TypeScript (strict)                     | Shows raw architecture without framework abstractions             |
+| **Database**     | SQLite + TypeORM 0.3.x                              | Zero config, single-file DB, production-grade ORM patterns        |
+| **Validation**   | Zod v4                                              | One schema = runtime validation + compile-time types              |
+| **Frontend**     | Angular 19 (standalone components, SCSS)             | Modern Angular, no NgModules, clean imports                       |
+| **State**        | NgRx ComponentStore + RxJS                           | Same reactive patterns as full NgRx, fraction of the boilerplate  |
+| **API Docs**     | swagger-jsdoc + swagger-ui-express                   | Docs live next to code, auto-generated, always in sync            |
+| **Deployment**   | Docker multi-stage builds + nginx reverse proxy      | Clone -> `docker-compose up` -> done                              |
 
 ---
 
@@ -149,7 +140,7 @@ npm start            # http://localhost:4200
 
 ### API Endpoints
 
-| Method | Endpoint                                 | Description                                    |
+| Method | Endpoint                                 | What it does                                   |
 | ------ | ---------------------------------------- | ---------------------------------------------- |
 | GET    | `/api/events`                            | Paginated events with 5 combinable filters     |
 | GET    | `/api/vehicles/:vehicleId/summary`       | Full vehicle profile (counts, codes, events)   |
@@ -157,7 +148,7 @@ npm start            # http://localhost:4200
 | GET    | `/api/aggregations/top-codes`            | Top 10 most frequent diagnostic codes          |
 | GET    | `/api/aggregations/critical-vehicles`    | Vehicles with 3+ errors in trailing 24h        |
 | GET    | `/health`                                | Health check with event count                  |
-| GET    | `/api-docs`                              | Interactive Swagger documentation              |
+| GET    | `/api-docs`                              | Interactive Swagger docs                       |
 
 ---
 
@@ -181,59 +172,57 @@ fleet-health-diagnostics/
 │       ├── features/
 │       │   ├── dashboard/       Fleet health dashboard
 │       │   ├── vehicles/        Fleet grid + vehicle detail
-│       │   │   ├── fleet-overview/   Vehicle card grid
-│       │   │   └── vehicle-detail/   Individual vehicle profile
 │       │   └── events/          Searchable event table
-│       ├── shared/              Dumb components (filter, badge, pagination, spinner, toast)
+│       ├── shared/              Reusable components (filter, badge, pagination, spinner, toast)
 │       └── store/               NgRx ComponentStore
 │
-├── ARCHITECTURE.md              Technical architecture document
-├── REQUIREMENTS.md              Business requirements and scope
+├── ARCHITECTURE.md              Deep-dive into how things work
+├── REQUIREMENTS.md              What we're building and why
 ├── docker-compose.yml           One-command deployment
-└── README.md                    Project overview and quick start
+└── README.md                    You are here
 ```
 
 ---
 
 ## Key Engineering Decisions
 
-| Decision                              | Rationale                                                                                                 |
-| ------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `switchMap` over `mergeMap`           | Cancels stale in-flight requests on new filter input — prevents race conditions in search                 |
-| `debounceTime(300)` on filters        | Batches rapid keystrokes into single API calls — 300ms balances responsiveness with efficiency             |
-| `catchError` inside inner `switchMap` | Error handling scoped to individual requests — outer effect stream survives and processes future changes   |
-| `Promise.all` for vehicle summary     | 4 parallel DB queries (counts, time range, top codes, recent events) — faster than sequential             |
-| Component-level store providers       | Each route gets its own store instance — no stale state when navigating between views                     |
-| CSS custom properties over SCSS vars  | Browser-inspectable, runtime-changeable, no build step for token updates                                  |
-| Multi-stage Docker builds             | Separate build and runtime stages — no TypeScript compiler or devDependencies in production images        |
+| Decision                              | Why                                                                                               |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `switchMap` over `mergeMap`           | Cancels stale in-flight requests when new filter input arrives — no race conditions                |
+| `debounceTime(300)` on filters        | Batches rapid keystrokes into single API calls. 300ms feels instant but avoids hammering the server |
+| `catchError` inside inner `switchMap` | Errors stay scoped to individual requests. The outer stream survives and keeps working.            |
+| `Promise.all` for vehicle summary     | 4 DB queries run in parallel instead of back-to-back — noticeably faster                          |
+| Component-level store providers       | Each route gets a fresh store instance. No stale data when navigating between views.              |
+| CSS custom properties over SCSS vars  | Inspectable in browser DevTools, changeable at runtime, no rebuild needed                         |
+| Multi-stage Docker builds             | Build tools stay out of production images — smaller, cleaner containers                           |
 
 ---
 
-## What I Would Add With More Time
+## What I'd Add With More Time
 
-- **Unit & integration tests** — Jest for backend services/queries, Jasmine for ComponentStore effects and component interactions
-- **Real-time event streaming** — Server-Sent Events for live dashboard updates without page refresh
-- **Time-series charts** — Error frequency over time using Chart.js for visual trend identification
-- **Authentication & RBAC** — JWT-based auth with viewer/admin roles behind BMW corporate SSO
-- **PostgreSQL migration** — Connection pooling and concurrent writes for production-scale fleet data
-- **CSV/PDF export** — Filtered event data export for offline analysis and management reporting
-- **Dark mode** — Already architected via CSS custom properties — just swap the token values
+- **Tests** — Jest for backend services, Jasmine for ComponentStore effects and component interactions
+- **Live updates** — Server-Sent Events so the dashboard refreshes without manual reload
+- **Time-series charts** — Error frequency over time (Chart.js) to spot trends visually
+- **Auth** — JWT with viewer/admin roles behind corporate SSO
+- **PostgreSQL** — Connection pooling and concurrent writes for production scale
+- **Export** — CSV/PDF export of filtered events for offline analysis
+- **Dark mode** — Already set up via CSS custom properties, just needs a second set of token values
 
 ---
 
-## Documentation
+## Docs
 
-| Document                                    | Description                                                     |
+| Document                                    | What's in it                                                    |
 | ------------------------------------------- | --------------------------------------------------------------- |
-| [Requirements](REQUIREMENTS.md)             | Business requirements, assumptions, scope boundaries            |
-| [Architecture](ARCHITECTURE.md)             | Backend layers, frontend components, RxJS rationale, trade-offs |
+| [Requirements](REQUIREMENTS.md)             | Business requirements, assumptions, what's out of scope         |
+| [Architecture](ARCHITECTURE.md)             | How the backend and frontend are built, why things work the way they do |
 
 ---
 
 <div align="center">
 
-*Built as a BMW senior fullstack coding assignment.*
+*BMW senior fullstack coding assignment.*
 
-**Express 5 + Angular 19 + TypeORM + NgRx ComponentStore + Docker**
+**Express 5 · Angular 19 · TypeORM · NgRx ComponentStore · Docker**
 
 </div>

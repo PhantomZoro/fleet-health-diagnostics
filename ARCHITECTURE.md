@@ -1,8 +1,8 @@
-# Fleet Health & Diagnostics Console -- Architecture
+# Fleet Health & Diagnostics Console — Architecture
 
-## System Overview
+## Overview
 
-The application is a monorepo with two independently deployable services and a shared SQLite database:
+Monorepo, two services, one shared SQLite database:
 
 ```
 fleet-health-diagnostics/
@@ -10,116 +10,116 @@ fleet-health-diagnostics/
   frontend/   Angular 19 SPA (standalone components, NgRx ComponentStore)
 ```
 
-In production (Docker), nginx serves the Angular build and reverse-proxies `/api` requests to the backend container. In development, Angular CLI's proxy config (`proxy.conf.json`) forwards `/api` to `localhost:3000`.
+In Docker, nginx serves the Angular build and proxies `/api` requests to the backend container. In development, Angular CLI's proxy config (`proxy.conf.json`) forwards `/api` to `localhost:3000`.
 
 ---
 
-## Backend Architecture
+## Backend
 
-### Layered Architecture
+### Layer Structure
 
 ```
 HTTP Request
     |
     v
-  Routes          Receive request, apply Zod validation middleware, format response
+  Routes          Parse request, validate with Zod, format response
     |
     v
-  Services         Business logic, TypeORM QueryBuilder queries, aggregation SQL
+  Services         Business logic, TypeORM queries, aggregation SQL
     |
     v
-  Entities          TypeORM-decorated models with column indexes
+  Entities          TypeORM models with column indexes
     |
     v
   SQLite (better-sqlite3)
 ```
 
-Each layer has a single responsibility. Routes never contain query logic. Services never access `req`/`res`. This separation makes the business logic testable independently of HTTP concerns.
+Routes don't contain query logic. Services don't touch `req`/`res`. Clean separation = testable business logic.
 
 ### Data Model
 
-The single entity is `DiagnosticEvent`:
+One entity — `DiagnosticEvent`:
 
-| Column      | Type       | Indexed | Description                                |
+| Column      | Type       | Indexed | Notes                                      |
 | ----------- | ---------- | ------- | ------------------------------------------ |
-| `id`        | integer    | PK      | Auto-generated primary key                 |
-| `timestamp` | datetime   | Yes     | When the diagnostic event occurred         |
-| `vehicleId` | varchar(10)| Yes     | Vehicle identifier (e.g., `BMW-1003`)       |
-| `level`     | varchar(5) | Yes     | Severity: `ERROR`, `WARN`, or `INFO`       |
-| `code`      | varchar(10)| Yes     | OBD-II diagnostic code (e.g., `P0420`)     |
-| `message`   | text       | No      | Human-readable event description           |
+| `id`        | integer    | PK      | Auto-generated                             |
+| `timestamp` | datetime   | Yes     | When the event happened                    |
+| `vehicleId` | varchar(10)| Yes     | e.g., `BMW-1003`                            |
+| `level`     | varchar(5) | Yes     | `ERROR`, `WARN`, or `INFO`                 |
+| `code`      | varchar(10)| Yes     | OBD-II code (e.g., `P0420`)               |
+| `message`   | text       | No      | Human-readable description                 |
 
-All four filterable columns are indexed to support efficient WHERE clause combinations.
+All four filterable columns are indexed for fast WHERE clause combos.
 
-### API Design
+### API
 
-| Method | Path                                   | Description                                      | Key Query Params                                    |
+| Method | Path                                   | What it does                                     | Query Params                                        |
 | ------ | -------------------------------------- | ------------------------------------------------ | --------------------------------------------------- |
 | GET    | `/api/events`                          | Paginated, filterable event list                 | `vehicleId`, `code`, `level`, `from`, `to`, `page`, `limit` |
 | GET    | `/api/vehicles/:vehicleId/summary`     | Full vehicle profile with counts, codes, events  | None (vehicleId in path)                            |
-| GET    | `/api/aggregations/errors-per-vehicle` | Error/warn/info counts grouped by vehicle        | `from`, `to`                                        |
-| GET    | `/api/aggregations/top-codes`          | Top 10 most frequent diagnostic codes            | `level`, `from`, `to`, `vehicleId`, `code`          |
-| GET    | `/api/aggregations/critical-vehicles`  | Vehicles with 3+ ERRORs in trailing 24h window   | None                                                |
+| GET    | `/api/aggregations/errors-per-vehicle` | Error/warn/info counts by vehicle                | `from`, `to`                                        |
+| GET    | `/api/aggregations/top-codes`          | Top 10 most frequent codes                       | `level`, `from`, `to`, `vehicleId`, `code`          |
+| GET    | `/api/aggregations/critical-vehicles`  | Vehicles with 3+ ERRORs in trailing 24h          | None                                                |
 | GET    | `/health`                              | Health check with event count                    | None                                                |
-| GET    | `/api-docs`                            | Swagger UI (auto-generated from JSDoc)           | None                                                |
+| GET    | `/api-docs`                            | Swagger UI                                       | None                                                |
 
 ### Validation
 
-All query parameters are validated through Zod schemas in a `validateQuery` middleware, and route parameters through a `validateParams` middleware. Both follow the same pattern:
+Query params go through Zod schemas in a `validateQuery` middleware (route params use `validateParams`). The flow:
 
-1. Parses `req.query` (or `req.params`) against the route's Zod schema via `safeParse`
-2. Returns 400 with structured error details on failure
-3. Stores the parsed (and type-coerced) result in `res.locals.validated` (or `res.locals.validatedParams`) on success
+1. Run `safeParse` against the route's Zod schema
+2. Fail? Return 400 with structured error details
+3. Pass? Store the parsed, type-coerced result in `res.locals.validated`
 
-This pattern keeps route handlers clean -- they read from `res.locals` with full type safety rather than parsing raw strings.
+Route handlers just read from `res.locals` with full type safety — no raw string parsing.
 
 ### Case-Insensitive Filtering
 
-All text-based query filters (`vehicleId`, `code`, `level`) are case-insensitive. The backend applies `UPPER()` on both sides of the comparison in SQL WHERE clauses (e.g., `UPPER(event.vehicleId) = UPPER(:vehicleId)`). The `level` query parameter is additionally normalized via a Zod `.transform(v => v.toUpperCase())` before the enum check, so users can pass `error`, `Error`, or `ERROR` interchangeably.
+All text filters (`vehicleId`, `code`, `level`) are case-insensitive. The backend uses `UPPER()` on both sides of the SQL comparison. For `level`, Zod also normalizes to uppercase via `.transform(v => v.toUpperCase())` before the enum check, so `error`, `Error`, and `ERROR` all work.
 
 ### Vehicle Summary Endpoint
 
-The `GET /api/vehicles/:vehicleId/summary` endpoint uses `Promise.all` to run 4 TypeORM queries in parallel:
+`GET /api/vehicles/:vehicleId/summary` fires 4 queries in parallel with `Promise.all`:
 
-1. **Severity counts** — `SUM(CASE WHEN level = 'X' THEN 1 ELSE 0 END)` for error/warn/info
-2. **Time range** — `MIN(timestamp)` / `MAX(timestamp)` for first/last seen
-3. **Top 10 codes** — `GROUP BY code, level ORDER BY count DESC LIMIT 10`
-4. **Recent 10 events** — `ORDER BY timestamp DESC LIMIT 10`
+1. Severity counts — `SUM(CASE WHEN level = 'X' THEN 1 ELSE 0 END)`
+2. Time range — `MIN/MAX(timestamp)` for first/last seen
+3. Top 10 codes — `GROUP BY code, level ORDER BY count DESC LIMIT 10`
+4. Recent 10 events — `ORDER BY timestamp DESC LIMIT 10`
 
-All four queries are scoped to `WHERE vehicleId = :vehicleId`. Running them in parallel via `Promise.all` reduces latency vs sequential execution. Returns 404 if no events exist for the given vehicle ID.
+All scoped to the given vehicle. Returns 404 if no events exist.
 
 ### Seed Pipeline
 
-On first startup, the backend parses `data/seed.log` (~493 structured log entries across 26 vehicles with 8 fleet prefixes: BMW, MNI, RR, X5, I4, M3, IX, S7) through a regex-based log parser, maps entries to `DiagnosticEvent` entities, and bulk-inserts them in chunks of 100 to respect SQLite variable limits. A count guard prevents re-seeding on subsequent starts. The log parser supports flexible vehicle ID formats via the regex pattern `[A-Z][A-Z0-9]+-\d{4}`.
+On first startup, the backend parses `data/seed.log` (~493 entries across 26 vehicles with 8 fleet prefixes: BMW, MNI, RR, X5, I4, M3, IX, S7) through a regex-based parser, maps them to entities, and bulk-inserts in chunks of 100 (SQLite variable limit). A count guard prevents re-seeding on restarts. The regex supports flexible vehicle ID formats: `[A-Z][A-Z0-9]+-\d{4}`.
 
 ---
 
-## Frontend Architecture
+## Frontend
 
 ### Component Tree
 
 ```
 AppComponent
-  +-- <nav> sidebar (Dashboard, Vehicles, Events links)
+  +-- <nav> sidebar (Dashboard, Vehicles, Events)
   +-- <router-outlet>
-  |     +-- DashboardComponent (lazy loaded)
+  |     +-- DashboardComponent (lazy)
   |     |     +-- FilterPanelComponent
   |     |     +-- ActiveFiltersBarComponent
   |     |     +-- LoadingSpinnerComponent
   |     |     +-- SeverityBadgeComponent
   |     |     +-- SeverityLegendComponent
-  |     |     Sections: Filtered Results | Fleet-Wide Overview | Critical Vehicles
+  |     |     Sections: Filtered Results | Fleet Overview | Critical Vehicles
   |     |
-  |     +-- FleetOverviewComponent (lazy loaded)        [/vehicles]
+  |     +-- FleetOverviewComponent (lazy)        [/vehicles]
   |     |     +-- VehicleCardComponent (x N)
   |     |     +-- LoadingSpinnerComponent
-  |     |     Search bar with live autocomplete filtering
+  |     |     Search bar with live autocomplete
   |     |
-  |     +-- VehicleDetailComponent (lazy loaded)        [/vehicles/:id]
+  |     +-- VehicleDetailComponent (lazy)        [/vehicles/:id]
   |     |     +-- SeverityBadgeComponent
   |     |     +-- LoadingSpinnerComponent
   |     |
-  |     +-- EventsComponent (lazy loaded)               [/events]
+  |     +-- EventsComponent (lazy)               [/events]
   |           +-- FilterPanelComponent
   |           +-- ActiveFiltersBarComponent
   |           +-- SeverityBadgeComponent
@@ -127,116 +127,116 @@ AppComponent
   |           +-- PaginationComponent
   |           +-- LoadingSpinnerComponent
   |
-  +-- ToastComponent (global, in app shell)
+  +-- ToastComponent (global)
 ```
 
-### Smart / Dumb Component Split
+### Smart vs Dumb Components
 
-| Component                | Type  | Data Access                                                      |
+| Component                | Type  | How it gets data                                                 |
 | ------------------------ | ----- | ---------------------------------------------------------------- |
-| `DashboardComponent`     | Smart | Injects `DiagnosticsStore`, reads selectors via `async` pipe     |
-| `FleetOverviewComponent` | Smart | Injects `VehicleStore`, calls `loadFleetGrid()`, navigates on card click |
+| `DashboardComponent`     | Smart | Injects `DiagnosticsStore`, reads via `async` pipe               |
+| `FleetOverviewComponent` | Smart | Injects `VehicleStore`, calls `loadFleetGrid()`                  |
 | `VehicleDetailComponent` | Smart | Injects `VehicleStore`, reads route param, calls `loadVehicleDetail()` |
-| `EventsComponent`        | Smart | Injects `DiagnosticsStore`, reads selectors via `async` pipe     |
-| `VehicleCardComponent`   | Dumb  | `@Input()` vehicle card data, `@Output()` click event            |
-| `FilterPanelComponent`   | Dumb  | `@Input()` for initial filters, `@Output()` for apply/reset events |
-| `ActiveFiltersBarComponent`| Dumb | `@Input()` filters, `@Output()` clearAll — shows active filter chips |
-| `SeverityBadgeComponent` | Dumb  | `@Input()` level string, renders colored badge (displays CRITICAL for ERROR level) |
+| `EventsComponent`        | Smart | Injects `DiagnosticsStore`, reads via `async` pipe               |
+| `VehicleCardComponent`   | Dumb  | `@Input()` card data, `@Output()` click                         |
+| `FilterPanelComponent`   | Dumb  | `@Input()` initial filters, `@Output()` apply/reset             |
+| `ActiveFiltersBarComponent`| Dumb | `@Input()` filters, `@Output()` clearAll — shows filter chips   |
+| `SeverityBadgeComponent` | Dumb  | `@Input()` level string, renders colored badge                   |
 | `PaginationComponent`    | Dumb  | `@Input()` total/page/limit, `@Output()` page change            |
 | `LoadingSpinnerComponent`| Dumb  | `@Input()` visibility flag                                       |
 | `ToastComponent`         | Dumb  | Injects `NotificationService` (global singleton)                 |
 
-Smart components are the only ones that know about the store. Dumb components are fully reusable and testable in isolation.
+Smart components own the store. Dumb components are reusable and testable in isolation — they only talk through inputs and outputs.
 
-### Dashboard Section Architecture
+### Dashboard Sections
 
-The dashboard is divided into three clearly labeled sections communicating which filters affect which data:
+Three sections, each responding to different filters:
 
-1. **Filtered Results** — Responds to all active filters (vehicleId, code, level, date range). Contains Total Events card, Most Common Code card (hidden when code filter is active), and Top Error Codes list.
-2. **Fleet-Wide Overview** — Only date range filters apply. Contains Total Vehicles, Critical Vehicles counts, severity legend, and the errors-per-vehicle bar chart.
-3. **Critical Vehicles** — Shows vehicles with 3+ critical events in the trailing 24h window.
+1. **Filtered Results** — Responds to all filters (vehicleId, code, level, date range). Shows total events, most common code (hidden when filtering by code), and top error codes.
+2. **Fleet-Wide Overview** — Only date range filters apply here. Total vehicles, critical count, severity legend, errors-per-vehicle bar chart.
+3. **Critical Vehicles** — Vehicles with 3+ critical events in the trailing 24h window.
 
 ### Vehicle Search
 
-The Fleet Overview page includes a live search bar with autocomplete. Filtering is client-side via `BehaviorSubject + combineLatest` — the search term observable combines with the fleet cards observable to produce filtered results. The autocomplete shows up to 6 matching suggestions. Keyboard interactions: Enter dismisses dropdown and filters, Escape closes dropdown, clicking a suggestion navigates to that vehicle.
+The Fleet Overview page has a live search bar. Filtering is client-side: a `BehaviorSubject` for the search term combines with the fleet cards observable via `combineLatest` to produce filtered results. Autocomplete shows up to 6 matches. Enter dismisses the dropdown, Escape closes it, clicking a suggestion navigates to that vehicle.
 
-### NgRx ComponentStore Data Flow
+### Store Data Flow
 
 ```
-User Action (filter change, page click)
+User action (filter change, page click)
     |
     v
-Smart Component -----> Store.updater (setFilters, setPage)
-                           |
-                           v
-                       State change triggers combineLatest
-                           |
-                           v
-                       debounceTime(300)
-                           |
-                           v
-                       switchMap ---> DiagnosticsApiService ---> HTTP GET /api/...
-                           |                                          |
-                           v                                          v
-                       catchError + EMPTY                        JSON response
-                       (error state, stream survives)                 |
-                           |                                          v
-                           +--------- patchState <-------- tap (update state)
-                                          |
-                                          v
-                                    Selector (distinctUntilChanged + shareReplay)
-                                          |
-                                          v
-                                    async pipe in template ---> DOM update
+Smart Component --> Store.updater (setFilters, setPage)
+                        |
+                        v
+                    combineLatest (filters + page)
+                        |
+                        v
+                    debounceTime(300)
+                        |
+                        v
+                    switchMap --> API service --> HTTP GET
+                        |                           |
+                        v                           v
+                    catchError + EMPTY         JSON response
+                    (set error state,               |
+                     stream stays alive)            v
+                        +-------- patchState <-- tap (update state)
+                                      |
+                                      v
+                                Selector (distinctUntilChanged + shareReplay)
+                                      |
+                                      v
+                                async pipe in template --> DOM update
 ```
 
-Each smart component provides its store at the component level (`providers: [DiagnosticsStore]` or `providers: [VehicleStore]`), giving each route its own isolated store instance whose lifecycle is tied to the component. This avoids stale state when navigating between views.
+Each smart component provides its store at the component level (`providers: [DiagnosticsStore]`), so every route gets its own store instance that dies when you navigate away. No stale state.
 
-The application uses two ComponentStores:
-- **DiagnosticsStore** — Manages event listing, pagination, filters, and dashboard aggregations. Used by DashboardComponent and EventsComponent.
-- **VehicleStore** — Manages fleet grid data and individual vehicle detail. Uses `loadFleetGrid` (combines errors-per-vehicle + critical-vehicles endpoints to compute health status) and `loadVehicleDetail` (calls the vehicle summary endpoint). Used by FleetOverviewComponent and VehicleDetailComponent.
+Two stores:
+- **DiagnosticsStore** — Events, pagination, filters, dashboard aggregations. Used by Dashboard and Events.
+- **VehicleStore** — Fleet grid and vehicle detail. `loadFleetGrid` combines errors-per-vehicle + critical-vehicles to compute health status. `loadVehicleDetail` calls the summary endpoint. Used by Fleet Overview and Vehicle Detail.
 
-Health status derivation: **CRITICAL** = vehicle appears in critical-vehicles list (grid view) or has errorCount >= 3 (detail view). **WARNING** = any errors but not critical. **HEALTHY** = zero errors.
+Health status logic: **CRITICAL** = appears in critical-vehicles list (grid) or has errorCount >= 3 (detail). **WARNING** = has errors but not critical. **HEALTHY** = zero errors.
 
-### RxJS Operator Rationale
+### RxJS Operator Choices
 
-| Operator               | Where Used                  | Why This Over Alternatives                                                                                       |
-| ---------------------- | --------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `switchMap`            | `loadEventsEffect`          | Cancels in-flight request when a new filter arrives. `mergeMap` would allow stale responses to overwrite newer ones. `concatMap` would queue requests, showing outdated data while waiting. |
-| `debounceTime(300)`    | Filter-to-API pipeline      | Prevents an API call per keystroke. 300ms balances responsiveness with server load -- fast enough to feel instant, slow enough to batch rapid changes. |
-| `combineLatest`        | Filters + page merge        | Both filter changes AND page changes should trigger a re-fetch. `withLatestFrom` would only trigger on one source, missing the other. |
-| `distinctUntilChanged` | All selectors               | Prevents re-render when a state update does not change a specific slice. Uses reference equality, which is sufficient because state is replaced (not mutated). |
-| `shareReplay(1)`       | All selectors               | Late subscribers (e.g., `async` pipe in a template behind `*ngIf`) receive the last emitted value. Without it, template bindings would miss emissions that occurred before subscription. |
-| `catchError` + `EMPTY` | Inside inner `switchMap`    | Catches HTTP errors without killing the outer effect stream. An outer `catchError` would permanently unsubscribe the effect, making all future filter changes silently ignored. |
-| `takeUntilDestroyed`   | Component subscriptions     | Automatic unsubscribe on component destroy. Replaces the manual `ngOnDestroy` + `Subject.next()` + `complete()` pattern with a single operator. |
-| `take(1)`              | `ActivatedRoute.queryParams`| One-shot read of initial query params (e.g., vehicleId from dashboard click-through). Prevents a memory leak from the never-completing `queryParams` observable. |
+| Operator               | Where                       | Why, and what would go wrong otherwise                                                           |
+| ---------------------- | --------------------------- | ------------------------------------------------------------------------------------------------ |
+| `switchMap`            | `loadEventsEffect`          | Cancels in-flight request when new filters arrive. `mergeMap` would let stale responses overwrite newer ones. |
+| `debounceTime(300)`    | Filter-to-API pipeline      | Stops an API call per keystroke. 300ms feels instant but batches rapid changes.                    |
+| `combineLatest`        | Filters + page merge        | Both filter and page changes should trigger a fetch. `withLatestFrom` would miss one of them.     |
+| `distinctUntilChanged` | All selectors               | Skips re-renders when a state slice hasn't actually changed.                                      |
+| `shareReplay(1)`       | All selectors               | Late subscribers (like an `async` pipe behind `*ngIf`) get the last value instead of missing it.  |
+| `catchError` + `EMPTY` | Inside inner `switchMap`    | Catches HTTP errors without killing the outer stream. An outer `catchError` would permanently break the effect. |
+| `takeUntilDestroyed`   | Component subscriptions     | Auto-unsubscribe on destroy. Replaces the old `ngOnDestroy` + Subject dance.                     |
+| `take(1)`              | `ActivatedRoute.queryParams`| One-shot read of initial query params. Prevents a leak from the never-completing observable.       |
 
 ### Error Handling
 
-A functional HTTP interceptor (`httpErrorInterceptor`) catches all failed API responses, extracts meaningful error messages, logs them to the console, and re-throws so the store's inner `catchError` can update the error state. A global `NotificationService` + `ToastComponent` displays transient error notifications to the user.
+A functional HTTP interceptor (`httpErrorInterceptor`) catches failed API responses, extracts a useful message, logs it, and re-throws so the store's inner `catchError` can set error state. A global `NotificationService` + `ToastComponent` shows errors to the user.
 
 ---
 
-## Key Trade-offs
+## Trade-offs
 
-| Decision             | Chosen                   | Alternative          | Rationale                                                                                 |
+| Decision             | Chose                    | Over                 | Why                                                                                       |
 | -------------------- | ------------------------ | -------------------- | ----------------------------------------------------------------------------------------- |
-| Backend framework    | Express 5               | NestJS               | Lighter weight, shows raw architecture understanding without framework magic              |
-| State management     | ComponentStore           | Full NgRx Store      | Right-sized for a single-feature app, less boilerplate (no actions/reducers/effects files) |
-| Database             | SQLite + TypeORM         | PostgreSQL           | Zero-config, single-file DB, perfect for containerized demo. TypeORM provides production-like ORM patterns. |
-| Module resolution    | NodeNext (ESM)           | CommonJS             | Modern Node.js standard, `.js` extensions on imports, future-proof                        |
-| CSS approach         | CSS custom properties    | SCSS variables       | Browser-inspectable, runtime-changeable, no build step for token changes                  |
-| Change detection     | OnPush on all components | Default              | Reduces unnecessary change detection cycles; works naturally with `async` pipe             |
-| Store scope          | Component-level providers| Root-level singleton  | Isolated store per route avoids stale state; lifecycle tied to component                  |
+| Backend framework    | Express 5               | NestJS               | Lighter. Shows architecture understanding without hiding it behind decorators.             |
+| State management     | ComponentStore           | Full NgRx Store      | Right-sized for a single-feature app. Way less boilerplate.                               |
+| Database             | SQLite + TypeORM         | PostgreSQL           | Zero config, single file, perfect for a containerized demo. TypeORM still gives you real ORM patterns. |
+| Module resolution    | NodeNext (ESM)           | CommonJS             | Modern Node standard. `.js` extensions on imports, future-proof.                          |
+| CSS approach         | CSS custom properties    | SCSS variables       | Inspectable in DevTools, changeable at runtime, no rebuild for token changes.             |
+| Change detection     | OnPush everywhere        | Default              | Fewer unnecessary re-renders. Works naturally with `async` pipe.                          |
+| Store scope          | Component-level          | Root singleton        | Fresh store per route. No stale state when navigating.                                    |
 
 ---
 
-## Docker Architecture
+## Docker Setup
 
-The application uses a multi-stage Docker build for both services:
+Multi-stage builds for both services:
 
-- **Backend** (`backend/Dockerfile`): Stage 1 compiles TypeScript (`tsc`). Stage 2 installs production dependencies only (`npm ci --omit=dev`) -- this is required because `better-sqlite3` is a native module that must compile in the runtime image. Copies compiled JS and seed data.
+- **Backend** (`backend/Dockerfile`): Stage 1 compiles TypeScript. Stage 2 installs production deps only (`npm ci --omit=dev`) — needed because `better-sqlite3` is a native module that must compile in the runtime image. Copies compiled JS and seed data.
 
-- **Frontend** (`frontend/Dockerfile`): Stage 1 builds the Angular app (`ng build --configuration production`). Stage 2 uses `nginx:alpine` to serve the static build and reverse-proxy `/api` and `/api-docs` to the backend container.
+- **Frontend** (`frontend/Dockerfile`): Stage 1 builds Angular (`ng build --configuration production`). Stage 2 uses `nginx:alpine` to serve the static build and proxy `/api` + `/api-docs` to the backend.
 
-- **docker-compose.yml** orchestrates both services on a shared `fleet-network` bridge network. A named volume (`backend-data`) persists the SQLite database across container restarts. The backend runs with `NODE_ENV=production`, which disables TypeORM's `synchronize` mode.
+- **docker-compose.yml** ties them together on a shared `fleet-network` bridge. A named volume (`backend-data`) keeps the SQLite DB across restarts. Backend runs with `NODE_ENV=production` (disables TypeORM's `synchronize`).
