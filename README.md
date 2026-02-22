@@ -187,9 +187,10 @@ fleet-health-diagnostics/
 │       ├── shared/              Dumb components (filter, badge, pagination, spinner, toast)
 │       └── store/               NgRx ComponentStore
 │
-├── docs/                        Requirements, architecture, build log
+├── ARCHITECTURE.md              Technical architecture document
+├── REQUIREMENTS.md              Business requirements and scope
 ├── docker-compose.yml           One-command deployment
-└── CLAUDE.md                    AI assistant instructions
+└── README.md                    Project overview and quick start
 ```
 
 ---
@@ -224,10 +225,8 @@ fleet-health-diagnostics/
 
 | Document                                    | Description                                                     |
 | ------------------------------------------- | --------------------------------------------------------------- |
-| [Requirements](docs/REQUIREMENTS.md)        | Business requirements, assumptions, scope boundaries            |
-| [Architecture](docs/ARCHITECTURE.md)        | Backend layers, frontend components, RxJS rationale, trade-offs |
-| [Build Log](docs/BUILD_LOG.md)              | Phase-by-phase decisions, tricky parts, patterns demonstrated   |
-| [Interview Q&A](docs/INTERVIEW_QA.md)       | Anticipated questions with first-principles explanations        |
+| [Requirements](REQUIREMENTS.md)             | Business requirements, assumptions, scope boundaries            |
+| [Architecture](ARCHITECTURE.md)             | Backend layers, frontend components, RxJS rationale, trade-offs |
 
 ---
 

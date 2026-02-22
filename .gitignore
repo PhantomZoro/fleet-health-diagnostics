@@ -25,8 +25,11 @@ Thumbs.db
 .env
 .env.*
 
-# GSD framework (local tooling, not project code)
+# AI assistant / planning artifacts (internal, not for reviewers)
 .claude/
+CLAUDE.md
+.planning/
+docs/
 
 # Assignment PDF
 *.pdf
