@@ -573,4 +573,58 @@ Performed the final quality gate before submission: scanned all source files for
 - **Clean git state:** No untracked sensitive files, .dockerignore covers all build artifacts
 
 ---
-*Last updated: 2026-02-21 (05-03)*
+
+## Phase 6: Vehicle Features
+
+**Status:** Complete (1/1 plans)
+
+### What Was Built & Why
+
+**Plan 06-01 — Vehicle Detail Page + Fleet Overview Grid**
+
+Added two new frontend pages and one new backend endpoint to create a drill-down investigation flow: **Fleet Grid** (scan) -> **Vehicle Detail** (investigate) -> **Events Table** (analyze).
+
+**Backend:**
+- `VehicleSummary` and `VehicleTopCode` interfaces in `backend/src/types/index.ts`
+- `validateParams()` middleware in `backend/src/middleware/validate.ts` — same pattern as `validateQuery` but for route params, stores result in `res.locals.validatedParams`
+- `VehicleService.getVehicleSummary()` — 4 parallel TypeORM queries via `Promise.all`: severity counts (CASE/SUM), first/last seen (MIN/MAX), top 10 codes (GROUP BY), recent 10 events. Returns `VehicleSummary | null`
+- `GET /api/vehicles/:vehicleId/summary` with Zod param validation + Swagger docs. Returns 404 if vehicle not found
+
+**Frontend:**
+- `VehicleStore` ComponentStore with `loadFleetGrid` effect (combines errors-per-vehicle + critical-vehicles, computes health status) and `loadVehicleDetail` effect (calls vehicle summary endpoint)
+- `FleetOverviewComponent` — smart component at `/vehicles` with responsive CSS Grid (`repeat(auto-fill, minmax(280px, 1fr))`) of vehicle cards
+- `VehicleCardComponent` — dumb component with `@Input vehicle`, `@Output vehicleClick`, keyboard accessible (`tabindex="0"`, `role="button"`, Enter/Space handlers)
+- `VehicleDetailComponent` — smart component at `/vehicles/:id` with breadcrumb, health header, 5-stat row, error code breakdown, recent events table, "View All Events" link
+- All vehicle click targets updated: dashboard critical vehicle clicks, dashboard bar chart labels, events table vehicleId column — all route to `/vehicles/:id`
+
+### Key Decisions
+| Decision | Why | Alternative Considered |
+|----------|-----|----------------------|
+| `Promise.all` for 4 parallel queries | All queries are independent (scoped by vehicleId) — parallel execution reduces latency ~3x vs sequential | Sequential queries — unnecessary wait time |
+| Separate `VehicleStore` from `DiagnosticsStore` | Single responsibility — fleet/vehicle state is independent of event filtering state. Prevents cross-contamination and unnecessary re-renders | Extend DiagnosticsStore — would bloat state shape and couple unrelated concerns |
+| Health status computed in store, not component | Business logic belongs in the store. Components read derived selectors — no logic duplication if multiple components need health status | Compute in template — violates smart/dumb split, duplicates logic |
+| Grid health: critical-vehicles endpoint; Detail health: errorCount threshold | Grid uses 24h window business rule (existing endpoint). Detail uses all-time count (simpler, shows overall health) | Same logic for both — would require adding 24h window to vehicle summary endpoint |
+| `validateParams()` as separate middleware | Route params vs query params are structurally different (`req.params` vs `req.query`). Separate middleware keeps the contract clear | Extend `validateQuery` with a second parameter — conflates two different validation targets |
+
+### Tricky Parts & Solutions
+
+**No blocking issues encountered.** Both backend `tsc --noEmit` and frontend `ng build --configuration production` passed with zero errors on first attempt. The VehicleStore follows the exact same RxJS patterns as DiagnosticsStore (inner `catchError` returning `EMPTY`, `takeUntilDestroyed`, `switchMap` for API calls).
+
+### RxJS Patterns — Vehicle Features
+
+The VehicleStore introduces one new pattern while reusing all existing ones:
+
+- **`combineLatest` in `loadFleetGrid` effect:** Combines `getErrorsPerVehicle()` and `getCriticalVehicles()` responses to compute health status. The grid needs both datasets — errors-per-vehicle for counts and critical-vehicles for the "in critical list" check. `combineLatest` ensures both responses are available before computing cards.
+- **`effect<string>` typed trigger in `loadVehicleDetail`:** The effect accepts a `string` (vehicleId) as input — type-safe trigger unlike the void trigger in `loadFleetGrid`. `switchMap` on the vehicleId stream means navigating to a different vehicle cancels the previous load.
+- **Derived selector for health status:** `detailHealthStatus$` is a `select()` that derives `VehicleHealthStatus` from `vehicleDetail$` — computed property, not stored state.
+
+### Patterns Demonstrated
+
+- **Promise.all for parallel queries:** Backend service pattern for independent data fetching — reduces latency proportional to query count
+- **Two-store architecture:** DiagnosticsStore (events/aggregations) + VehicleStore (fleet/vehicle) — separation by domain, not by view
+- **Dumb component with keyboard accessibility:** VehicleCardComponent handles Enter/Space keys, has `role="button"` and `aria-label` — full WCAG compliance
+- **Cross-view navigation refactor:** All vehicle click targets across 3 existing views updated to route to `/vehicles/:id` — consistent user mental model
+- **Breadcrumb navigation:** VehicleDetailComponent reads `:id` from `ActivatedRoute.paramMap` and provides hierarchical navigation context
+
+---
+*Last updated: 2026-02-22 (06-01)*

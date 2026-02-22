@@ -33,6 +33,8 @@
         </div>
       </div>
 
+      <app-severity-legend />
+
       <!-- Errors Per Vehicle -->
       <section class="panel">
         <h3>Errors Per Vehicle</h3>
@@ -40,7 +42,7 @@
           <ul class="bar-list">
             @for (vehicle of agg.errorsPerVehicle; track vehicle.vehicleId) {
               <li class="bar-item">
-                <span class="bar-label">{{ vehicle.vehicleId }}</span>
+                <a class="bar-label" [routerLink]="['/vehicles', vehicle.vehicleId]">{{ vehicle.vehicleId }}</a>
                 <div class="bar-track">
                   <div class="bar-fill bar-fill--error" [style.width]="getBarWidth(vehicle.errorCount, agg.errorsPerVehicle[0].total)"></div>
                   <div class="bar-fill bar-fill--warn" [style.width]="getBarWidth(vehicle.warnCount, agg.errorsPerVehicle[0].total)"></div>

@@ -1,0 +1,118 @@
+.vehicle-card {
+  background: var(--surface-card);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+  border-top: 3px solid var(--bmw-blue);
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.15s;
+  outline: none;
+
+  &:hover,
+  &:focus-visible {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--bmw-blue);
+    outline-offset: 2px;
+  }
+}
+
+.vehicle-card--critical {
+  border-top-color: var(--error);
+}
+
+.vehicle-card--warning {
+  border-top-color: var(--warn);
+}
+
+.vehicle-card--healthy {
+  border-top-color: #2e7d32;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.vehicle-id {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: 0.02em;
+}
+
+.health-chip {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+
+.chip--critical {
+  background: rgba(198, 40, 40, 0.1);
+  color: var(--error);
+}
+
+.chip--warning {
+  background: rgba(230, 81, 0, 0.1);
+  color: var(--warn);
+}
+
+.chip--healthy {
+  background: rgba(46, 125, 50, 0.1);
+  color: #2e7d32;
+}
+
+.card-counts {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.count {
+  text-align: center;
+  flex: 1;
+}
+
+.count-value {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.count--error .count-value {
+  color: var(--error);
+}
+
+.count--warn .count-value {
+  color: var(--warn);
+}
+
+.count--info .count-value {
+  color: var(--info);
+}
+
+.count-label {
+  display: block;
+  font-size: 10px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.card-total {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-light);
+  padding-top: 10px;
+}

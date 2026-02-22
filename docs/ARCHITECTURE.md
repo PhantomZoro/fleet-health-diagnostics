@@ -56,6 +56,7 @@ All four filterable columns are indexed to support efficient WHERE clause combin
 | Method | Path                                   | Description                                      | Key Query Params                                    |
 | ------ | -------------------------------------- | ------------------------------------------------ | --------------------------------------------------- |
 | GET    | `/api/events`                          | Paginated, filterable event list                 | `vehicleId`, `code`, `level`, `from`, `to`, `page`, `limit` |
+| GET    | `/api/vehicles/:vehicleId/summary`     | Full vehicle profile with counts, codes, events  | None (vehicleId in path)                            |
 | GET    | `/api/aggregations/errors-per-vehicle` | Error/warn/info counts grouped by vehicle        | `from`, `to`                                        |
 | GET    | `/api/aggregations/top-codes`          | Top 10 most frequent diagnostic codes            | `level`, `from`, `to`                               |
 | GET    | `/api/aggregations/critical-vehicles`  | Vehicles with 3+ ERRORs in trailing 24h window   | None                                                |
@@ -64,13 +65,24 @@ All four filterable columns are indexed to support efficient WHERE clause combin
 
 ### Validation
 
-All query parameters are validated through Zod schemas in a `validateQuery` middleware. The middleware:
+All query parameters are validated through Zod schemas in a `validateQuery` middleware, and route parameters through a `validateParams` middleware. Both follow the same pattern:
 
-1. Parses `req.query` against the route's Zod schema via `safeParse`
+1. Parses `req.query` (or `req.params`) against the route's Zod schema via `safeParse`
 2. Returns 400 with structured error details on failure
-3. Stores the parsed (and type-coerced) result in `res.locals.validated` on success
+3. Stores the parsed (and type-coerced) result in `res.locals.validated` (or `res.locals.validatedParams`) on success
 
-This pattern keeps route handlers clean -- they read from `res.locals.validated` with full type safety rather than parsing raw query strings.
+This pattern keeps route handlers clean -- they read from `res.locals` with full type safety rather than parsing raw strings.
+
+### Vehicle Summary Endpoint
+
+The `GET /api/vehicles/:vehicleId/summary` endpoint uses `Promise.all` to run 4 TypeORM queries in parallel:
+
+1. **Severity counts** — `SUM(CASE WHEN level = 'X' THEN 1 ELSE 0 END)` for error/warn/info
+2. **Time range** — `MIN(timestamp)` / `MAX(timestamp)` for first/last seen
+3. **Top 10 codes** — `GROUP BY code, level ORDER BY count DESC LIMIT 10`
+4. **Recent 10 events** — `ORDER BY timestamp DESC LIMIT 10`
+
+All four queries are scoped to `WHERE vehicleId = :vehicleId`. Running them in parallel via `Promise.all` reduces latency vs sequential execution. Returns 404 if no events exist for the given vehicle ID.
 
 ### Seed Pipeline
 
@@ -84,16 +96,26 @@ On first startup, the backend parses `data/seed.log` (510 lines of structured lo
 
 ```
 AppComponent
-  +-- <nav> sidebar (Dashboard, Events links)
+  +-- <nav> sidebar (Dashboard, Vehicles, Events links)
   +-- <router-outlet>
   |     +-- DashboardComponent (lazy loaded)
   |     |     +-- FilterPanelComponent
   |     |     +-- LoadingSpinnerComponent
   |     |     +-- SeverityBadgeComponent
+  |     |     +-- SeverityLegendComponent
   |     |
-  |     +-- EventsComponent (lazy loaded)
+  |     +-- FleetOverviewComponent (lazy loaded)        [/vehicles]
+  |     |     +-- VehicleCardComponent (x N)
+  |     |     +-- LoadingSpinnerComponent
+  |     |
+  |     +-- VehicleDetailComponent (lazy loaded)        [/vehicles/:id]
+  |     |     +-- SeverityBadgeComponent
+  |     |     +-- LoadingSpinnerComponent
+  |     |
+  |     +-- EventsComponent (lazy loaded)               [/events]
   |           +-- FilterPanelComponent
   |           +-- SeverityBadgeComponent
+  |           +-- SeverityLegendComponent
   |           +-- PaginationComponent
   |           +-- LoadingSpinnerComponent
   |
@@ -102,15 +124,18 @@ AppComponent
 
 ### Smart / Dumb Component Split
 
-| Component            | Type  | Data Access                          |
-| -------------------- | ----- | ------------------------------------ |
-| `DashboardComponent` | Smart | Injects `DiagnosticsStore`, reads selectors via `async` pipe |
-| `EventsComponent`    | Smart | Injects `DiagnosticsStore`, reads selectors via `async` pipe |
-| `FilterPanelComponent` | Dumb | `@Input()` for initial filters, `@Output()` for apply/reset events |
-| `SeverityBadgeComponent` | Dumb | `@Input()` level string, renders colored badge |
-| `PaginationComponent` | Dumb | `@Input()` total/page/limit, `@Output()` page change |
-| `LoadingSpinnerComponent` | Dumb | `@Input()` visibility flag |
-| `ToastComponent`     | Dumb | Injects `NotificationService` (global singleton) |
+| Component                | Type  | Data Access                                                      |
+| ------------------------ | ----- | ---------------------------------------------------------------- |
+| `DashboardComponent`     | Smart | Injects `DiagnosticsStore`, reads selectors via `async` pipe     |
+| `FleetOverviewComponent` | Smart | Injects `VehicleStore`, calls `loadFleetGrid()`, navigates on card click |
+| `VehicleDetailComponent` | Smart | Injects `VehicleStore`, reads route param, calls `loadVehicleDetail()` |
+| `EventsComponent`        | Smart | Injects `DiagnosticsStore`, reads selectors via `async` pipe     |
+| `VehicleCardComponent`   | Dumb  | `@Input()` vehicle card data, `@Output()` click event            |
+| `FilterPanelComponent`   | Dumb  | `@Input()` for initial filters, `@Output()` for apply/reset events |
+| `SeverityBadgeComponent` | Dumb  | `@Input()` level string, renders colored badge                   |
+| `PaginationComponent`    | Dumb  | `@Input()` total/page/limit, `@Output()` page change            |
+| `LoadingSpinnerComponent`| Dumb  | `@Input()` visibility flag                                       |
+| `ToastComponent`         | Dumb  | Injects `NotificationService` (global singleton)                 |
 
 Smart components are the only ones that know about the store. Dumb components are fully reusable and testable in isolation.
 
@@ -144,7 +169,13 @@ Smart Component -----> Store.updater (setFilters, setPage)
                                     async pipe in template ---> DOM update
 ```
 
-Each smart component provides `DiagnosticsStore` at the component level (`providers: [DiagnosticsStore]`), giving each route its own isolated store instance whose lifecycle is tied to the component. This avoids stale state when navigating between views.
+Each smart component provides its store at the component level (`providers: [DiagnosticsStore]` or `providers: [VehicleStore]`), giving each route its own isolated store instance whose lifecycle is tied to the component. This avoids stale state when navigating between views.
+
+The application uses two ComponentStores:
+- **DiagnosticsStore** — Manages event listing, pagination, filters, and dashboard aggregations. Used by DashboardComponent and EventsComponent.
+- **VehicleStore** — Manages fleet grid data and individual vehicle detail. Uses `loadFleetGrid` (combines errors-per-vehicle + critical-vehicles endpoints to compute health status) and `loadVehicleDetail` (calls the vehicle summary endpoint). Used by FleetOverviewComponent and VehicleDetailComponent.
+
+Health status derivation: **CRITICAL** = vehicle appears in critical-vehicles list (grid view) or has errorCount >= 3 (detail view). **WARNING** = any errors but not critical. **HEALTHY** = zero errors.
 
 ### RxJS Operator Rationale
 

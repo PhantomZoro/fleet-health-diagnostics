@@ -6,6 +6,7 @@ import { seedDatabase } from './seed/seed-runner.js';
 import { healthRouter } from './routes/health.router.js';
 import { eventsRouter } from './routes/events.router.js';
 import { aggregationsRouter } from './routes/aggregations.router.js';
+import { vehiclesRouter } from './routes/vehicles.router.js';
 import { notFoundHandler, errorHandler } from './middleware/error-handler.js';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './config/swagger.js';
@@ -23,6 +24,7 @@ async function bootstrap(): Promise<void> {
   app.use(healthRouter);
   app.use(eventsRouter);
   app.use(aggregationsRouter);
+  app.use(vehiclesRouter);
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
   app.use(notFoundHandler);

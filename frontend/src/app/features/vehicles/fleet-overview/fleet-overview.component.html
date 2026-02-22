@@ -1,0 +1,31 @@
+<section class="fleet-overview">
+  <h2>Fleet Overview</h2>
+
+  @if (loading$ | async) {
+    <app-loading-spinner />
+  }
+
+  @if (error$ | async; as error) {
+    <div class="error-state" role="alert">
+      <p>{{ error }}</p>
+    </div>
+  }
+
+  @if ((fleetCards$ | async); as cards) {
+    @if (cards.length > 0) {
+      <div class="fleet-grid">
+        @for (card of cards; track card.vehicleId) {
+          <app-vehicle-card
+            [vehicle]="card"
+            (vehicleClick)="onVehicleClick($event)" />
+        }
+      </div>
+    } @else {
+      @if (!(loading$ | async)) {
+        <div class="empty-state" role="status">
+          <p>No vehicles found.</p>
+        </div>
+      }
+    }
+  }
+</section>

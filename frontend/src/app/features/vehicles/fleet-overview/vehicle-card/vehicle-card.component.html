@@ -1,0 +1,34 @@
+<article
+  class="vehicle-card"
+  [class.vehicle-card--critical]="vehicle.healthStatus === 'CRITICAL'"
+  [class.vehicle-card--warning]="vehicle.healthStatus === 'WARNING'"
+  [class.vehicle-card--healthy]="vehicle.healthStatus === 'HEALTHY'"
+  tabindex="0"
+  role="button"
+  [attr.aria-label]="'View details for ' + vehicle.vehicleId"
+  (click)="onCardClick()"
+  (keydown)="onKeydown($event)">
+  <div class="card-header">
+    <span class="vehicle-id">{{ vehicle.vehicleId }}</span>
+    <span class="health-chip" [class]="'chip--' + vehicle.healthStatus.toLowerCase()">
+      {{ vehicle.healthStatus }}
+    </span>
+  </div>
+  <div class="card-counts">
+    <div class="count count--error">
+      <span class="count-value">{{ vehicle.errorCount }}</span>
+      <span class="count-label">Errors</span>
+    </div>
+    <div class="count count--warn">
+      <span class="count-value">{{ vehicle.warnCount }}</span>
+      <span class="count-label">Warnings</span>
+    </div>
+    <div class="count count--info">
+      <span class="count-value">{{ vehicle.infoCount }}</span>
+      <span class="count-label">Info</span>
+    </div>
+  </div>
+  <div class="card-total">
+    <span>{{ vehicle.total }} total events</span>
+  </div>
+</article>

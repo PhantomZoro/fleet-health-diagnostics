@@ -4,12 +4,13 @@ import {
   inject,
 } from '@angular/core';
 import { AsyncPipe, DatePipe } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { map } from 'rxjs';
 import { DiagnosticsStore } from '../../store/diagnostics.store';
 import { FilterPanelComponent } from '../../shared/filter-panel/filter-panel.component';
 import { SeverityBadgeComponent } from '../../shared/severity-badge/severity-badge.component';
 import { LoadingSpinnerComponent } from '../../shared/loading-spinner/loading-spinner.component';
+import { SeverityLegendComponent } from '../../shared/severity-legend/severity-legend.component';
 import { EventFilters } from '../../core/models';
 
 @Component({
@@ -20,8 +21,10 @@ import { EventFilters } from '../../core/models';
   imports: [
     AsyncPipe,
     DatePipe,
+    RouterLink,
     FilterPanelComponent,
     SeverityBadgeComponent,
+    SeverityLegendComponent,
     LoadingSpinnerComponent,
   ],
   templateUrl: './dashboard.component.html',
@@ -58,7 +61,7 @@ export class DashboardComponent {
   }
 
   onCriticalVehicleClick(vehicleId: string): void {
-    this.router.navigate(['/events'], { queryParams: { vehicleId } });
+    this.router.navigate(['/vehicles', vehicleId]);
   }
 
   getBarWidth(count: number, maxTotal: number): string {

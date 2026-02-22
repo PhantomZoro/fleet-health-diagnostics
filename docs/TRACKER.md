@@ -37,6 +37,11 @@
 - [x] **05-02 Documentation** — REQUIREMENTS.md, ARCHITECTURE.md, README.md
 - [x] **05-03 Final Polish** — End-to-end smoke test, cleanup, formatting, git history review
 
+## Phase 6: Vehicle Features
+> Fleet overview grid and vehicle detail pages with dedicated health profiles and drill-down navigation.
+
+- [x] **06-01 Vehicle Detail + Fleet Grid** — Backend vehicle summary endpoint, VehicleStore, fleet overview grid with health cards, vehicle detail page with stats/codes/events, navigation updates across all views
+
 ---
 
 ## Progress
@@ -48,8 +53,9 @@
 | 3. Frontend Foundation | Complete | 4/4 |
 | 4. Frontend Views | Complete | 4/4 |
 | 5. Integration & Delivery | Complete | 3/3 |
+| 6. Vehicle Features | Complete | 1/1 |
 
-**Overall: 17/17 plans complete**
+**Overall: 18/18 plans complete**
 
 ---
-*Last updated: 2026-02-21 (05-03)*
+*Last updated: 2026-02-22 (06-01)*

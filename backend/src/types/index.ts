@@ -15,6 +15,9 @@ export interface PaginatedResponse<T> {
   limit: number;
 }
 
+export type EventSortField = 'timestamp' | 'vehicleId' | 'level' | 'code';
+export type SortOrder = 'ASC' | 'DESC';
+
 export interface EventQueryParams {
   vehicleId?: string;
   code?: string;
@@ -23,6 +26,8 @@ export interface EventQueryParams {
   to?: string;
   page?: number;
   limit?: number;
+  sortBy?: EventSortField;
+  sortOrder?: SortOrder;
 }
 
 export interface ErrorsPerVehicle {
@@ -48,4 +53,29 @@ export interface CriticalVehicle {
 export interface AggregationTimeRange {
   from?: string;
   to?: string;
+}
+
+export interface VehicleTopCode {
+  code: string;
+  count: number;
+  level: DiagnosticLevel;
+}
+
+export interface VehicleSummary {
+  vehicleId: string;
+  errorCount: number;
+  warnCount: number;
+  infoCount: number;
+  total: number;
+  firstSeen: string;
+  lastSeen: string;
+  topCodes: VehicleTopCode[];
+  recentEvents: Array<{
+    id: number;
+    timestamp: Date;
+    vehicleId: string;
+    level: string;
+    code: string;
+    message: string;
+  }>;
 }

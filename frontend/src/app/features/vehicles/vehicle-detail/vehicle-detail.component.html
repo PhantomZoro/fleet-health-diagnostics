@@ -1,0 +1,109 @@
+<section class="vehicle-detail">
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a routerLink="/vehicles">Fleet Overview</a>
+    <span class="separator">/</span>
+    <span>{{ vehicleId$ | async }}</span>
+  </nav>
+
+  @if (loading$ | async) {
+    <app-loading-spinner />
+  }
+
+  @if (error$ | async; as error) {
+    <div class="error-state" role="alert">
+      <p>{{ error }}</p>
+    </div>
+  }
+
+  @if ((vehicleDetail$ | async); as detail) {
+    <!-- Health Header -->
+    <div class="detail-header">
+      <h2>{{ detail.vehicleId }}</h2>
+      @if (healthStatus$ | async; as status) {
+        <span class="health-chip" [class]="'chip--' + status.toLowerCase()">
+          {{ status }}
+        </span>
+      }
+    </div>
+
+    <!-- Stats Row -->
+    <div class="stats-row">
+      <div class="stat stat--error">
+        <span class="stat-value">{{ detail.errorCount }}</span>
+        <span class="stat-label">Errors</span>
+      </div>
+      <div class="stat stat--warn">
+        <span class="stat-value">{{ detail.warnCount }}</span>
+        <span class="stat-label">Warnings</span>
+      </div>
+      <div class="stat stat--info">
+        <span class="stat-value">{{ detail.infoCount }}</span>
+        <span class="stat-label">Info</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">{{ detail.firstSeen | date:'shortDate' }}</span>
+        <span class="stat-label">First Seen</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">{{ detail.lastSeen | date:'shortDate' }}</span>
+        <span class="stat-label">Last Active</span>
+      </div>
+    </div>
+
+    <!-- Error Code Breakdown -->
+    <section class="panel">
+      <h3>Error Code Breakdown</h3>
+      @if (detail.topCodes.length > 0) {
+        <ul class="code-list">
+          @for (tc of detail.topCodes; track tc.code) {
+            <li class="code-item">
+              <code>{{ tc.code }}</code>
+              <app-severity-badge [level]="tc.level" />
+              <span class="code-count">{{ tc.count }} occurrences</span>
+            </li>
+          }
+        </ul>
+      } @else {
+        <p class="empty-text">No diagnostic codes recorded.</p>
+      }
+    </section>
+
+    <!-- Recent Events -->
+    <section class="panel">
+      <h3>Recent Events</h3>
+      @if (detail.recentEvents.length > 0) {
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Severity</th>
+                <th>Code</th>
+                <th>Message</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (event of detail.recentEvents; track event.id) {
+                <tr>
+                  <td>{{ event.timestamp | date:'short' }}</td>
+                  <td><app-severity-badge [level]="event.level" /></td>
+                  <td><code>{{ event.code }}</code></td>
+                  <td class="td-message">{{ event.message }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      } @else {
+        <p class="empty-text">No recent events.</p>
+      }
+
+      <div class="view-all-link">
+        <a [routerLink]="['/events']" [queryParams]="{ vehicleId: detail.vehicleId }">
+          View All Events
+        </a>
+      </div>
+    </section>
+  }
+</section>

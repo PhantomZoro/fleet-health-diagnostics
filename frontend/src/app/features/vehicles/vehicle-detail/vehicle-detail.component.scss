@@ -1,0 +1,262 @@
+.vehicle-detail {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+// Breadcrumb
+.breadcrumb {
+  font-size: 13px;
+  margin-bottom: 20px;
+  color: var(--text-secondary);
+
+  a {
+    color: var(--primary);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .separator {
+    margin: 0 8px;
+    color: var(--text-secondary);
+  }
+}
+
+// Header
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-dark);
+    margin: 0;
+  }
+}
+
+.health-chip {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+.chip--critical {
+  background: rgba(198, 40, 40, 0.1);
+  color: var(--error);
+}
+
+.chip--warning {
+  background: rgba(230, 81, 0, 0.1);
+  color: var(--warn);
+}
+
+.chip--healthy {
+  background: rgba(46, 125, 50, 0.1);
+  color: #2e7d32;
+}
+
+// Stats Row
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat {
+  background: var(--surface-card);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  border-top: 3px solid var(--bmw-blue);
+}
+
+.stat--error {
+  border-top-color: var(--error);
+}
+
+.stat--warn {
+  border-top-color: var(--warn);
+}
+
+.stat--info {
+  border-top-color: var(--info);
+}
+
+.stat-value {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.stat--error .stat-value {
+  color: var(--error);
+}
+
+.stat--warn .stat-value {
+  color: var(--warn);
+}
+
+.stat--info .stat-value {
+  color: var(--info);
+}
+
+.stat-label {
+  display: block;
+  font-size: 10px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+// Panel
+.panel {
+  background: var(--surface-card);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-card);
+
+  h3 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+    color: var(--text-secondary);
+  }
+}
+
+// Code list
+.code-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.code-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-light);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 13px;
+    background: rgba(0, 0, 0, 0.04);
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+}
+
+.code-count {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-left: auto;
+}
+
+// Table
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  border-bottom: 2px solid var(--border-light);
+  font-weight: 700;
+}
+
+tbody td {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.015);
+}
+
+tbody tr:hover {
+  background-color: var(--bmw-blue-light);
+}
+
+.td-message {
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+td code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.04);
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+// View All link
+.view-all-link {
+  margin-top: 16px;
+  text-align: center;
+
+  a {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Error state
+.error-state {
+  background: rgba(198, 40, 40, 0.05);
+  border: 1px solid rgba(198, 40, 40, 0.2);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  color: var(--error);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.empty-text {
+  text-align: center;
+  padding: 16px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}

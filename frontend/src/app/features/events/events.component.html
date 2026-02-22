@@ -7,6 +7,8 @@
     (filtersReset)="onFiltersReset()">
   </app-filter-panel>
 
+  <app-severity-legend />
+
   <div class="table-container">
     @if (loading$ | async) {
       <app-loading-spinner />
@@ -17,10 +19,46 @@
         <table>
           <thead>
             <tr>
-              <th>Timestamp</th>
-              <th>Vehicle ID</th>
-              <th>Severity</th>
-              <th>Code</th>
+              @if ((sortBy$ | async); as sortBy) {
+                @if ((sortOrder$ | async); as sortOrder) {
+                  <th>
+                    <button class="sort-btn" [class.sort-active]="sortBy === 'timestamp'"
+                      (click)="onSort('timestamp', sortBy, sortOrder)">
+                      Timestamp
+                      @if (sortBy === 'timestamp') {
+                        <span class="sort-indicator">{{ sortOrder === 'ASC' ? '&#9650;' : '&#9660;' }}</span>
+                      }
+                    </button>
+                  </th>
+                  <th>
+                    <button class="sort-btn" [class.sort-active]="sortBy === 'vehicleId'"
+                      (click)="onSort('vehicleId', sortBy, sortOrder)">
+                      Vehicle ID
+                      @if (sortBy === 'vehicleId') {
+                        <span class="sort-indicator">{{ sortOrder === 'ASC' ? '&#9650;' : '&#9660;' }}</span>
+                      }
+                    </button>
+                  </th>
+                  <th>
+                    <button class="sort-btn" [class.sort-active]="sortBy === 'level'"
+                      (click)="onSort('level', sortBy, sortOrder)">
+                      Severity
+                      @if (sortBy === 'level') {
+                        <span class="sort-indicator">{{ sortOrder === 'ASC' ? '&#9650;' : '&#9660;' }}</span>
+                      }
+                    </button>
+                  </th>
+                  <th>
+                    <button class="sort-btn" [class.sort-active]="sortBy === 'code'"
+                      (click)="onSort('code', sortBy, sortOrder)">
+                      Code
+                      @if (sortBy === 'code') {
+                        <span class="sort-indicator">{{ sortOrder === 'ASC' ? '&#9650;' : '&#9660;' }}</span>
+                      }
+                    </button>
+                  </th>
+                }
+              }
               <th>Message</th>
             </tr>
           </thead>
@@ -28,10 +66,10 @@
             @for (event of events; track event.id) {
               <tr>
                 <td>{{ event.timestamp | date:'short' }}</td>
-                <td>{{ event.vehicleId }}</td>
+                <td class="td-vehicle"><a [routerLink]="['/vehicles', event.vehicleId]">{{ event.vehicleId }}</a></td>
                 <td><app-severity-badge [level]="event.level" /></td>
                 <td><code>{{ event.code }}</code></td>
-                <td>{{ event.message }}</td>
+                <td class="td-message">{{ event.message }}</td>
               </tr>
             }
           </tbody>

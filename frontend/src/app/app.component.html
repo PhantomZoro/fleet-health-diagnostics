@@ -1,6 +1,8 @@
 <div class="app-layout">
   <nav class="sidebar" role="navigation" aria-label="Main navigation">
+    <div class="m-stripe" aria-hidden="true"></div>
     <div class="sidebar-header">
+      <span class="brand-label">BMW Group</span>
       <h1>Fleet Diagnostics</h1>
     </div>
     <ul class="nav-links">
@@ -10,11 +12,19 @@
         </a>
       </li>
       <li>
+        <a routerLink="/vehicles" routerLinkActive="active" aria-current="page">
+          Vehicles
+        </a>
+      </li>
+      <li>
         <a routerLink="/events" routerLinkActive="active" aria-current="page">
           Events
         </a>
       </li>
     </ul>
+    <div class="sidebar-footer">
+      <span class="sidebar-version">Operations Console v1.0</span>
+    </div>
   </nav>
   <main class="content">
     <router-outlet />

@@ -4,14 +4,15 @@ import {
   inject,
 } from '@angular/core';
 import { AsyncPipe, DatePipe } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { take } from 'rxjs';
 import { DiagnosticsStore } from '../../store/diagnostics.store';
 import { FilterPanelComponent } from '../../shared/filter-panel/filter-panel.component';
 import { SeverityBadgeComponent } from '../../shared/severity-badge/severity-badge.component';
+import { SeverityLegendComponent } from '../../shared/severity-legend/severity-legend.component';
 import { PaginationComponent } from '../../shared/pagination/pagination.component';
 import { LoadingSpinnerComponent } from '../../shared/loading-spinner/loading-spinner.component';
-import { EventFilters } from '../../core/models';
+import { EventFilters, EventSortField, SortOrder } from '../../core/models';
 
 @Component({
   selector: 'app-events',
@@ -21,8 +22,10 @@ import { EventFilters } from '../../core/models';
   imports: [
     AsyncPipe,
     DatePipe,
+    RouterLink,
     FilterPanelComponent,
     SeverityBadgeComponent,
+    SeverityLegendComponent,
     PaginationComponent,
     LoadingSpinnerComponent,
   ],
@@ -39,6 +42,8 @@ export class EventsComponent {
   readonly page$ = this.store.page$;
   readonly filters$ = this.store.filters$;
   readonly error$ = this.store.error$;
+  readonly sortBy$ = this.store.sortBy$;
+  readonly sortOrder$ = this.store.sortOrder$;
 
   readonly limit = 20;
 
@@ -61,5 +66,10 @@ export class EventsComponent {
 
   onPageChange(page: number): void {
     this.store.setPage(page);
+  }
+
+  onSort(field: EventSortField, currentSortBy: EventSortField, currentSortOrder: SortOrder): void {
+    const sortOrder: SortOrder = field === currentSortBy && currentSortOrder === 'ASC' ? 'DESC' : 'ASC';
+    this.store.setSort({ sortBy: field, sortOrder });
   }
 }

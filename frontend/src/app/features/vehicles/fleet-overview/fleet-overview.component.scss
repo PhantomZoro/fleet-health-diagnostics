@@ -1,0 +1,36 @@
+.fleet-overview {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+}
+
+.fleet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.error-state {
+  background: rgba(198, 40, 40, 0.05);
+  border: 1px solid rgba(198, 40, 40, 0.2);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  color: var(--error);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-secondary);
+  font-size: 16px;
+}

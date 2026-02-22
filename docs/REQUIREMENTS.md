@@ -16,6 +16,8 @@ The Fleet Health & Diagnostics Console is an internal operations tool for BMW fl
 | BR-06  | Flag critical vehicles -- those with 3 or more ERROR-level events within a trailing 24-hour window   |
 | BR-07  | Provide visual severity distinction (ERROR / WARN / INFO) for rapid triage in the UI                 |
 | BR-08  | Enable one-command deployment for evaluation via Docker Compose                                      |
+| BR-09  | Provide a fleet overview grid showing all vehicles with color-coded health status indicators          |
+| BR-10  | Provide a dedicated vehicle detail page with severity breakdown, top error codes, and recent events   |
 
 ## Assumptions
 

@@ -4,10 +4,13 @@ import { Observable } from 'rxjs';
 import {
   DiagnosticEvent,
   EventFilters,
+  EventSortField,
+  SortOrder,
   PaginatedResponse,
   ErrorsPerVehicle,
   TopCode,
-  CriticalVehicle
+  CriticalVehicle,
+  VehicleSummary
 } from '../models';
 
 @Injectable({ providedIn: 'root' })
@@ -15,7 +18,13 @@ export class DiagnosticsApiService {
   private readonly http = inject(HttpClient);
   private readonly baseUrl = '/api';
 
-  getEvents(filters: EventFilters, page = 1, limit = 20): Observable<PaginatedResponse<DiagnosticEvent>> {
+  getEvents(
+    filters: EventFilters,
+    page = 1,
+    limit = 20,
+    sortBy?: EventSortField,
+    sortOrder?: SortOrder
+  ): Observable<PaginatedResponse<DiagnosticEvent>> {
     let params = new HttpParams()
       .set('page', page.toString())
       .set('limit', limit.toString());
@@ -26,6 +35,8 @@ export class DiagnosticsApiService {
     if (filters.level) params = params.set('level', filters.level);
     if (filters.from) params = params.set('from', filters.from);
     if (filters.to) params = params.set('to', filters.to);
+    if (sortBy) params = params.set('sortBy', sortBy);
+    if (sortOrder) params = params.set('sortOrder', sortOrder);
 
     return this.http.get<PaginatedResponse<DiagnosticEvent>>(`${this.baseUrl}/events`, { params });
   }
@@ -49,5 +60,9 @@ export class DiagnosticsApiService {
 
   getCriticalVehicles(): Observable<CriticalVehicle[]> {
     return this.http.get<CriticalVehicle[]>(`${this.baseUrl}/aggregations/critical-vehicles`);
+  }
+
+  getVehicleSummary(vehicleId: string): Observable<VehicleSummary> {
+    return this.http.get<VehicleSummary>(`${this.baseUrl}/vehicles/${vehicleId}/summary`);
   }
 }
