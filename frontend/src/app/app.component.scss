@@ -12,14 +12,31 @@
   flex-shrink: 0;
 }
 
+.m-stripe {
+  height: 3px;
+  background: linear-gradient(to right, var(--m-blue) 33.3%, var(--m-purple) 33.3%, var(--m-purple) 66.6%, var(--m-red) 66.6%);
+  flex-shrink: 0;
+}
+
 .sidebar-header {
-  padding: 1.5rem 1rem;
+  padding: 1.25rem 1rem 1rem;
   border-bottom: 1px solid var(--border-color);
 
+  .brand-label {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-light);
+    opacity: 0.6;
+    margin-bottom: 4px;
+  }
+
   h1 {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 600;
     margin: 0;
+    letter-spacing: 0.02em;
   }
 }
 
@@ -27,23 +44,42 @@
   list-style: none;
   padding: 0.5rem 0;
   margin: 0;
+  flex: 1;
 
   li a {
     display: block;
     padding: 0.75rem 1rem;
     color: var(--text-light);
     text-decoration: none;
-    transition: background-color 0.15s;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    border-left: 3px solid transparent;
+    transition: background-color 0.15s, border-color 0.15s;
 
     &:hover {
       background: var(--surface-hover);
     }
 
     &.active {
-      background: var(--primary);
+      background: rgba(0, 102, 177, 0.15);
       color: #ffffff;
-      font-weight: 500;
+      border-left-color: var(--bmw-blue);
+      font-weight: 600;
     }
+  }
+}
+
+.sidebar-footer {
+  padding: 1rem;
+  border-top: 1px solid var(--border-color);
+
+  .sidebar-version {
+    font-size: 10px;
+    color: var(--text-light);
+    opacity: 0.4;
+    letter-spacing: 0.5px;
   }
 }
 
@@ -60,15 +96,28 @@
     flex-direction: column;
   }
 
+  .m-stripe {
+    height: 3px;
+  }
+
   .sidebar {
     width: 100%;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
+
+    .m-stripe {
+      width: 100%;
+    }
 
     .sidebar-header {
       padding: 0.75rem 1rem;
       border-bottom: none;
       border-right: 1px solid var(--border-color);
+
+      .brand-label {
+        display: none;
+      }
     }
 
     .nav-links {
@@ -77,7 +126,18 @@
 
       li a {
         padding: 0.75rem 1rem;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+
+        &.active {
+          border-bottom-color: var(--bmw-blue);
+          border-left-color: transparent;
+        }
       }
+    }
+
+    .sidebar-footer {
+      display: none;
     }
   }
 }

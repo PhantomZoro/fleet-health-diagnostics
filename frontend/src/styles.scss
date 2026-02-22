@@ -1,28 +1,45 @@
 :root {
-  // BMW-inspired color palette
-  --primary: #1C69D4;
-  --primary-dark: #1557B0;
-  --error: #D32F2F;
-  --warn: #F57C00;
-  --info: #1976D2;
+  // BMW Corporate Palette
+  --bmw-blue: #0066B1;
+  --bmw-blue-dark: #004E8C;
+  --bmw-blue-light: rgba(0, 102, 177, 0.08);
+  --bmw-anthracite: #1C1C1E;
+  --bmw-anthracite-light: #2C2C2E;
+
+  // M-Sport tri-color
+  --m-blue: #0066B1;
+  --m-purple: #6B3FA0;
+  --m-red: #E22718;
+
+  // Semantic aliases
+  --primary: var(--bmw-blue);
+  --primary-dark: var(--bmw-blue-dark);
+  --error: #C62828;
+  --warn: #E65100;
+  --info: #0066B1;
 
   // Surface colors
-  --surface-dark: #1a1a2e;
-  --surface-main: #f5f5f5;
+  --surface-dark: var(--bmw-anthracite);
+  --surface-main: #F2F2F7;
   --surface-card: #ffffff;
-  --surface-hover: rgba(255, 255, 255, 0.08);
+  --surface-hover: rgba(255, 255, 255, 0.06);
 
   // Text
-  --text-dark: #212121;
-  --text-secondary: #616161;
-  --text-light: #e0e0e0;
+  --text-dark: #1C1C1E;
+  --text-secondary: #636366;
+  --text-light: #E5E5EA;
 
   // Borders
-  --border-color: rgba(255, 255, 255, 0.12);
-  --border-light: #e0e0e0;
+  --border-color: rgba(255, 255, 255, 0.10);
+  --border-light: #D1D1D6;
 
-  // Spacing
-  --radius: 6px;
+  // Spacing & Shape
+  --radius: 3px;
+
+  // Shadows
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.10);
+  --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 *, *::before, *::after {
@@ -31,14 +48,17 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  font-family: 'BMW Type', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   font-size: 14px;
   color: var(--text-dark);
   background: var(--surface-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
+  letter-spacing: -0.01em;
 }
 
 a {

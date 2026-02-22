@@ -1,6 +1,6 @@
 import { AppDataSource } from '../config/database.js';
 import { DiagnosticEvent } from '../entities/diagnostic-event.entity.js';
-import type { EventQueryParams, PaginatedResponse } from '../types/index.js';
+import type { EventQueryParams, EventSortField, PaginatedResponse } from '../types/index.js';
 
 export class EventService {
   static async queryEvents(
@@ -31,7 +31,19 @@ export class EventService {
       qb.andWhere('event.timestamp <= :to', { to: params.to });
     }
 
-    qb.orderBy('event.timestamp', 'DESC');
+    const sortColumnMap: Record<EventSortField, string> = {
+      timestamp: 'event.timestamp',
+      vehicleId: 'event.vehicleId',
+      level: 'event.level',
+      code: 'event.code',
+    };
+
+    const sortColumn = params.sortBy
+      ? sortColumnMap[params.sortBy]
+      : 'event.timestamp';
+    const sortOrder = params.sortOrder ?? 'DESC';
+
+    qb.orderBy(sortColumn, sortOrder);
 
     const page = params.page ?? 1;
     const limit = params.limit ?? 20;

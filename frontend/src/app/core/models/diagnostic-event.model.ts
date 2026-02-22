@@ -1,4 +1,6 @@
 export type DiagnosticLevel = 'ERROR' | 'WARN' | 'INFO';
+export type EventSortField = 'timestamp' | 'vehicleId' | 'level' | 'code';
+export type SortOrder = 'ASC' | 'DESC';
 
 export interface DiagnosticEvent {
   id: number;

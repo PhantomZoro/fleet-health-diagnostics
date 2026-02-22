@@ -6,6 +6,8 @@
 
 h2 {
   font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   margin-bottom: 16px;
   color: var(--text-dark);
 }
@@ -16,6 +18,7 @@ h2 {
   margin-top: 16px;
   background: var(--surface-card);
   border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
   overflow: hidden;
 }
 
@@ -25,14 +28,51 @@ table {
 }
 
 thead th {
-  padding: 10px 16px;
+  padding: 0;
   text-align: left;
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: var(--text-secondary);
   border-bottom: 2px solid var(--border-light);
   background: var(--surface-card);
+  font-weight: 700;
+
+  &:last-child {
+    padding: 10px 16px;
+  }
+}
+
+.sort-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding: 10px 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  transition: color 0.15s, background 0.15s;
+
+  &:hover {
+    background: var(--bmw-blue-light);
+    color: var(--bmw-blue);
+  }
+
+  &.sort-active {
+    color: var(--bmw-blue);
+  }
+}
+
+.sort-indicator {
+  font-size: 9px;
+  line-height: 1;
 }
 
 tbody td {
@@ -42,16 +82,32 @@ tbody td {
   vertical-align: middle;
 }
 
+tbody tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.015);
+}
+
 tbody tr:hover {
-  background-color: rgba(28, 105, 212, 0.04);
+  background-color: var(--bmw-blue-light);
+}
+
+.td-vehicle {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.td-message {
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 td code {
-  font-family: monospace;
+  font-family: 'SF Mono', 'Fira Code', monospace;
   font-size: 12px;
   background: rgba(0, 0, 0, 0.04);
   padding: 2px 6px;
-  border-radius: 3px;
+  border-radius: 2px;
 }
 
 .empty-state {

@@ -56,6 +56,19 @@ export const eventsRouter = Router();
  *           minimum: 1
  *           maximum: 100
  *         description: Items per page
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *           enum: [timestamp, vehicleId, level, code]
+ *         description: Field to sort results by (default timestamp)
+ *       - in: query
+ *         name: sortOrder
+ *         schema:
+ *           type: string
+ *           enum: [ASC, DESC]
+ *           default: DESC
+ *         description: Sort direction
  *     responses:
  *       200:
  *         description: Paginated list of diagnostic events

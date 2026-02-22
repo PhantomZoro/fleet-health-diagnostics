@@ -1,6 +1,8 @@
 import {
   DiagnosticEvent,
   EventFilters,
+  EventSortField,
+  SortOrder,
   ErrorsPerVehicle,
   TopCode,
   CriticalVehicle
@@ -18,6 +20,8 @@ export interface DiagnosticsState {
   total: number;
   page: number;
   limit: number;
+  sortBy: EventSortField;
+  sortOrder: SortOrder;
   aggregations: AggregationState;
   loading: boolean;
   error: string | null;
@@ -29,6 +33,8 @@ export const initialState: DiagnosticsState = {
   total: 0,
   page: 1,
   limit: 20,
+  sortBy: 'timestamp',
+  sortOrder: 'DESC',
   aggregations: {
     errorsPerVehicle: [],
     topCodes: [],

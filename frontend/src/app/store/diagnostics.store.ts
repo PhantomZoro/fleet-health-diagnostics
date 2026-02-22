@@ -12,7 +12,7 @@ import {
   EMPTY
 } from 'rxjs';
 import { DiagnosticsApiService } from '../core/services/diagnostics-api.service';
-import { EventFilters, DiagnosticEvent, PaginatedResponse } from '../core/models';
+import { EventFilters, EventSortField, SortOrder, DiagnosticEvent, PaginatedResponse } from '../core/models';
 import { DiagnosticsState, AggregationState, initialState } from './diagnostics-state.model';
 
 @Injectable()
@@ -43,6 +43,13 @@ export class DiagnosticsStore extends ComponentStore<DiagnosticsState> {
   readonly resetFilters = this.updater<void>((state) => ({
     ...state,
     filters: {},
+    page: 1
+  }));
+
+  readonly setSort = this.updater<{ sortBy: EventSortField; sortOrder: SortOrder }>((state, { sortBy, sortOrder }) => ({
+    ...state,
+    sortBy,
+    sortOrder,
     page: 1
   }));
 
@@ -79,6 +86,16 @@ export class DiagnosticsStore extends ComponentStore<DiagnosticsState> {
     shareReplay(1)
   );
 
+  readonly sortBy$ = this.select(state => state.sortBy).pipe(
+    distinctUntilChanged(),
+    shareReplay(1)
+  );
+
+  readonly sortOrder$ = this.select(state => state.sortOrder).pipe(
+    distinctUntilChanged(),
+    shareReplay(1)
+  );
+
   readonly aggregations$ = this.select(state => state.aggregations).pipe(
     distinctUntilChanged(),
     shareReplay(1)
@@ -97,12 +114,14 @@ export class DiagnosticsStore extends ComponentStore<DiagnosticsState> {
     combineLatest([
       this.select(state => state.filters),
       this.select(state => state.page),
-      this.select(state => state.limit)
+      this.select(state => state.limit),
+      this.select(state => state.sortBy),
+      this.select(state => state.sortOrder)
     ]).pipe(
       debounceTime(300),
       tap(() => this.patchState({ loading: true, error: null })),
-      switchMap(([filters, page, limit]) =>
-        this.api.getEvents(filters, page, limit).pipe(
+      switchMap(([filters, page, limit, sortBy, sortOrder]) =>
+        this.api.getEvents(filters, page, limit, sortBy, sortOrder).pipe(
           tap((response: PaginatedResponse<DiagnosticEvent>) => {
             this.patchState({
               events: response.data,

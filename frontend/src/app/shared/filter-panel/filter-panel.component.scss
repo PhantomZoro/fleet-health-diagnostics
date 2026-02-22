@@ -6,10 +6,10 @@
 
   legend {
     font-weight: 600;
-    font-size: 13px;
+    font-size: 11px;
     color: var(--text-secondary);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     padding: 0 4px;
   }
 }
@@ -29,7 +29,10 @@
   label {
     display: block;
     color: var(--text-secondary);
-    font-size: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     margin-bottom: 4px;
   }
 
@@ -43,10 +46,12 @@
     background: var(--surface-card);
     color: var(--text-dark);
     font-family: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
 
     &:focus {
       outline: none;
-      border-color: var(--primary);
+      border-color: var(--bmw-blue);
+      box-shadow: 0 0 0 3px var(--bmw-blue-light);
     }
   }
 
@@ -64,22 +69,26 @@
 }
 
 .btn-primary {
-  background: var(--primary);
+  background: var(--bmw-blue);
   color: white;
   padding: 8px 20px;
   border: none;
   border-radius: var(--radius);
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 600;
   font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background 0.15s;
 
   &:hover {
-    background: var(--primary-dark);
+    background: var(--bmw-blue-dark);
   }
 
   &:focus {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px var(--bmw-blue-light);
   }
 }
 
@@ -89,16 +98,21 @@
   padding: 8px 20px;
   border-radius: var(--radius);
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 600;
   font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   color: var(--text-dark);
+  transition: background 0.15s, border-color 0.15s;
 
   &:hover {
     background: var(--surface-main);
+    border-color: var(--text-secondary);
   }
 
   &:focus {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 3px var(--bmw-blue-light);
   }
 }
