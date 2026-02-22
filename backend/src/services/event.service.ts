@@ -10,13 +10,13 @@ export class EventService {
     const qb = repo.createQueryBuilder('event');
 
     if (params.vehicleId !== undefined) {
-      qb.andWhere('event.vehicleId = :vehicleId', {
+      qb.andWhere('UPPER(event.vehicleId) = UPPER(:vehicleId)', {
         vehicleId: params.vehicleId,
       });
     }
 
     if (params.code !== undefined) {
-      qb.andWhere('event.code = :code', { code: params.code });
+      qb.andWhere('UPPER(event.code) = UPPER(:code)', { code: params.code });
     }
 
     if (params.level !== undefined) {

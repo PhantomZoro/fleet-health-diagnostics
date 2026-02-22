@@ -10,8 +10,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <div class="legend-items">
         <div class="legend-item">
           <span class="legend-indicator legend-indicator--error"></span>
-          <span class="legend-label">Error</span>
-          <span class="legend-desc">Critical failure requiring attention</span>
+          <span class="legend-label">Critical</span>
+          <span class="legend-desc">Critical failure requiring immediate attention</span>
         </div>
         <div class="legend-item">
           <span class="legend-indicator legend-indicator--warn"></span>

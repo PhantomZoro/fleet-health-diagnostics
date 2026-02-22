@@ -7,6 +7,11 @@
     (filtersReset)="onFiltersReset()">
   </app-filter-panel>
 
+  <app-active-filters-bar
+    [filters]="(filters$ | async) ?? {}"
+    (clearAll)="onFiltersReset()">
+  </app-active-filters-bar>
+
   <app-severity-legend />
 
   <div class="table-container">
@@ -16,6 +21,15 @@
 
     @if ((events$ | async); as events) {
       @if (events.length > 0) {
+        <!-- Result summary bar -->
+        <div class="result-summary" role="status">
+          @if (hasActiveFilters$ | async) {
+            <span class="result-count">Showing {{ events.length }} of {{ (total$ | async) ?? 0 }} filtered results</span>
+          } @else {
+            <span class="result-count">{{ (total$ | async) ?? 0 }} total events</span>
+          }
+        </div>
+
         <table>
           <thead>
             <tr>

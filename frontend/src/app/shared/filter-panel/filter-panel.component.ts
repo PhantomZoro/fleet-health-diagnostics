@@ -28,6 +28,7 @@ export class FilterPanelComponent implements OnChanges {
   level: DiagnosticLevel | '' = '';
   dateFrom = '';
   dateTo = '';
+  hasActiveFilters = false;
 
   readonly levelOptions: DiagnosticLevel[] = ['ERROR', 'WARN', 'INFO'];
 
@@ -38,6 +39,7 @@ export class FilterPanelComponent implements OnChanges {
       this.level = this.filters.level ?? '';
       this.dateFrom = this.filters.from ?? '';
       this.dateTo = this.filters.to ?? '';
+      this.hasActiveFilters = !!(this.filters.vehicleId || this.filters.code || this.filters.level || this.filters.from || this.filters.to);
     }
   }
 

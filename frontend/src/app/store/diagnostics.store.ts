@@ -151,11 +151,11 @@ export class DiagnosticsStore extends ComponentStore<DiagnosticsState> {
     this.select(state => state.filters).pipe(
       debounceTime(300),
       switchMap((filters) => {
-        const { from, to } = filters;
+        const { from, to, level, vehicleId, code } = filters;
         // Fire all three aggregation requests, combine results
         return combineLatest([
           this.api.getErrorsPerVehicle(from, to),
-          this.api.getTopCodes(undefined, from, to),
+          this.api.getTopCodes(level, from, to, vehicleId, code),
           this.api.getCriticalVehicles()
         ]).pipe(
           tap(([errorsPerVehicle, topCodes, criticalVehicles]) => {

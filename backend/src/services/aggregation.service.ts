@@ -52,7 +52,7 @@ export class AggregationService {
   }
 
   static async topCodes(
-    params: { level?: DiagnosticLevel } & AggregationTimeRange
+    params: { level?: DiagnosticLevel; vehicleId?: string; code?: string } & AggregationTimeRange
   ): Promise<TopCode[]> {
     const repo = AppDataSource.getRepository(DiagnosticEvent);
     const qb = repo
@@ -64,6 +64,14 @@ export class AggregationService {
       .addGroupBy('event.level')
       .orderBy('count', 'DESC')
       .limit(10);
+
+    if (params.code !== undefined) {
+      qb.andWhere('UPPER(event.code) = UPPER(:code)', { code: params.code });
+    }
+
+    if (params.vehicleId !== undefined) {
+      qb.andWhere('UPPER(event.vehicleId) = UPPER(:vehicleId)', { vehicleId: params.vehicleId });
+    }
 
     if (params.level !== undefined) {
       qb.andWhere('event.level = :level', { level: params.level });

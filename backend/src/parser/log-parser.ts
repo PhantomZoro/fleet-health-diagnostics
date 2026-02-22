@@ -1,7 +1,7 @@
 import { ParsedLogEntry } from '../types/index.js';
 
 const LOG_LINE_REGEX =
-  /^\[(.+?)\] \[VEHICLE_ID:(VH-\d{4})\] \[(ERROR|WARN|INFO)\] \[CODE:([A-Z]\d{4})\] (.+)$/;
+  /^\[(.+?)\] \[VEHICLE_ID:([A-Z][A-Z0-9]+-\d{4})\] \[(ERROR|WARN|INFO)\] \[CODE:([A-Z]\d{4})\] (.+)$/;
 
 /**
  * Parses a single structured log line into a ParsedLogEntry.

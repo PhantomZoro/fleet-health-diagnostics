@@ -44,7 +44,7 @@ The single entity is `DiagnosticEvent`:
 | ----------- | ---------- | ------- | ------------------------------------------ |
 | `id`        | integer    | PK      | Auto-generated primary key                 |
 | `timestamp` | datetime   | Yes     | When the diagnostic event occurred         |
-| `vehicleId` | varchar(10)| Yes     | Vehicle identifier (e.g., `VH-1001`)       |
+| `vehicleId` | varchar(10)| Yes     | Vehicle identifier (e.g., `BMW-1003`)       |
 | `level`     | varchar(5) | Yes     | Severity: `ERROR`, `WARN`, or `INFO`       |
 | `code`      | varchar(10)| Yes     | OBD-II diagnostic code (e.g., `P0420`)     |
 | `message`   | text       | No      | Human-readable event description           |
@@ -58,7 +58,7 @@ All four filterable columns are indexed to support efficient WHERE clause combin
 | GET    | `/api/events`                          | Paginated, filterable event list                 | `vehicleId`, `code`, `level`, `from`, `to`, `page`, `limit` |
 | GET    | `/api/vehicles/:vehicleId/summary`     | Full vehicle profile with counts, codes, events  | None (vehicleId in path)                            |
 | GET    | `/api/aggregations/errors-per-vehicle` | Error/warn/info counts grouped by vehicle        | `from`, `to`                                        |
-| GET    | `/api/aggregations/top-codes`          | Top 10 most frequent diagnostic codes            | `level`, `from`, `to`                               |
+| GET    | `/api/aggregations/top-codes`          | Top 10 most frequent diagnostic codes            | `level`, `from`, `to`, `vehicleId`, `code`          |
 | GET    | `/api/aggregations/critical-vehicles`  | Vehicles with 3+ ERRORs in trailing 24h window   | None                                                |
 | GET    | `/health`                              | Health check with event count                    | None                                                |
 | GET    | `/api-docs`                            | Swagger UI (auto-generated from JSDoc)           | None                                                |
@@ -73,6 +73,10 @@ All query parameters are validated through Zod schemas in a `validateQuery` midd
 
 This pattern keeps route handlers clean -- they read from `res.locals` with full type safety rather than parsing raw strings.
 
+### Case-Insensitive Filtering
+
+All text-based query filters (`vehicleId`, `code`, `level`) are case-insensitive. The backend applies `UPPER()` on both sides of the comparison in SQL WHERE clauses (e.g., `UPPER(event.vehicleId) = UPPER(:vehicleId)`). The `level` query parameter is additionally normalized via a Zod `.transform(v => v.toUpperCase())` before the enum check, so users can pass `error`, `Error`, or `ERROR` interchangeably.
+
 ### Vehicle Summary Endpoint
 
 The `GET /api/vehicles/:vehicleId/summary` endpoint uses `Promise.all` to run 4 TypeORM queries in parallel:
@@ -86,7 +90,7 @@ All four queries are scoped to `WHERE vehicleId = :vehicleId`. Running them in p
 
 ### Seed Pipeline
 
-On first startup, the backend parses `data/seed.log` (510 lines of structured log entries) through a regex-based log parser, maps entries to `DiagnosticEvent` entities, and bulk-inserts them in chunks of 100 to respect SQLite variable limits. A count guard prevents re-seeding on subsequent starts.
+On first startup, the backend parses `data/seed.log` (~493 structured log entries across 26 vehicles with 8 fleet prefixes: BMW, MNI, RR, X5, I4, M3, IX, S7) through a regex-based log parser, maps entries to `DiagnosticEvent` entities, and bulk-inserts them in chunks of 100 to respect SQLite variable limits. A count guard prevents re-seeding on subsequent starts. The log parser supports flexible vehicle ID formats via the regex pattern `[A-Z][A-Z0-9]+-\d{4}`.
 
 ---
 
@@ -100,13 +104,16 @@ AppComponent
   +-- <router-outlet>
   |     +-- DashboardComponent (lazy loaded)
   |     |     +-- FilterPanelComponent
+  |     |     +-- ActiveFiltersBarComponent
   |     |     +-- LoadingSpinnerComponent
   |     |     +-- SeverityBadgeComponent
   |     |     +-- SeverityLegendComponent
+  |     |     Sections: Filtered Results | Fleet-Wide Overview | Critical Vehicles
   |     |
   |     +-- FleetOverviewComponent (lazy loaded)        [/vehicles]
   |     |     +-- VehicleCardComponent (x N)
   |     |     +-- LoadingSpinnerComponent
+  |     |     Search bar with live autocomplete filtering
   |     |
   |     +-- VehicleDetailComponent (lazy loaded)        [/vehicles/:id]
   |     |     +-- SeverityBadgeComponent
@@ -114,6 +121,7 @@ AppComponent
   |     |
   |     +-- EventsComponent (lazy loaded)               [/events]
   |           +-- FilterPanelComponent
+  |           +-- ActiveFiltersBarComponent
   |           +-- SeverityBadgeComponent
   |           +-- SeverityLegendComponent
   |           +-- PaginationComponent
@@ -132,12 +140,25 @@ AppComponent
 | `EventsComponent`        | Smart | Injects `DiagnosticsStore`, reads selectors via `async` pipe     |
 | `VehicleCardComponent`   | Dumb  | `@Input()` vehicle card data, `@Output()` click event            |
 | `FilterPanelComponent`   | Dumb  | `@Input()` for initial filters, `@Output()` for apply/reset events |
-| `SeverityBadgeComponent` | Dumb  | `@Input()` level string, renders colored badge                   |
+| `ActiveFiltersBarComponent`| Dumb | `@Input()` filters, `@Output()` clearAll — shows active filter chips |
+| `SeverityBadgeComponent` | Dumb  | `@Input()` level string, renders colored badge (displays CRITICAL for ERROR level) |
 | `PaginationComponent`    | Dumb  | `@Input()` total/page/limit, `@Output()` page change            |
 | `LoadingSpinnerComponent`| Dumb  | `@Input()` visibility flag                                       |
 | `ToastComponent`         | Dumb  | Injects `NotificationService` (global singleton)                 |
 
 Smart components are the only ones that know about the store. Dumb components are fully reusable and testable in isolation.
+
+### Dashboard Section Architecture
+
+The dashboard is divided into three clearly labeled sections communicating which filters affect which data:
+
+1. **Filtered Results** — Responds to all active filters (vehicleId, code, level, date range). Contains Total Events card, Most Common Code card (hidden when code filter is active), and Top Error Codes list.
+2. **Fleet-Wide Overview** — Only date range filters apply. Contains Total Vehicles, Critical Vehicles counts, severity legend, and the errors-per-vehicle bar chart.
+3. **Critical Vehicles** — Shows vehicles with 3+ critical events in the trailing 24h window.
+
+### Vehicle Search
+
+The Fleet Overview page includes a live search bar with autocomplete. Filtering is client-side via `BehaviorSubject + combineLatest` — the search term observable combines with the fleet cards observable to produce filtered results. The autocomplete shows up to 6 matching suggestions. Keyboard interactions: Enter dismisses dropdown and filters, Escape closes dropdown, clicking a suggestion navigates to that vehicle.
 
 ### NgRx ComponentStore Data Flow
 

@@ -1,510 +1,493 @@
-[2026-02-20T01:22:28.000Z] [VEHICLE_ID:VH-1019] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-15T23:35:24.000Z] [VEHICLE_ID:VH-1010] [WARN] [CODE:P0171] System too lean (Bank 1)
-[2026-02-14T09:28:45.000Z] [VEHICLE_ID:VH-1013] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-14T11:14:54.000Z] [VEHICLE_ID:VH-1012] [WARN] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-19T12:54:48.000Z] [VEHICLE_ID:VH-1005] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-14T13:16:11.000Z] [VEHICLE_ID:VH-1020] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-19T03:39:06.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-15T20:36:59.000Z] [VEHICLE_ID:VH-1003] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-14T15:58:54.000Z] [VEHICLE_ID:VH-1001] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-16T03:15:22.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-20T02:47:46.000Z] [VEHICLE_ID:VH-1020] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-17T20:19:23.000Z] [VEHICLE_ID:VH-1011] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-17T01:26:49.000Z] [VEHICLE_ID:VH-1014] [ERROR] [CODE:U0100] Lost communication with ECM/PCM
-[2026-02-15T17:21:04.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-15T03:29:06.000Z] [VEHICLE_ID:VH-1015] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-15T05:07:54.000Z] [VEHICLE_ID:VH-1002] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-17T02:11:02.000Z] [VEHICLE_ID:VH-1012] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-16T23:33:58.000Z] [VEHICLE_ID:VH-1020] [WARN] [CODE:P0171] System too lean (Bank 1)
-[2026-02-18T14:06:53.000Z] [VEHICLE_ID:VH-1006] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-17T15:36:31.000Z] [VEHICLE_ID:VH-1009] [ERROR] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-19T21:17:55.000Z] [VEHICLE_ID:VH-1018] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-17T06:53:09.000Z] [VEHICLE_ID:VH-1002] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-18T09:22:35.000Z] [VEHICLE_ID:VH-1010] [ERROR] [CODE:P0171] System too lean (Bank 1)
-[2026-02-16T19:13:29.000Z] [VEHICLE_ID:VH-1004] [ERROR] [CODE:C0035] Left front wheel speed sensor circuit malfunction
-[2026-02-19T05:32:44.000Z] [VEHICLE_ID:VH-1004] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-20T17:29:14.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-16T20:02:54.000Z] [VEHICLE_ID:VH-1019] [WARN] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-15T18:38:01.000Z] [VEHICLE_ID:VH-1015] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-20T14:20:00.000Z] [VEHICLE_ID:VH-1014] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-17T01:16:00.000Z] [VEHICLE_ID:VH-1017] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-16T15:55:12.000Z] [VEHICLE_ID:VH-1002] [ERROR] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-14T03:12:40.000Z] [VEHICLE_ID:VH-1010] [WARN] [CODE:P0171] System too lean (Bank 1)
-[2026-02-14T05:41:35.000Z] [VEHICLE_ID:VH-1004] [ERROR] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-14T01:31:15.000Z] [VEHICLE_ID:VH-1004] [ERROR] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-19T09:14:25.000Z] [VEHICLE_ID:VH-1001] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-20T14:00:58.000Z] [VEHICLE_ID:VH-1012] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-18T07:22:09.000Z] [VEHICLE_ID:VH-1015] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-14T22:48:13.000Z] [VEHICLE_ID:VH-1005] [WARN] [CODE:P0171] System too lean (Bank 1)
-[2026-02-14T21:50:03.000Z] [VEHICLE_ID:VH-1003] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-19T07:29:33.000Z] [VEHICLE_ID:VH-1019] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-20T14:24:31.000Z] [VEHICLE_ID:VH-1003] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-15T20:29:24.000Z] [VEHICLE_ID:VH-1016] [WARN] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-14T11:20:38.000Z] [VEHICLE_ID:VH-1013] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-19T01:46:57.000Z] [VEHICLE_ID:VH-1018] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-20T02:14:53.000Z] [VEHICLE_ID:VH-1003] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-20T05:47:58.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-17T16:34:51.000Z] [VEHICLE_ID:VH-1012] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-19T10:28:25.000Z] [VEHICLE_ID:VH-1004] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-15T19:13:02.000Z] [VEHICLE_ID:VH-1004] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-18T02:55:52.000Z] [VEHICLE_ID:VH-1003] [WARN] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-14T00:52:47.000Z] [VEHICLE_ID:VH-1015] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-15T06:14:46.000Z] [VEHICLE_ID:VH-1001] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-16T21:53:33.000Z] [VEHICLE_ID:VH-1004] [WARN] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-17T01:13:55.000Z] [VEHICLE_ID:VH-1009] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-14T00:50:56.000Z] [VEHICLE_ID:VH-1013] [ERROR] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-14T12:25:07.000Z] [VEHICLE_ID:VH-1009] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-17T13:59:30.000Z] [VEHICLE_ID:VH-1019] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-15T01:18:05.000Z] [VEHICLE_ID:VH-1012] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-14T10:09:23.000Z] [VEHICLE_ID:VH-1019] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-20T23:45:04.000Z] [VEHICLE_ID:VH-1018] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-19T08:03:20.000Z] [VEHICLE_ID:VH-1017] [ERROR] [CODE:B1600] Airbag system warning lamp circuit malfunction
-[2026-02-20T00:41:05.000Z] [VEHICLE_ID:VH-1007] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-17T22:16:56.000Z] [VEHICLE_ID:VH-1007] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-19T23:05:17.000Z] [VEHICLE_ID:VH-1008] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-20T04:37:46.000Z] [VEHICLE_ID:VH-1016] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-20T15:57:49.000Z] [VEHICLE_ID:VH-1019] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-15T15:55:27.000Z] [VEHICLE_ID:VH-1019] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-19T16:39:30.000Z] [VEHICLE_ID:VH-1004] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-15T00:03:22.000Z] [VEHICLE_ID:VH-1017] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-17T22:48:45.000Z] [VEHICLE_ID:VH-1020] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-17T10:54:57.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-18T06:24:42.000Z] [VEHICLE_ID:VH-1009] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-14T18:48:33.000Z] [VEHICLE_ID:VH-1020] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-16T04:20:27.000Z] [VEHICLE_ID:VH-1019] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-16T01:54:44.000Z] [VEHICLE_ID:VH-1009] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-20T05:55:58.000Z] [VEHICLE_ID:VH-1012] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-19T12:54:05.000Z] [VEHICLE_ID:VH-1012] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-16T16:14:22.000Z] [VEHICLE_ID:VH-1006] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-15T11:50:38.000Z] [VEHICLE_ID:VH-1002] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-18T07:54:15.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-19T07:51:43.000Z] [VEHICLE_ID:VH-1009] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-19T11:00:01.000Z] [VEHICLE_ID:VH-1014] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-14T04:04:55.000Z] [VEHICLE_ID:VH-1001] [WARN] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-17T23:04:50.000Z] [VEHICLE_ID:VH-1015] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-16T06:40:28.000Z] [VEHICLE_ID:VH-1011] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-18T07:55:51.000Z] [VEHICLE_ID:VH-1010] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-15T07:33:39.000Z] [VEHICLE_ID:VH-1011] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-19T00:24:00.000Z] [VEHICLE_ID:VH-1001] [ERROR] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-15T00:42:42.000Z] [VEHICLE_ID:VH-1003] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-15T21:08:55.000Z] [VEHICLE_ID:VH-1012] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-17T23:08:35.000Z] [VEHICLE_ID:VH-1002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-16T00:26:33.000Z] [VEHICLE_ID:VH-1019] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-17T09:05:40.000Z] [VEHICLE_ID:VH-1007] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-17T01:35:21.000Z] [VEHICLE_ID:VH-1005] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-17T10:26:33.000Z] [VEHICLE_ID:VH-1012] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-19T07:57:40.000Z] [VEHICLE_ID:VH-1004] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-18T23:13:11.000Z] [VEHICLE_ID:VH-1004] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-17T14:06:40.000Z] [VEHICLE_ID:VH-1009] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-16T08:00:03.000Z] [VEHICLE_ID:VH-1005] [ERROR] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-16T07:27:46.000Z] [VEHICLE_ID:VH-1001] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-17T14:07:34.000Z] [VEHICLE_ID:VH-1001] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-19T17:29:34.000Z] [VEHICLE_ID:VH-1015] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-17T12:28:55.000Z] [VEHICLE_ID:VH-1003] [ERROR] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-15T15:01:57.000Z] [VEHICLE_ID:VH-1008] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-18T00:36:54.000Z] [VEHICLE_ID:VH-1020] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-16T04:34:58.000Z] [VEHICLE_ID:VH-1017] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-16T13:41:08.000Z] [VEHICLE_ID:VH-1010] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-14T13:17:30.000Z] [VEHICLE_ID:VH-1020] [WARN] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-19T00:09:20.000Z] [VEHICLE_ID:VH-1006] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-17T10:24:16.000Z] [VEHICLE_ID:VH-1009] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-17T17:04:53.000Z] [VEHICLE_ID:VH-1020] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-14T08:03:50.000Z] [VEHICLE_ID:VH-1003] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-19T23:34:14.000Z] [VEHICLE_ID:VH-1019] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-18T15:11:03.000Z] [VEHICLE_ID:VH-1020] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-16T10:46:00.000Z] [VEHICLE_ID:VH-1008] [ERROR] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-19T05:59:24.000Z] [VEHICLE_ID:VH-1012] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-18T19:36:17.000Z] [VEHICLE_ID:VH-1015] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-19T01:46:24.000Z] [VEHICLE_ID:VH-1017] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-19T01:43:54.000Z] [VEHICLE_ID:VH-1002] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-18T08:01:20.000Z] [VEHICLE_ID:VH-1019] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-16T03:59:00.000Z] [VEHICLE_ID:VH-1002] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-17T12:38:52.000Z] [VEHICLE_ID:VH-1019] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-16T21:34:14.000Z] [VEHICLE_ID:VH-1012] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-14T11:12:45.000Z] [VEHICLE_ID:VH-1009] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-17T12:44:36.000Z] [VEHICLE_ID:VH-1019] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-17T10:52:38.000Z] [VEHICLE_ID:VH-1002] [ERROR] [CODE:U0100] Lost communication with ECM/PCM
-[2026-02-20T09:39:00.000Z] [VEHICLE_ID:VH-1018] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-15T08:36:54.000Z] [VEHICLE_ID:VH-1007] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-15T09:45:36.000Z] [VEHICLE_ID:VH-1018] [ERROR] [CODE:B1600] Airbag system warning lamp circuit malfunction
-[2026-02-19T17:21:55.000Z] [VEHICLE_ID:VH-1012] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-15T17:43:58.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-19T23:15:11.000Z] [VEHICLE_ID:VH-1001] [ERROR] [CODE:C0035] Left front wheel speed sensor circuit malfunction
-[2026-02-16T07:03:16.000Z] [VEHICLE_ID:VH-1004] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-14T20:26:24.000Z] [VEHICLE_ID:VH-1004] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-17T09:17:01.000Z] [VEHICLE_ID:VH-1018] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-14T15:49:02.000Z] [VEHICLE_ID:VH-1010] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-15T12:42:16.000Z] [VEHICLE_ID:VH-1014] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-18T19:07:54.000Z] [VEHICLE_ID:VH-1010] [ERROR] [CODE:P0171] System too lean (Bank 1)
-[2026-02-17T14:21:58.000Z] [VEHICLE_ID:VH-1012] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-17T12:55:09.000Z] [VEHICLE_ID:VH-1008] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-17T21:55:50.000Z] [VEHICLE_ID:VH-1017] [ERROR] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-15T02:59:57.000Z] [VEHICLE_ID:VH-1019] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-14T21:50:25.000Z] [VEHICLE_ID:VH-1012] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-18T06:55:32.000Z] [VEHICLE_ID:VH-1018] [WARN] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-17T03:01:52.000Z] [VEHICLE_ID:VH-1017] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-15T20:37:16.000Z] [VEHICLE_ID:VH-1001] [ERROR] [CODE:C0035] Left front wheel speed sensor circuit malfunction
-[2026-02-20T06:00:32.000Z] [VEHICLE_ID:VH-1020] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-15T17:32:17.000Z] [VEHICLE_ID:VH-1012] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-16T03:05:46.000Z] [VEHICLE_ID:VH-1015] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-18T16:30:10.000Z] [VEHICLE_ID:VH-1018] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-14T18:10:55.000Z] [VEHICLE_ID:VH-1006] [WARN] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-18T15:14:16.000Z] [VEHICLE_ID:VH-1001] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-18T14:24:11.000Z] [VEHICLE_ID:VH-1015] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-19T01:25:51.000Z] [VEHICLE_ID:VH-1011] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-16T11:59:31.000Z] [VEHICLE_ID:VH-1002] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-20T08:04:23.000Z] [VEHICLE_ID:VH-1015] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-20T09:22:08.000Z] [VEHICLE_ID:VH-1019] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-14T23:14:43.000Z] [VEHICLE_ID:VH-1009] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-20T15:03:48.000Z] [VEHICLE_ID:VH-1014] [WARN] [CODE:P0171] System too lean (Bank 1)
-[2026-02-20T10:44:09.000Z] [VEHICLE_ID:VH-1005] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-15T17:40:20.000Z] [VEHICLE_ID:VH-1009] [WARN] [CODE:P0171] System too lean (Bank 1)
-[2026-02-14T13:18:46.000Z] [VEHICLE_ID:VH-1008] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-16T23:32:10.000Z] [VEHICLE_ID:VH-1005] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-20T23:25:07.000Z] [VEHICLE_ID:VH-1012] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-18T15:52:12.000Z] [VEHICLE_ID:VH-1017] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-19T03:44:13.000Z] [VEHICLE_ID:VH-1010] [ERROR] [CODE:C0035] Left front wheel speed sensor circuit malfunction
-[2026-02-14T01:26:54.000Z] [VEHICLE_ID:VH-1016] [ERROR] [CODE:B1600] Airbag system warning lamp circuit malfunction
-[2026-02-16T17:36:40.000Z] [VEHICLE_ID:VH-1015] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-14T17:30:32.000Z] [VEHICLE_ID:VH-1010] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-17T06:32:44.000Z] [VEHICLE_ID:VH-1013] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-15T20:56:04.000Z] [VEHICLE_ID:VH-1018] [ERROR] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-18T13:23:07.000Z] [VEHICLE_ID:VH-1011] [WARN] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-14T18:52:00.000Z] [VEHICLE_ID:VH-1008] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-18T07:38:35.000Z] [VEHICLE_ID:VH-1020] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-14T13:29:26.000Z] [VEHICLE_ID:VH-1017] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-14T19:15:47.000Z] [VEHICLE_ID:VH-1001] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-15T21:57:11.000Z] [VEHICLE_ID:VH-1019] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-19T12:28:13.000Z] [VEHICLE_ID:VH-1001] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-19T22:38:06.000Z] [VEHICLE_ID:VH-1020] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-16T13:52:37.000Z] [VEHICLE_ID:VH-1006] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-14T02:53:22.000Z] [VEHICLE_ID:VH-1003] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-20T12:17:56.000Z] [VEHICLE_ID:VH-1002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-18T18:11:40.000Z] [VEHICLE_ID:VH-1012] [WARN] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-20T08:24:32.000Z] [VEHICLE_ID:VH-1020] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-16T12:30:45.000Z] [VEHICLE_ID:VH-1020] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-19T07:07:28.000Z] [VEHICLE_ID:VH-1009] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-15T08:22:18.000Z] [VEHICLE_ID:VH-1015] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-17T08:59:45.000Z] [VEHICLE_ID:VH-1005] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-14T20:53:24.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-15T04:45:38.000Z] [VEHICLE_ID:VH-1014] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-15T00:21:29.000Z] [VEHICLE_ID:VH-1007] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-20T01:45:51.000Z] [VEHICLE_ID:VH-1008] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-16T12:53:06.000Z] [VEHICLE_ID:VH-1010] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-14T14:03:56.000Z] [VEHICLE_ID:VH-1008] [ERROR] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-15T00:54:56.000Z] [VEHICLE_ID:VH-1006] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-16T12:10:22.000Z] [VEHICLE_ID:VH-1018] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-14T04:37:06.000Z] [VEHICLE_ID:VH-1011] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-15T20:04:01.000Z] [VEHICLE_ID:VH-1015] [ERROR] [CODE:U0100] Lost communication with ECM/PCM
-[2026-02-14T02:56:37.000Z] [VEHICLE_ID:VH-1010] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-17T10:27:51.000Z] [VEHICLE_ID:VH-1018] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-18T03:12:15.000Z] [VEHICLE_ID:VH-1002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-15T14:13:53.000Z] [VEHICLE_ID:VH-1002] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-16T17:05:10.000Z] [VEHICLE_ID:VH-1007] [ERROR] [CODE:P0171] System too lean (Bank 1)
-[2026-02-18T17:39:54.000Z] [VEHICLE_ID:VH-1011] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-18T06:23:15.000Z] [VEHICLE_ID:VH-1001] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-18T21:42:48.000Z] [VEHICLE_ID:VH-1007] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-20T21:52:07.000Z] [VEHICLE_ID:VH-1005] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-20T01:47:00.000Z] [VEHICLE_ID:VH-1003] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-16T18:11:34.000Z] [VEHICLE_ID:VH-1018] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-20T22:41:07.000Z] [VEHICLE_ID:VH-1010] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-18T10:26:12.000Z] [VEHICLE_ID:VH-1017] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-15T16:01:35.000Z] [VEHICLE_ID:VH-1009] [ERROR] [CODE:C0035] Left front wheel speed sensor circuit malfunction
-[2026-02-18T00:08:40.000Z] [VEHICLE_ID:VH-1008] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-18T06:16:08.000Z] [VEHICLE_ID:VH-1018] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-18T21:21:38.000Z] [VEHICLE_ID:VH-1017] [WARN] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-17T22:46:37.000Z] [VEHICLE_ID:VH-1012] [ERROR] [CODE:C0035] Left front wheel speed sensor circuit malfunction
-[2026-02-14T03:15:45.000Z] [VEHICLE_ID:VH-1004] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-14T04:00:40.000Z] [VEHICLE_ID:VH-1004] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-19T18:13:53.000Z] [VEHICLE_ID:VH-1016] [WARN] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-16T11:41:57.000Z] [VEHICLE_ID:VH-1013] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-18T12:53:24.000Z] [VEHICLE_ID:VH-1018] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-14T09:00:13.000Z] [VEHICLE_ID:VH-1001] [ERROR] [CODE:P0171] System too lean (Bank 1)
-[2026-02-18T04:24:56.000Z] [VEHICLE_ID:VH-1002] [WARN] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-14T02:20:48.000Z] [VEHICLE_ID:VH-1012] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-17T15:54:23.000Z] [VEHICLE_ID:VH-1014] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-15T11:49:53.000Z] [VEHICLE_ID:VH-1002] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-17T00:46:37.000Z] [VEHICLE_ID:VH-1020] [WARN] [CODE:P0171] System too lean (Bank 1)
-[2026-02-15T03:56:33.000Z] [VEHICLE_ID:VH-1005] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-17T12:55:40.000Z] [VEHICLE_ID:VH-1020] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-14T19:55:05.000Z] [VEHICLE_ID:VH-1003] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-18T17:57:50.000Z] [VEHICLE_ID:VH-1016] [WARN] [CODE:P0171] System too lean (Bank 1)
-[2026-02-15T09:16:58.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-14T12:41:11.000Z] [VEHICLE_ID:VH-1003] [ERROR] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-16T07:44:56.000Z] [VEHICLE_ID:VH-1012] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-14T17:07:50.000Z] [VEHICLE_ID:VH-1001] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-20T02:57:16.000Z] [VEHICLE_ID:VH-1008] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-14T18:07:58.000Z] [VEHICLE_ID:VH-1007] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-14T09:59:17.000Z] [VEHICLE_ID:VH-1015] [WARN] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-18T21:32:10.000Z] [VEHICLE_ID:VH-1002] [ERROR] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-14T00:22:07.000Z] [VEHICLE_ID:VH-1012] [ERROR] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-20T22:16:17.000Z] [VEHICLE_ID:VH-1003] [ERROR] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-18T14:35:54.000Z] [VEHICLE_ID:VH-1002] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-14T20:58:26.000Z] [VEHICLE_ID:VH-1005] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-19T18:25:19.000Z] [VEHICLE_ID:VH-1016] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-18T03:04:20.000Z] [VEHICLE_ID:VH-1017] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-20T10:32:06.000Z] [VEHICLE_ID:VH-1019] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-19T16:36:45.000Z] [VEHICLE_ID:VH-1010] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-19T07:02:00.000Z] [VEHICLE_ID:VH-1002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-18T02:12:32.000Z] [VEHICLE_ID:VH-1006] [WARN] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-20T23:55:31.000Z] [VEHICLE_ID:VH-1003] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-16T08:47:57.000Z] [VEHICLE_ID:VH-1020] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-15T11:12:50.000Z] [VEHICLE_ID:VH-1013] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-16T01:46:40.000Z] [VEHICLE_ID:VH-1011] [WARN] [CODE:P0171] System too lean (Bank 1)
-[2026-02-17T18:47:09.000Z] [VEHICLE_ID:VH-1015] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-19T16:10:20.000Z] [VEHICLE_ID:VH-1007] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-16T02:53:32.000Z] [VEHICLE_ID:VH-1019] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-19T06:58:03.000Z] [VEHICLE_ID:VH-1011] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-17T00:00:50.000Z] [VEHICLE_ID:VH-1004] [WARN] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-20T14:11:35.000Z] [VEHICLE_ID:VH-1019] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-15T10:45:48.000Z] [VEHICLE_ID:VH-1008] [ERROR] [CODE:U0100] Lost communication with ECM/PCM
-[2026-02-14T04:27:03.000Z] [VEHICLE_ID:VH-1001] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-16T11:44:21.000Z] [VEHICLE_ID:VH-1015] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-14T02:59:07.000Z] [VEHICLE_ID:VH-1007] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-14T14:33:37.000Z] [VEHICLE_ID:VH-1011] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-17T07:08:24.000Z] [VEHICLE_ID:VH-1018] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-14T06:15:10.000Z] [VEHICLE_ID:VH-1001] [WARN] [CODE:P0171] System too lean (Bank 1)
-[2026-02-19T23:23:16.000Z] [VEHICLE_ID:VH-1003] [ERROR] [CODE:B1600] Airbag system warning lamp circuit malfunction
-[2026-02-18T05:45:52.000Z] [VEHICLE_ID:VH-1008] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-14T16:28:25.000Z] [VEHICLE_ID:VH-1001] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-16T21:29:05.000Z] [VEHICLE_ID:VH-1020] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-19T00:12:41.000Z] [VEHICLE_ID:VH-1019] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-15T21:28:41.000Z] [VEHICLE_ID:VH-1007] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-19T02:15:31.000Z] [VEHICLE_ID:VH-1002] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-18T10:19:28.000Z] [VEHICLE_ID:VH-1015] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-14T20:04:51.000Z] [VEHICLE_ID:VH-1002] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-19T05:55:23.000Z] [VEHICLE_ID:VH-1012] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-16T12:06:17.000Z] [VEHICLE_ID:VH-1003] [WARN] [CODE:P0171] System too lean (Bank 1)
-[2026-02-15T20:15:21.000Z] [VEHICLE_ID:VH-1020] [WARN] [CODE:P0171] System too lean (Bank 1)
-[2026-02-14T08:05:15.000Z] [VEHICLE_ID:VH-1004] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-18T08:49:40.000Z] [VEHICLE_ID:VH-1015] [WARN] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-14T09:22:34.000Z] [VEHICLE_ID:VH-1017] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-15T13:47:07.000Z] [VEHICLE_ID:VH-1010] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-19T05:27:08.000Z] [VEHICLE_ID:VH-1011] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-18T20:29:52.000Z] [VEHICLE_ID:VH-1002] [WARN] [CODE:P0171] System too lean (Bank 1)
-[2026-02-16T10:25:37.000Z] [VEHICLE_ID:VH-1020] [ERROR] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-16T11:46:10.000Z] [VEHICLE_ID:VH-1002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-20T20:22:21.000Z] [VEHICLE_ID:VH-1008] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-16T02:47:09.000Z] [VEHICLE_ID:VH-1015] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-14T01:38:10.000Z] [VEHICLE_ID:VH-1010] [WARN] [CODE:P0171] System too lean (Bank 1)
-[2026-02-17T21:45:10.000Z] [VEHICLE_ID:VH-1010] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-16T01:46:53.000Z] [VEHICLE_ID:VH-1014] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-18T21:47:46.000Z] [VEHICLE_ID:VH-1013] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-15T09:30:42.000Z] [VEHICLE_ID:VH-1015] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-18T12:46:57.000Z] [VEHICLE_ID:VH-1010] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-14T16:43:40.000Z] [VEHICLE_ID:VH-1008] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-17T12:44:55.000Z] [VEHICLE_ID:VH-1015] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-15T17:32:30.000Z] [VEHICLE_ID:VH-1015] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-20T00:09:33.000Z] [VEHICLE_ID:VH-1017] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-16T23:57:48.000Z] [VEHICLE_ID:VH-1012] [WARN] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-16T03:11:02.000Z] [VEHICLE_ID:VH-1017] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-14T03:49:38.000Z] [VEHICLE_ID:VH-1010] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-15T09:44:00.000Z] [VEHICLE_ID:VH-1018] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-16T00:00:41.000Z] [VEHICLE_ID:VH-1020] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-14T08:01:34.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-16T20:59:46.000Z] [VEHICLE_ID:VH-1018] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-20T08:25:25.000Z] [VEHICLE_ID:VH-1018] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-19T09:36:53.000Z] [VEHICLE_ID:VH-1005] [WARN] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-14T23:30:29.000Z] [VEHICLE_ID:VH-1018] [WARN] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-18T19:24:12.000Z] [VEHICLE_ID:VH-1004] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-14T12:20:34.000Z] [VEHICLE_ID:VH-1004] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-14T19:14:25.000Z] [VEHICLE_ID:VH-1006] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-15T19:10:37.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-16T13:36:41.000Z] [VEHICLE_ID:VH-1018] [ERROR] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-18T16:02:28.000Z] [VEHICLE_ID:VH-1003] [WARN] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-18T00:48:07.000Z] [VEHICLE_ID:VH-1011] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-20T04:10:05.000Z] [VEHICLE_ID:VH-1012] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-15T21:16:34.000Z] [VEHICLE_ID:VH-1018] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-15T23:01:49.000Z] [VEHICLE_ID:VH-1004] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-19T21:13:27.000Z] [VEHICLE_ID:VH-1003] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-19T03:05:01.000Z] [VEHICLE_ID:VH-1014] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-20T04:15:25.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-20T19:17:49.000Z] [VEHICLE_ID:VH-1013] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-20T19:41:54.000Z] [VEHICLE_ID:VH-1010] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-16T21:41:41.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-17T22:58:09.000Z] [VEHICLE_ID:VH-1011] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-16T14:14:09.000Z] [VEHICLE_ID:VH-1018] [ERROR] [CODE:P0171] System too lean (Bank 1)
-[2026-02-18T15:57:30.000Z] [VEHICLE_ID:VH-1018] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-14T06:21:37.000Z] [VEHICLE_ID:VH-1018] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-16T18:27:50.000Z] [VEHICLE_ID:VH-1005] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-14T17:41:47.000Z] [VEHICLE_ID:VH-1004] [ERROR] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-15T21:29:24.000Z] [VEHICLE_ID:VH-1001] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-14T10:42:06.000Z] [VEHICLE_ID:VH-1010] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-15T17:25:31.000Z] [VEHICLE_ID:VH-1020] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-14T00:45:56.000Z] [VEHICLE_ID:VH-1020] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-17T09:31:48.000Z] [VEHICLE_ID:VH-1019] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-14T05:09:35.000Z] [VEHICLE_ID:VH-1007] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-17T02:28:24.000Z] [VEHICLE_ID:VH-1004] [ERROR] [CODE:B1600] Airbag system warning lamp circuit malfunction
-[2026-02-20T20:00:00.000Z] [VEHICLE_ID:VH-1007] [WARN] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-15T02:50:27.000Z] [VEHICLE_ID:VH-1015] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-16T14:01:00.000Z] [VEHICLE_ID:VH-1002] [ERROR] [CODE:C0035] Left front wheel speed sensor circuit malfunction
-[2026-02-14T07:36:26.000Z] [VEHICLE_ID:VH-1005] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-20T21:00:36.000Z] [VEHICLE_ID:VH-1010] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-18T06:28:29.000Z] [VEHICLE_ID:VH-1008] [WARN] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-17T08:44:01.000Z] [VEHICLE_ID:VH-1002] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-16T16:24:47.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-17T06:40:46.000Z] [VEHICLE_ID:VH-1015] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-14T06:09:36.000Z] [VEHICLE_ID:VH-1001] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-18T03:51:33.000Z] [VEHICLE_ID:VH-1004] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-17T03:44:56.000Z] [VEHICLE_ID:VH-1017] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-18T18:30:27.000Z] [VEHICLE_ID:VH-1009] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-18T15:55:16.000Z] [VEHICLE_ID:VH-1005] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-17T13:27:07.000Z] [VEHICLE_ID:VH-1009] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-16T12:13:23.000Z] [VEHICLE_ID:VH-1013] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-18T22:15:15.000Z] [VEHICLE_ID:VH-1010] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-19T23:57:51.000Z] [VEHICLE_ID:VH-1008] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-14T23:27:14.000Z] [VEHICLE_ID:VH-1004] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-16T16:04:48.000Z] [VEHICLE_ID:VH-1017] [WARN] [CODE:P0171] System too lean (Bank 1)
-[2026-02-14T06:31:56.000Z] [VEHICLE_ID:VH-1004] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-18T05:37:00.000Z] [VEHICLE_ID:VH-1011] [ERROR] [CODE:C0035] Left front wheel speed sensor circuit malfunction
-[2026-02-14T23:07:48.000Z] [VEHICLE_ID:VH-1014] [ERROR] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-19T20:56:44.000Z] [VEHICLE_ID:VH-1013] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-19T19:59:16.000Z] [VEHICLE_ID:VH-1018] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-19T07:07:40.000Z] [VEHICLE_ID:VH-1005] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-20T04:50:05.000Z] [VEHICLE_ID:VH-1015] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-14T15:43:23.000Z] [VEHICLE_ID:VH-1010] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-16T14:05:47.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-14T12:04:16.000Z] [VEHICLE_ID:VH-1015] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-16T06:27:06.000Z] [VEHICLE_ID:VH-1018] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-15T06:36:40.000Z] [VEHICLE_ID:VH-1009] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-20T09:51:09.000Z] [VEHICLE_ID:VH-1019] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-16T06:55:24.000Z] [VEHICLE_ID:VH-1005] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-14T18:32:58.000Z] [VEHICLE_ID:VH-1005] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-19T11:17:23.000Z] [VEHICLE_ID:VH-1006] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-14T20:43:15.000Z] [VEHICLE_ID:VH-1008] [WARN] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-14T01:12:14.000Z] [VEHICLE_ID:VH-1009] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-15T18:52:46.000Z] [VEHICLE_ID:VH-1009] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-17T16:12:31.000Z] [VEHICLE_ID:VH-1003] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-18T12:15:23.000Z] [VEHICLE_ID:VH-1007] [ERROR] [CODE:C0035] Left front wheel speed sensor circuit malfunction
-[2026-02-18T03:03:16.000Z] [VEHICLE_ID:VH-1011] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-16T18:48:05.000Z] [VEHICLE_ID:VH-1013] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-16T21:12:22.000Z] [VEHICLE_ID:VH-1013] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-17T09:06:44.000Z] [VEHICLE_ID:VH-1007] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-17T00:48:11.000Z] [VEHICLE_ID:VH-1014] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-16T03:43:17.000Z] [VEHICLE_ID:VH-1006] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-14T07:49:48.000Z] [VEHICLE_ID:VH-1012] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-15T07:22:40.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-18T13:55:54.000Z] [VEHICLE_ID:VH-1018] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-17T18:39:12.000Z] [VEHICLE_ID:VH-1008] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-17T13:03:02.000Z] [VEHICLE_ID:VH-1006] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-14T06:13:59.000Z] [VEHICLE_ID:VH-1005] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-16T11:34:05.000Z] [VEHICLE_ID:VH-1020] [WARN] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-15T03:01:02.000Z] [VEHICLE_ID:VH-1006] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-20T02:33:19.000Z] [VEHICLE_ID:VH-1007] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-17T04:02:58.000Z] [VEHICLE_ID:VH-1004] [WARN] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-19T21:51:30.000Z] [VEHICLE_ID:VH-1019] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-20T22:12:21.000Z] [VEHICLE_ID:VH-1014] [WARN] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-17T00:02:59.000Z] [VEHICLE_ID:VH-1008] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-20T19:49:41.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-15T21:41:25.000Z] [VEHICLE_ID:VH-1019] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-16T16:03:53.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-18T17:29:52.000Z] [VEHICLE_ID:VH-1019] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-15T15:35:56.000Z] [VEHICLE_ID:VH-1011] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-17T12:35:35.000Z] [VEHICLE_ID:VH-1016] [WARN] [CODE:P0171] System too lean (Bank 1)
-[2026-02-14T15:25:52.000Z] [VEHICLE_ID:VH-1002] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-19T03:59:12.000Z] [VEHICLE_ID:VH-1005] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-19T10:06:26.000Z] [VEHICLE_ID:VH-1015] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-16T19:53:54.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-20T17:07:59.000Z] [VEHICLE_ID:VH-1010] [WARN] [CODE:P0171] System too lean (Bank 1)
-[2026-02-18T01:10:56.000Z] [VEHICLE_ID:VH-1020] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-15T02:15:02.000Z] [VEHICLE_ID:VH-1012] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-20T18:57:45.000Z] [VEHICLE_ID:VH-1019] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-20T14:36:02.000Z] [VEHICLE_ID:VH-1009] [WARN] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-16T03:21:45.000Z] [VEHICLE_ID:VH-1017] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-20T15:49:10.000Z] [VEHICLE_ID:VH-1010] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-17T00:02:04.000Z] [VEHICLE_ID:VH-1009] [ERROR] [CODE:P0171] System too lean (Bank 1)
-[2026-02-15T22:14:22.000Z] [VEHICLE_ID:VH-1003] [WARN] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-14T03:14:44.000Z] [VEHICLE_ID:VH-1018] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-18T00:26:24.000Z] [VEHICLE_ID:VH-1010] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-15T23:56:58.000Z] [VEHICLE_ID:VH-1004] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-15T04:01:24.000Z] [VEHICLE_ID:VH-1018] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-14T13:27:01.000Z] [VEHICLE_ID:VH-1002] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-14T11:01:45.000Z] [VEHICLE_ID:VH-1013] [ERROR] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-15T08:44:03.000Z] [VEHICLE_ID:VH-1019] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-16T02:02:59.000Z] [VEHICLE_ID:VH-1005] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-19T22:40:20.000Z] [VEHICLE_ID:VH-1020] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-19T10:10:14.000Z] [VEHICLE_ID:VH-1004] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-18T20:01:38.000Z] [VEHICLE_ID:VH-1002] [ERROR] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-16T23:36:04.000Z] [VEHICLE_ID:VH-1005] [WARN] [CODE:P0171] System too lean (Bank 1)
-[2026-02-17T02:58:43.000Z] [VEHICLE_ID:VH-1010] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-15T07:54:12.000Z] [VEHICLE_ID:VH-1008] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-17T20:42:58.000Z] [VEHICLE_ID:VH-1006] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-14T17:04:03.000Z] [VEHICLE_ID:VH-1019] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-20T14:04:20.000Z] [VEHICLE_ID:VH-1018] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-20T06:02:41.000Z] [VEHICLE_ID:VH-1016] [ERROR] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-15T10:46:54.000Z] [VEHICLE_ID:VH-1020] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-16T01:35:03.000Z] [VEHICLE_ID:VH-1017] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-17T18:04:19.000Z] [VEHICLE_ID:VH-1006] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-19T19:35:08.000Z] [VEHICLE_ID:VH-1015] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-17T10:52:39.000Z] [VEHICLE_ID:VH-1017] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-18T03:18:39.000Z] [VEHICLE_ID:VH-1016] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-16T03:50:06.000Z] [VEHICLE_ID:VH-1014] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-16T08:58:08.000Z] [VEHICLE_ID:VH-1012] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-20T19:54:00.000Z] [VEHICLE_ID:VH-1003] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-14T03:20:12.000Z] [VEHICLE_ID:VH-1013] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-17T14:50:20.000Z] [VEHICLE_ID:VH-1005] [ERROR] [CODE:B1600] Airbag system warning lamp circuit malfunction
-[2026-02-18T19:46:10.000Z] [VEHICLE_ID:VH-1005] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-19T13:04:47.000Z] [VEHICLE_ID:VH-1014] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-18T10:47:30.000Z] [VEHICLE_ID:VH-1004] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-16T11:10:38.000Z] [VEHICLE_ID:VH-1018] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-19T15:34:24.000Z] [VEHICLE_ID:VH-1010] [WARN] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-19T04:58:50.000Z] [VEHICLE_ID:VH-1009] [ERROR] [CODE:C0035] Left front wheel speed sensor circuit malfunction
-[2026-02-18T18:27:13.000Z] [VEHICLE_ID:VH-1005] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-14T09:25:47.000Z] [VEHICLE_ID:VH-1003] [ERROR] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-19T08:59:02.000Z] [VEHICLE_ID:VH-1009] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-20T19:06:47.000Z] [VEHICLE_ID:VH-1004] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-19T14:14:56.000Z] [VEHICLE_ID:VH-1012] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-16T07:22:33.000Z] [VEHICLE_ID:VH-1015] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-18T17:08:59.000Z] [VEHICLE_ID:VH-1003] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-14T23:14:24.000Z] [VEHICLE_ID:VH-1002] [ERROR] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-15T00:02:22.000Z] [VEHICLE_ID:VH-1014] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-18T10:41:10.000Z] [VEHICLE_ID:VH-1013] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-15T06:45:13.000Z] [VEHICLE_ID:VH-1020] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-20T10:27:17.000Z] [VEHICLE_ID:VH-1008] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-20T03:21:25.000Z] [VEHICLE_ID:VH-1009] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-20T09:30:37.000Z] [VEHICLE_ID:VH-1004] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-14T03:43:37.000Z] [VEHICLE_ID:VH-1005] [ERROR] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-15T02:03:06.000Z] [VEHICLE_ID:VH-1001] [WARN] [CODE:U0401] Invalid data received from ECM/PCM
-[2026-02-16T14:41:44.000Z] [VEHICLE_ID:VH-1002] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-19T12:57:57.000Z] [VEHICLE_ID:VH-1014] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-16T09:11:07.000Z] [VEHICLE_ID:VH-1007] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-18T11:42:41.000Z] [VEHICLE_ID:VH-1011] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-20T01:58:56.000Z] [VEHICLE_ID:VH-1016] [WARN] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-16T09:26:47.000Z] [VEHICLE_ID:VH-1017] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-18T07:24:22.000Z] [VEHICLE_ID:VH-1006] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-16T02:24:37.000Z] [VEHICLE_ID:VH-1001] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-17T08:21:55.000Z] [VEHICLE_ID:VH-1003] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-16T06:53:56.000Z] [VEHICLE_ID:VH-1009] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-20T12:42:19.000Z] [VEHICLE_ID:VH-1011] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-20T12:16:30.000Z] [VEHICLE_ID:VH-1019] [WARN] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-20T04:17:02.000Z] [VEHICLE_ID:VH-1016] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
-[2026-02-18T07:43:28.000Z] [VEHICLE_ID:VH-1011] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-20T19:48:35.000Z] [VEHICLE_ID:VH-1018] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
-[2026-02-17T23:17:39.000Z] [VEHICLE_ID:VH-1016] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
-[2026-02-17T17:35:47.000Z] [VEHICLE_ID:VH-1009] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-14T00:17:21.000Z] [VEHICLE_ID:VH-1014] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-19T12:01:38.000Z] [VEHICLE_ID:VH-1009] [INFO] [CODE:C0000] Chassis stability control system operational
-[2026-02-20T12:28:59.000Z] [VEHICLE_ID:VH-1008] [WARN] [CODE:P0171] System too lean (Bank 1)
-[2026-02-15T08:53:58.000Z] [VEHICLE_ID:VH-1007] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-15T03:05:12.000Z] [VEHICLE_ID:VH-1012] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-14T01:04:47.000Z] [VEHICLE_ID:VH-1011] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-20T02:34:21.000Z] [VEHICLE_ID:VH-1007] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-15T18:03:02.000Z] [VEHICLE_ID:VH-1014] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-15T09:35:17.000Z] [VEHICLE_ID:VH-1003] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-16T18:42:26.000Z] [VEHICLE_ID:VH-1013] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-19T08:33:34.000Z] [VEHICLE_ID:VH-1009] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-20T23:05:16.000Z] [VEHICLE_ID:VH-1012] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-14T02:06:04.000Z] [VEHICLE_ID:VH-1013] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-15T22:02:12.000Z] [VEHICLE_ID:VH-1003] [WARN] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-20T10:56:24.000Z] [VEHICLE_ID:VH-1019] [INFO] [CODE:U0000] Network communication bus check passed
-[2026-02-16T11:46:49.000Z] [VEHICLE_ID:VH-1017] [INFO] [CODE:B0000] Comfort module self-test completed successfully
-[2026-02-20T10:15:00.000Z] [VEHICLE_ID:VH-1001] [ERROR] [CODE:P0171] System too lean (Bank 1)
-[2026-02-20T12:30:00.000Z] [VEHICLE_ID:VH-1001] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-20T15:45:00.000Z] [VEHICLE_ID:VH-1001] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-20T18:00:00.000Z] [VEHICLE_ID:VH-1001] [ERROR] [CODE:P0442] Evaporative emission control system leak detected (small leak)
-[2026-02-20T09:20:00.000Z] [VEHICLE_ID:VH-1002] [ERROR] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
-[2026-02-20T13:40:00.000Z] [VEHICLE_ID:VH-1002] [ERROR] [CODE:P0171] System too lean (Bank 1)
-[2026-02-20T17:10:00.000Z] [VEHICLE_ID:VH-1002] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
-[2026-02-20T11:05:00.000Z] [VEHICLE_ID:VH-1004] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
-[2026-02-20T14:25:00.000Z] [VEHICLE_ID:VH-1004] [ERROR] [CODE:B1234] Passenger airbag circuit resistance out of range
-[2026-02-20T19:50:00.000Z] [VEHICLE_ID:VH-1004] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM — possible CAN bus fault
+[2026-02-18T20:15:20.253Z] [VEHICLE_ID:MNI-2004] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-19T03:11:38.736Z] [VEHICLE_ID:IX-7002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-15T13:20:37.391Z] [VEHICLE_ID:X5-4002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-21T13:18:15.005Z] [VEHICLE_ID:BMW-1003] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-21T06:10:47.399Z] [VEHICLE_ID:BMW-1003] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-20T12:44:04.173Z] [VEHICLE_ID:X5-4001] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-21T13:44:53.181Z] [VEHICLE_ID:X5-4002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-17T02:59:54.963Z] [VEHICLE_ID:BMW-1004] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-17T16:36:41.387Z] [VEHICLE_ID:MNI-2003] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-21T08:45:16.295Z] [VEHICLE_ID:BMW-1003] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-16T21:46:47.566Z] [VEHICLE_ID:MNI-2002] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-17T15:35:31.407Z] [VEHICLE_ID:X5-4004] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-19T05:43:39.213Z] [VEHICLE_ID:BMW-1006] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-20T08:29:10.669Z] [VEHICLE_ID:I4-5002] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-20T19:33:58.382Z] [VEHICLE_ID:X5-4001] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-15T04:19:56.247Z] [VEHICLE_ID:BMW-1002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-21T06:24:57.777Z] [VEHICLE_ID:M3-6001] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
+[2026-02-21T01:39:10.343Z] [VEHICLE_ID:X5-4003] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-19T19:31:41.318Z] [VEHICLE_ID:X5-4002] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-17T00:20:02.269Z] [VEHICLE_ID:X5-4002] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-18T08:46:42.150Z] [VEHICLE_ID:MNI-2001] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-14T22:55:24.295Z] [VEHICLE_ID:BMW-1004] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-16T04:26:33.070Z] [VEHICLE_ID:IX-7002] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-14T20:33:59.619Z] [VEHICLE_ID:M3-6003] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-15T05:17:34.813Z] [VEHICLE_ID:X5-4003] [ERROR] [CODE:P0301] Cylinder 1 misfire detected
+[2026-02-14T15:21:25.838Z] [VEHICLE_ID:MNI-2002] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-21T02:43:42.169Z] [VEHICLE_ID:BMW-1002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-14T20:51:39.199Z] [VEHICLE_ID:I4-5002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-21T08:39:03.081Z] [VEHICLE_ID:S7-8002] [ERROR] [CODE:B1567] Passenger seat occupancy sensor fault
+[2026-02-17T10:06:16.282Z] [VEHICLE_ID:X5-4004] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-20T17:39:47.034Z] [VEHICLE_ID:BMW-1003] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
+[2026-02-19T23:32:57.784Z] [VEHICLE_ID:IX-7002] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-14T02:29:21.959Z] [VEHICLE_ID:S7-8002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-20T07:24:04.979Z] [VEHICLE_ID:S7-8002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-19T15:56:59.148Z] [VEHICLE_ID:M3-6003] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-15T13:40:01.689Z] [VEHICLE_ID:M3-6001] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-14T12:00:10.646Z] [VEHICLE_ID:MNI-2002] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-19T18:17:33.357Z] [VEHICLE_ID:S7-8002] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-21T05:41:13.848Z] [VEHICLE_ID:X5-4001] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-21T00:21:30.126Z] [VEHICLE_ID:BMW-1004] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-16T11:00:25.032Z] [VEHICLE_ID:X5-4002] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-17T23:18:44.691Z] [VEHICLE_ID:X5-4002] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-14T00:51:58.819Z] [VEHICLE_ID:BMW-1003] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-15T02:19:39.270Z] [VEHICLE_ID:I4-5001] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-20T18:29:27.488Z] [VEHICLE_ID:MNI-2003] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-17T07:21:05.898Z] [VEHICLE_ID:I4-5001] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-16T12:30:31.787Z] [VEHICLE_ID:X5-4003] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-19T01:49:45.304Z] [VEHICLE_ID:IX-7001] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-18T21:48:37.081Z] [VEHICLE_ID:BMW-1003] [ERROR] [CODE:C0035] Left front wheel speed sensor circuit malfunction
+[2026-02-14T23:33:03.501Z] [VEHICLE_ID:M3-6002] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-16T18:09:41.089Z] [VEHICLE_ID:MNI-2003] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-16T01:32:02.976Z] [VEHICLE_ID:BMW-1006] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-14T10:11:53.601Z] [VEHICLE_ID:S7-8002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-16T19:14:56.670Z] [VEHICLE_ID:S7-8001] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-15T06:49:37.905Z] [VEHICLE_ID:RR-3002] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-17T20:45:40.607Z] [VEHICLE_ID:I4-5003] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-17T15:56:24.787Z] [VEHICLE_ID:M3-6002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-21T10:27:54.709Z] [VEHICLE_ID:X5-4002] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
+[2026-02-14T06:55:36.684Z] [VEHICLE_ID:BMW-1005] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-18T10:37:07.242Z] [VEHICLE_ID:IX-7001] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-19T20:23:01.890Z] [VEHICLE_ID:I4-5003] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-21T04:35:13.882Z] [VEHICLE_ID:IX-7002] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-14T15:46:07.070Z] [VEHICLE_ID:X5-4001] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-16T22:23:04.277Z] [VEHICLE_ID:BMW-1005] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-16T01:15:49.040Z] [VEHICLE_ID:RR-3002] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-20T08:59:54.033Z] [VEHICLE_ID:M3-6003] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-16T04:33:52.265Z] [VEHICLE_ID:MNI-2004] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-15T09:07:33.399Z] [VEHICLE_ID:RR-3001] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-21T04:37:12.526Z] [VEHICLE_ID:RR-3002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-21T11:57:06.766Z] [VEHICLE_ID:X5-4004] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-15T06:52:15.785Z] [VEHICLE_ID:MNI-2003] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-21T05:58:41.695Z] [VEHICLE_ID:M3-6002] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-18T19:47:22.971Z] [VEHICLE_ID:BMW-1005] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-20T06:52:25.385Z] [VEHICLE_ID:S7-8002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-21T20:45:51.981Z] [VEHICLE_ID:X5-4002] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
+[2026-02-20T20:12:39.450Z] [VEHICLE_ID:X5-4002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-19T18:44:18.808Z] [VEHICLE_ID:MNI-2004] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
+[2026-02-20T20:00:18.310Z] [VEHICLE_ID:X5-4001] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-15T22:10:38.257Z] [VEHICLE_ID:I4-5003] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-18T06:32:41.234Z] [VEHICLE_ID:BMW-1006] [ERROR] [CODE:P0301] Cylinder 1 misfire detected
+[2026-02-18T03:41:14.932Z] [VEHICLE_ID:X5-4004] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-21T10:38:27.475Z] [VEHICLE_ID:X5-4002] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
+[2026-02-21T12:29:41.270Z] [VEHICLE_ID:M3-6002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-15T12:00:29.007Z] [VEHICLE_ID:MNI-2004] [ERROR] [CODE:C0035] Left front wheel speed sensor circuit malfunction
+[2026-02-16T03:40:33.626Z] [VEHICLE_ID:X5-4004] [ERROR] [CODE:B1567] Passenger seat occupancy sensor fault
+[2026-02-21T09:45:42.698Z] [VEHICLE_ID:BMW-1004] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-14T23:28:37.507Z] [VEHICLE_ID:I4-5002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-15T04:03:46.811Z] [VEHICLE_ID:MNI-2004] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-21T19:28:29.459Z] [VEHICLE_ID:BMW-1004] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-21T17:05:37.048Z] [VEHICLE_ID:S7-8002] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
+[2026-02-19T04:32:13.760Z] [VEHICLE_ID:IX-7002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-17T19:47:20.108Z] [VEHICLE_ID:M3-6001] [ERROR] [CODE:P0301] Cylinder 1 misfire detected
+[2026-02-18T19:41:21.630Z] [VEHICLE_ID:X5-4002] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-21T13:16:59.613Z] [VEHICLE_ID:X5-4002] [ERROR] [CODE:B1567] Passenger seat occupancy sensor fault
+[2026-02-20T06:36:51.872Z] [VEHICLE_ID:M3-6001] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-21T12:17:27.816Z] [VEHICLE_ID:X5-4003] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-17T03:24:53.590Z] [VEHICLE_ID:I4-5003] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-20T11:06:23.532Z] [VEHICLE_ID:X5-4002] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
+[2026-02-16T03:58:36.912Z] [VEHICLE_ID:BMW-1004] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-21T03:31:02.729Z] [VEHICLE_ID:I4-5003] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-21T00:27:43.843Z] [VEHICLE_ID:BMW-1003] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-20T01:08:32.738Z] [VEHICLE_ID:X5-4001] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-15T16:34:39.195Z] [VEHICLE_ID:MNI-2001] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-17T01:07:58.762Z] [VEHICLE_ID:MNI-2004] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-16T12:28:02.610Z] [VEHICLE_ID:MNI-2003] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-20T09:06:37.386Z] [VEHICLE_ID:MNI-2003] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-16T15:04:04.225Z] [VEHICLE_ID:BMW-1005] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-17T20:06:30.728Z] [VEHICLE_ID:M3-6003] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-21T04:35:35.991Z] [VEHICLE_ID:BMW-1001] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-14T01:08:14.544Z] [VEHICLE_ID:IX-7002] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-17T00:44:11.929Z] [VEHICLE_ID:BMW-1004] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-21T04:19:56.106Z] [VEHICLE_ID:X5-4002] [ERROR] [CODE:B1567] Passenger seat occupancy sensor fault
+[2026-02-19T20:04:04.092Z] [VEHICLE_ID:BMW-1004] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-15T17:46:41.338Z] [VEHICLE_ID:M3-6001] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-16T10:03:19.929Z] [VEHICLE_ID:BMW-1002] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-18T04:26:57.460Z] [VEHICLE_ID:M3-6001] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-17T11:01:58.298Z] [VEHICLE_ID:S7-8002] [ERROR] [CODE:B1567] Passenger seat occupancy sensor fault
+[2026-02-17T19:09:56.704Z] [VEHICLE_ID:S7-8002] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-14T16:52:05.472Z] [VEHICLE_ID:BMW-1003] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-21T10:09:08.241Z] [VEHICLE_ID:BMW-1005] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-21T22:17:42.244Z] [VEHICLE_ID:RR-3002] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-17T08:36:30.363Z] [VEHICLE_ID:M3-6002] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-15T06:39:21.802Z] [VEHICLE_ID:MNI-2003] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-15T17:38:01.978Z] [VEHICLE_ID:MNI-2002] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-14T06:44:05.423Z] [VEHICLE_ID:S7-8001] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-14T17:30:55.325Z] [VEHICLE_ID:X5-4002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-20T04:54:54.410Z] [VEHICLE_ID:IX-7001] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-16T21:30:58.031Z] [VEHICLE_ID:BMW-1002] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-20T05:11:33.480Z] [VEHICLE_ID:X5-4003] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-14T13:57:25.720Z] [VEHICLE_ID:S7-8002] [ERROR] [CODE:C0035] Left front wheel speed sensor circuit malfunction
+[2026-02-21T10:10:19.773Z] [VEHICLE_ID:M3-6001] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
+[2026-02-20T18:56:42.916Z] [VEHICLE_ID:I4-5001] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-19T19:59:18.081Z] [VEHICLE_ID:MNI-2004] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-21T09:18:39.890Z] [VEHICLE_ID:M3-6003] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-17T00:30:54.340Z] [VEHICLE_ID:M3-6003] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-20T03:00:06.339Z] [VEHICLE_ID:IX-7001] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-17T20:06:35.627Z] [VEHICLE_ID:BMW-1002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-20T13:42:31.615Z] [VEHICLE_ID:S7-8001] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-14T22:38:02.528Z] [VEHICLE_ID:M3-6003] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-21T11:16:13.371Z] [VEHICLE_ID:BMW-1003] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-14T00:19:04.221Z] [VEHICLE_ID:BMW-1004] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-20T10:42:38.940Z] [VEHICLE_ID:S7-8001] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-18T15:26:04.608Z] [VEHICLE_ID:BMW-1006] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-15T05:39:22.238Z] [VEHICLE_ID:IX-7001] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
+[2026-02-17T13:13:27.998Z] [VEHICLE_ID:MNI-2003] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-16T20:50:02.796Z] [VEHICLE_ID:M3-6001] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-15T06:24:21.396Z] [VEHICLE_ID:M3-6001] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-20T16:19:40.614Z] [VEHICLE_ID:BMW-1005] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-16T10:26:50.421Z] [VEHICLE_ID:X5-4004] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
+[2026-02-20T18:01:26.879Z] [VEHICLE_ID:BMW-1004] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-20T11:18:46.821Z] [VEHICLE_ID:X5-4001] [ERROR] [CODE:U0100] Lost communication with ECM/PCM
+[2026-02-21T11:50:21.236Z] [VEHICLE_ID:MNI-2003] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-17T01:15:35.996Z] [VEHICLE_ID:BMW-1004] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-18T06:38:51.271Z] [VEHICLE_ID:BMW-1006] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-14T19:36:34.005Z] [VEHICLE_ID:X5-4002] [ERROR] [CODE:P0301] Cylinder 1 misfire detected
+[2026-02-16T15:29:42.418Z] [VEHICLE_ID:BMW-1006] [ERROR] [CODE:C0035] Left front wheel speed sensor circuit malfunction
+[2026-02-19T21:32:02.917Z] [VEHICLE_ID:RR-3002] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-21T03:54:52.465Z] [VEHICLE_ID:BMW-1002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-16T04:54:57.374Z] [VEHICLE_ID:BMW-1006] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-18T19:36:57.098Z] [VEHICLE_ID:M3-6001] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-18T22:57:23.521Z] [VEHICLE_ID:MNI-2002] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-16T00:04:00.409Z] [VEHICLE_ID:X5-4004] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-15T18:51:41.354Z] [VEHICLE_ID:IX-7001] [ERROR] [CODE:P0301] Cylinder 1 misfire detected
+[2026-02-19T07:58:48.491Z] [VEHICLE_ID:BMW-1006] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-17T15:46:36.445Z] [VEHICLE_ID:I4-5002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-21T11:09:32.416Z] [VEHICLE_ID:X5-4001] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-17T10:17:34.387Z] [VEHICLE_ID:MNI-2004] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-20T10:55:50.317Z] [VEHICLE_ID:X5-4002] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
+[2026-02-20T07:23:06.920Z] [VEHICLE_ID:I4-5002] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-19T17:11:28.812Z] [VEHICLE_ID:BMW-1005] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-16T03:10:38.227Z] [VEHICLE_ID:MNI-2001] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-20T08:38:10.351Z] [VEHICLE_ID:MNI-2001] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-20T04:25:13.516Z] [VEHICLE_ID:M3-6001] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-15T06:41:25.140Z] [VEHICLE_ID:MNI-2002] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
+[2026-02-14T00:27:38.432Z] [VEHICLE_ID:MNI-2004] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-15T23:18:55.601Z] [VEHICLE_ID:X5-4002] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-18T22:11:40.251Z] [VEHICLE_ID:BMW-1003] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-16T00:55:34.341Z] [VEHICLE_ID:M3-6001] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-15T00:03:24.618Z] [VEHICLE_ID:X5-4003] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-18T11:44:40.485Z] [VEHICLE_ID:BMW-1006] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-20T06:40:29.129Z] [VEHICLE_ID:M3-6001] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
+[2026-02-19T04:06:51.745Z] [VEHICLE_ID:M3-6002] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-19T11:36:48.722Z] [VEHICLE_ID:BMW-1006] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-17T14:41:28.476Z] [VEHICLE_ID:IX-7002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-21T06:54:23.431Z] [VEHICLE_ID:I4-5001] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-21T19:07:57.217Z] [VEHICLE_ID:M3-6001] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
+[2026-02-17T00:12:41.349Z] [VEHICLE_ID:RR-3002] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-21T08:30:17.540Z] [VEHICLE_ID:M3-6001] [ERROR] [CODE:B1567] Passenger seat occupancy sensor fault
+[2026-02-15T02:41:11.701Z] [VEHICLE_ID:MNI-2004] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-20T12:59:17.263Z] [VEHICLE_ID:BMW-1005] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-14T08:23:33.729Z] [VEHICLE_ID:X5-4002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-18T10:27:48.212Z] [VEHICLE_ID:BMW-1002] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-15T22:19:22.021Z] [VEHICLE_ID:I4-5002] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-15T05:43:06.573Z] [VEHICLE_ID:I4-5001] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-19T00:19:01.701Z] [VEHICLE_ID:S7-8001] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-21T07:29:35.648Z] [VEHICLE_ID:X5-4002] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
+[2026-02-21T06:37:19.393Z] [VEHICLE_ID:BMW-1004] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-14T08:51:18.277Z] [VEHICLE_ID:I4-5003] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-16T12:07:53.551Z] [VEHICLE_ID:BMW-1005] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-21T17:07:19.499Z] [VEHICLE_ID:S7-8002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-16T01:06:44.508Z] [VEHICLE_ID:MNI-2001] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-21T23:13:37.540Z] [VEHICLE_ID:I4-5002] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-15T05:47:26.958Z] [VEHICLE_ID:X5-4002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-21T12:12:21.788Z] [VEHICLE_ID:BMW-1001] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-15T07:26:22.218Z] [VEHICLE_ID:MNI-2001] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-15T08:16:20.577Z] [VEHICLE_ID:I4-5002] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
+[2026-02-16T18:11:11.866Z] [VEHICLE_ID:MNI-2001] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-17T11:59:36.157Z] [VEHICLE_ID:M3-6001] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-21T01:10:41.862Z] [VEHICLE_ID:M3-6002] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-15T07:10:25.560Z] [VEHICLE_ID:BMW-1004] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-16T04:26:12.363Z] [VEHICLE_ID:IX-7002] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-18T11:14:03.667Z] [VEHICLE_ID:X5-4001] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-14T11:43:56.886Z] [VEHICLE_ID:BMW-1004] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-16T16:04:29.832Z] [VEHICLE_ID:BMW-1006] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-14T00:09:31.393Z] [VEHICLE_ID:BMW-1003] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-17T13:36:12.327Z] [VEHICLE_ID:IX-7002] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-15T07:29:38.712Z] [VEHICLE_ID:BMW-1006] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-21T02:43:27.212Z] [VEHICLE_ID:X5-4001] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-21T02:58:24.045Z] [VEHICLE_ID:X5-4002] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
+[2026-02-19T05:50:41.012Z] [VEHICLE_ID:S7-8002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-17T15:03:06.048Z] [VEHICLE_ID:X5-4001] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-14T02:45:22.497Z] [VEHICLE_ID:M3-6001] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-21T23:58:06.964Z] [VEHICLE_ID:I4-5003] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-15T15:19:07.396Z] [VEHICLE_ID:X5-4004] [ERROR] [CODE:P0301] Cylinder 1 misfire detected
+[2026-02-17T17:31:13.691Z] [VEHICLE_ID:I4-5001] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-21T21:03:11.488Z] [VEHICLE_ID:I4-5001] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-21T00:45:28.263Z] [VEHICLE_ID:IX-7001] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-21T00:57:31.628Z] [VEHICLE_ID:M3-6002] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-16T00:40:02.475Z] [VEHICLE_ID:M3-6001] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-21T07:04:36.761Z] [VEHICLE_ID:MNI-2001] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-16T00:46:06.093Z] [VEHICLE_ID:M3-6003] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-18T16:36:16.941Z] [VEHICLE_ID:M3-6001] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-17T07:03:28.967Z] [VEHICLE_ID:MNI-2004] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-17T09:52:39.573Z] [VEHICLE_ID:BMW-1003] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-17T23:03:53.405Z] [VEHICLE_ID:X5-4004] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-16T08:39:34.972Z] [VEHICLE_ID:MNI-2003] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-20T23:59:26.004Z] [VEHICLE_ID:BMW-1001] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-15T05:53:11.250Z] [VEHICLE_ID:IX-7002] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-21T01:14:05.549Z] [VEHICLE_ID:MNI-2004] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-21T15:54:08.808Z] [VEHICLE_ID:I4-5002] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-21T03:55:35.375Z] [VEHICLE_ID:X5-4002] [ERROR] [CODE:P0301] Cylinder 1 misfire detected
+[2026-02-17T20:44:19.982Z] [VEHICLE_ID:BMW-1005] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-17T23:46:09.695Z] [VEHICLE_ID:X5-4003] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-16T05:59:57.810Z] [VEHICLE_ID:IX-7002] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-16T15:15:17.093Z] [VEHICLE_ID:MNI-2002] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-20T16:28:06.827Z] [VEHICLE_ID:I4-5003] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-17T02:59:38.725Z] [VEHICLE_ID:RR-3002] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-15T03:44:53.459Z] [VEHICLE_ID:MNI-2001] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-20T23:09:03.700Z] [VEHICLE_ID:MNI-2003] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-15T07:36:48.875Z] [VEHICLE_ID:I4-5002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-20T18:17:55.445Z] [VEHICLE_ID:X5-4004] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-19T05:30:14.120Z] [VEHICLE_ID:BMW-1003] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-14T11:44:34.241Z] [VEHICLE_ID:IX-7002] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-16T07:43:33.569Z] [VEHICLE_ID:MNI-2001] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-15T10:50:50.891Z] [VEHICLE_ID:BMW-1002] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-17T21:16:10.670Z] [VEHICLE_ID:M3-6001] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-18T03:50:44.324Z] [VEHICLE_ID:BMW-1001] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-15T20:47:45.863Z] [VEHICLE_ID:BMW-1005] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-14T11:29:39.290Z] [VEHICLE_ID:RR-3002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-15T00:52:30.162Z] [VEHICLE_ID:RR-3002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-15T06:18:22.481Z] [VEHICLE_ID:MNI-2004] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-19T13:55:53.018Z] [VEHICLE_ID:MNI-2001] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-14T04:41:22.184Z] [VEHICLE_ID:I4-5003] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-20T04:20:04.522Z] [VEHICLE_ID:BMW-1005] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-21T14:24:30.828Z] [VEHICLE_ID:X5-4003] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
+[2026-02-16T05:17:32.411Z] [VEHICLE_ID:BMW-1003] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-20T17:25:06.802Z] [VEHICLE_ID:BMW-1003] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-14T02:27:08.293Z] [VEHICLE_ID:BMW-1005] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-21T17:34:56.832Z] [VEHICLE_ID:BMW-1004] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-21T16:45:37.354Z] [VEHICLE_ID:MNI-2001] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-18T01:41:32.527Z] [VEHICLE_ID:BMW-1003] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-15T11:57:36.195Z] [VEHICLE_ID:I4-5003] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-19T01:29:55.938Z] [VEHICLE_ID:MNI-2004] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-18T08:04:24.475Z] [VEHICLE_ID:BMW-1004] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-18T07:35:20.856Z] [VEHICLE_ID:BMW-1002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-18T23:28:21.164Z] [VEHICLE_ID:X5-4001] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-16T15:42:20.026Z] [VEHICLE_ID:IX-7001] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-21T13:10:33.679Z] [VEHICLE_ID:M3-6003] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-14T01:30:50.501Z] [VEHICLE_ID:I4-5003] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-14T05:17:37.053Z] [VEHICLE_ID:I4-5003] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-20T10:48:24.882Z] [VEHICLE_ID:BMW-1003] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
+[2026-02-16T05:01:45.545Z] [VEHICLE_ID:BMW-1006] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-14T00:42:24.962Z] [VEHICLE_ID:BMW-1004] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-20T01:09:35.400Z] [VEHICLE_ID:M3-6003] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-18T13:57:32.202Z] [VEHICLE_ID:I4-5003] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
+[2026-02-19T19:04:48.296Z] [VEHICLE_ID:RR-3001] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-17T04:56:27.880Z] [VEHICLE_ID:M3-6003] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-20T15:16:29.104Z] [VEHICLE_ID:BMW-1003] [ERROR] [CODE:B1567] Passenger seat occupancy sensor fault
+[2026-02-14T03:52:51.408Z] [VEHICLE_ID:I4-5002] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-18T21:56:38.518Z] [VEHICLE_ID:MNI-2001] [ERROR] [CODE:P0301] Cylinder 1 misfire detected
+[2026-02-20T08:33:34.810Z] [VEHICLE_ID:X5-4004] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-21T09:09:43.779Z] [VEHICLE_ID:BMW-1003] [ERROR] [CODE:B1567] Passenger seat occupancy sensor fault
+[2026-02-16T07:15:57.667Z] [VEHICLE_ID:X5-4004] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-19T00:25:23.541Z] [VEHICLE_ID:BMW-1002] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-14T00:32:18.151Z] [VEHICLE_ID:RR-3002] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
+[2026-02-21T11:14:54.796Z] [VEHICLE_ID:IX-7001] [ERROR] [CODE:U0100] Lost communication with ECM/PCM
+[2026-02-19T05:42:00.548Z] [VEHICLE_ID:RR-3001] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-21T11:26:20.578Z] [VEHICLE_ID:BMW-1003] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-19T03:30:12.676Z] [VEHICLE_ID:MNI-2003] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-20T16:19:08.810Z] [VEHICLE_ID:M3-6001] [ERROR] [CODE:U0100] Lost communication with ECM/PCM
+[2026-02-16T10:48:17.052Z] [VEHICLE_ID:I4-5001] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-18T06:53:40.715Z] [VEHICLE_ID:S7-8002] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-14T08:19:16.814Z] [VEHICLE_ID:X5-4004] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-20T11:35:20.411Z] [VEHICLE_ID:MNI-2002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-15T09:33:30.779Z] [VEHICLE_ID:I4-5002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-16T09:14:48.123Z] [VEHICLE_ID:X5-4002] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-19T00:21:48.021Z] [VEHICLE_ID:MNI-2001] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-15T05:45:47.264Z] [VEHICLE_ID:I4-5002] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-20T13:14:26.929Z] [VEHICLE_ID:M3-6001] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-14T16:23:40.256Z] [VEHICLE_ID:M3-6002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-18T19:04:56.665Z] [VEHICLE_ID:RR-3001] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-17T16:44:01.786Z] [VEHICLE_ID:X5-4001] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-20T01:48:36.266Z] [VEHICLE_ID:S7-8002] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-15T14:36:02.566Z] [VEHICLE_ID:BMW-1003] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-18T21:40:00.961Z] [VEHICLE_ID:MNI-2004] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-14T22:12:04.520Z] [VEHICLE_ID:I4-5002] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-20T16:30:59.872Z] [VEHICLE_ID:S7-8002] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-20T03:54:42.367Z] [VEHICLE_ID:X5-4003] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-20T09:49:34.913Z] [VEHICLE_ID:RR-3002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-19T17:35:46.309Z] [VEHICLE_ID:IX-7001] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
+[2026-02-19T06:22:44.209Z] [VEHICLE_ID:BMW-1002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-17T09:23:45.423Z] [VEHICLE_ID:S7-8002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-17T19:39:07.264Z] [VEHICLE_ID:IX-7001] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-14T22:44:39.583Z] [VEHICLE_ID:RR-3002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-17T04:41:47.375Z] [VEHICLE_ID:BMW-1006] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-14T02:45:17.931Z] [VEHICLE_ID:M3-6003] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-19T00:11:12.571Z] [VEHICLE_ID:M3-6002] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-17T06:58:44.907Z] [VEHICLE_ID:X5-4003] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-15T20:04:17.145Z] [VEHICLE_ID:S7-8001] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-21T01:40:30.291Z] [VEHICLE_ID:BMW-1003] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
+[2026-02-20T20:12:18.227Z] [VEHICLE_ID:BMW-1003] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
+[2026-02-21T06:58:15.803Z] [VEHICLE_ID:M3-6001] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-16T13:45:17.323Z] [VEHICLE_ID:I4-5002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-19T21:25:11.160Z] [VEHICLE_ID:IX-7002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-19T02:44:37.867Z] [VEHICLE_ID:I4-5001] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-18T04:37:02.378Z] [VEHICLE_ID:X5-4001] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-17T14:32:53.051Z] [VEHICLE_ID:IX-7002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-20T07:58:18.649Z] [VEHICLE_ID:M3-6001] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-18T14:23:55.475Z] [VEHICLE_ID:BMW-1003] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-16T16:11:59.390Z] [VEHICLE_ID:BMW-1003] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-17T23:45:01.508Z] [VEHICLE_ID:M3-6003] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-16T17:04:58.802Z] [VEHICLE_ID:S7-8002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-21T12:48:57.233Z] [VEHICLE_ID:X5-4002] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
+[2026-02-16T11:33:30.252Z] [VEHICLE_ID:X5-4003] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-21T23:34:31.570Z] [VEHICLE_ID:M3-6003] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-14T22:14:04.468Z] [VEHICLE_ID:BMW-1003] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
+[2026-02-21T18:55:03.140Z] [VEHICLE_ID:X5-4002] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-19T18:20:11.047Z] [VEHICLE_ID:BMW-1005] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-15T04:35:10.214Z] [VEHICLE_ID:BMW-1003] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-21T23:45:33.439Z] [VEHICLE_ID:MNI-2001] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-15T17:43:53.773Z] [VEHICLE_ID:IX-7001] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
+[2026-02-14T02:46:40.068Z] [VEHICLE_ID:M3-6003] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-15T13:55:57.737Z] [VEHICLE_ID:X5-4003] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-21T01:46:59.875Z] [VEHICLE_ID:MNI-2004] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-21T22:49:14.981Z] [VEHICLE_ID:RR-3001] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-14T06:39:16.707Z] [VEHICLE_ID:M3-6001] [ERROR] [CODE:U0100] Lost communication with ECM/PCM
+[2026-02-17T18:27:48.530Z] [VEHICLE_ID:MNI-2002] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-14T23:35:52.611Z] [VEHICLE_ID:MNI-2001] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-18T09:05:11.701Z] [VEHICLE_ID:M3-6003] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-16T19:18:07.294Z] [VEHICLE_ID:M3-6003] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
+[2026-02-18T10:01:44.606Z] [VEHICLE_ID:BMW-1004] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-17T22:56:43.823Z] [VEHICLE_ID:X5-4002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-14T12:12:11.903Z] [VEHICLE_ID:BMW-1004] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-15T00:57:16.336Z] [VEHICLE_ID:BMW-1002] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-18T07:32:01.945Z] [VEHICLE_ID:RR-3002] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-17T19:19:58.751Z] [VEHICLE_ID:MNI-2002] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-17T14:55:27.515Z] [VEHICLE_ID:M3-6002] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
+[2026-02-21T23:36:27.288Z] [VEHICLE_ID:X5-4002] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-20T17:32:39.275Z] [VEHICLE_ID:M3-6002] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-14T01:43:01.284Z] [VEHICLE_ID:I4-5002] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-15T20:04:08.164Z] [VEHICLE_ID:IX-7001] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-21T08:50:34.964Z] [VEHICLE_ID:M3-6001] [ERROR] [CODE:P0301] Cylinder 1 misfire detected
+[2026-02-16T12:02:31.003Z] [VEHICLE_ID:M3-6002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-21T08:13:00.924Z] [VEHICLE_ID:BMW-1003] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
+[2026-02-18T21:50:32.931Z] [VEHICLE_ID:MNI-2001] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-18T23:12:59.290Z] [VEHICLE_ID:MNI-2002] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-16T07:49:22.015Z] [VEHICLE_ID:X5-4002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-18T06:26:37.186Z] [VEHICLE_ID:RR-3002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-14T07:17:45.453Z] [VEHICLE_ID:BMW-1006] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-20T01:50:36.004Z] [VEHICLE_ID:BMW-1001] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-21T22:09:41.932Z] [VEHICLE_ID:BMW-1003] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
+[2026-02-18T22:33:59.597Z] [VEHICLE_ID:X5-4001] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
+[2026-02-21T14:50:10.430Z] [VEHICLE_ID:X5-4001] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-20T11:36:17.435Z] [VEHICLE_ID:X5-4003] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-18T15:37:28.170Z] [VEHICLE_ID:BMW-1003] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
+[2026-02-21T07:38:13.789Z] [VEHICLE_ID:MNI-2003] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-16T12:51:04.101Z] [VEHICLE_ID:MNI-2003] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
+[2026-02-17T11:50:58.433Z] [VEHICLE_ID:IX-7002] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-21T19:16:53.749Z] [VEHICLE_ID:M3-6001] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-21T20:09:46.663Z] [VEHICLE_ID:X5-4004] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-17T21:19:31.529Z] [VEHICLE_ID:MNI-2002] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-18T01:55:21.173Z] [VEHICLE_ID:M3-6001] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-16T16:08:51.272Z] [VEHICLE_ID:IX-7002] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-19T10:48:42.385Z] [VEHICLE_ID:BMW-1005] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-18T15:54:51.327Z] [VEHICLE_ID:BMW-1002] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-20T07:35:09.489Z] [VEHICLE_ID:BMW-1003] [ERROR] [CODE:B1567] Passenger seat occupancy sensor fault
+[2026-02-14T19:29:21.590Z] [VEHICLE_ID:IX-7001] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-16T21:33:54.977Z] [VEHICLE_ID:M3-6002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-15T12:49:39.459Z] [VEHICLE_ID:X5-4002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-17T21:02:37.268Z] [VEHICLE_ID:RR-3002] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-17T08:42:37.085Z] [VEHICLE_ID:M3-6001] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-19T23:11:18.426Z] [VEHICLE_ID:M3-6003] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-14T01:00:13.920Z] [VEHICLE_ID:MNI-2001] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-21T21:07:34.556Z] [VEHICLE_ID:M3-6003] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-14T09:26:04.120Z] [VEHICLE_ID:BMW-1003] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-21T19:46:17.107Z] [VEHICLE_ID:M3-6001] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
+[2026-02-16T10:14:18.060Z] [VEHICLE_ID:BMW-1006] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-14T12:07:37.457Z] [VEHICLE_ID:IX-7002] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-15T16:51:19.798Z] [VEHICLE_ID:X5-4003] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-19T12:40:24.142Z] [VEHICLE_ID:I4-5003] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-16T06:13:51.908Z] [VEHICLE_ID:BMW-1006] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-16T18:02:03.620Z] [VEHICLE_ID:MNI-2003] [ERROR] [CODE:B1567] Passenger seat occupancy sensor fault
+[2026-02-18T00:17:05.149Z] [VEHICLE_ID:M3-6002] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
+[2026-02-16T21:14:38.107Z] [VEHICLE_ID:I4-5003] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-18T00:04:15.168Z] [VEHICLE_ID:RR-3001] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-18T01:58:09.603Z] [VEHICLE_ID:BMW-1003] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
+[2026-02-14T08:16:38.392Z] [VEHICLE_ID:MNI-2004] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-16T06:58:31.044Z] [VEHICLE_ID:X5-4001] [ERROR] [CODE:U0100] Lost communication with ECM/PCM
+[2026-02-20T16:14:29.867Z] [VEHICLE_ID:BMW-1002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-17T00:03:18.480Z] [VEHICLE_ID:MNI-2004] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-17T10:47:19.320Z] [VEHICLE_ID:S7-8001] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-17T01:23:18.402Z] [VEHICLE_ID:BMW-1006] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-18T02:30:00.881Z] [VEHICLE_ID:I4-5003] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-17T17:57:57.378Z] [VEHICLE_ID:S7-8001] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-20T23:03:46.329Z] [VEHICLE_ID:X5-4004] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-21T15:58:26.701Z] [VEHICLE_ID:M3-6001] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-20T07:17:16.451Z] [VEHICLE_ID:BMW-1003] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-20T23:11:54.527Z] [VEHICLE_ID:MNI-2002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-21T10:17:53.909Z] [VEHICLE_ID:BMW-1002] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-20T19:22:01.136Z] [VEHICLE_ID:RR-3002] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
+[2026-02-19T10:18:41.545Z] [VEHICLE_ID:BMW-1003] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-19T10:31:50.585Z] [VEHICLE_ID:I4-5002] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-17T02:52:04.938Z] [VEHICLE_ID:IX-7002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-19T09:05:44.385Z] [VEHICLE_ID:X5-4004] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-20T16:47:10.838Z] [VEHICLE_ID:M3-6002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-15T16:28:24.391Z] [VEHICLE_ID:X5-4003] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-19T04:11:16.980Z] [VEHICLE_ID:I4-5003] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
+[2026-02-16T05:01:32.632Z] [VEHICLE_ID:I4-5002] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-20T22:49:11.206Z] [VEHICLE_ID:M3-6001] [ERROR] [CODE:P0301] Cylinder 1 misfire detected
+[2026-02-17T13:50:28.605Z] [VEHICLE_ID:M3-6002] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-20T06:21:10.652Z] [VEHICLE_ID:X5-4002] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
+[2026-02-20T17:33:14.928Z] [VEHICLE_ID:MNI-2002] [ERROR] [CODE:C0035] Left front wheel speed sensor circuit malfunction
+[2026-02-15T08:08:49.077Z] [VEHICLE_ID:MNI-2003] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-19T08:24:04.094Z] [VEHICLE_ID:MNI-2001] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-16T08:02:33.754Z] [VEHICLE_ID:X5-4004] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
+[2026-02-14T06:58:05.042Z] [VEHICLE_ID:BMW-1003] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-21T17:44:30.343Z] [VEHICLE_ID:M3-6001] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
+[2026-02-15T10:47:53.953Z] [VEHICLE_ID:I4-5002] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-17T22:30:50.968Z] [VEHICLE_ID:BMW-1001] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-19T09:47:45.269Z] [VEHICLE_ID:IX-7002] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-21T13:56:20.202Z] [VEHICLE_ID:RR-3002] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-16T15:01:24.841Z] [VEHICLE_ID:RR-3002] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-16T21:42:26.915Z] [VEHICLE_ID:X5-4002] [WARN] [CODE:P0171] System too lean (Bank 1)
+[2026-02-16T20:34:55.782Z] [VEHICLE_ID:MNI-2003] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
+[2026-02-17T23:27:27.467Z] [VEHICLE_ID:X5-4002] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-21T04:20:32.348Z] [VEHICLE_ID:M3-6001] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-14T12:09:11.087Z] [VEHICLE_ID:BMW-1001] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-17T02:05:29.267Z] [VEHICLE_ID:X5-4004] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-18T06:07:05.928Z] [VEHICLE_ID:MNI-2004] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-21T17:56:57.089Z] [VEHICLE_ID:BMW-1002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-19T02:28:10.514Z] [VEHICLE_ID:S7-8002] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-17T10:16:36.902Z] [VEHICLE_ID:MNI-2003] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-19T19:29:07.236Z] [VEHICLE_ID:IX-7001] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-15T18:10:16.136Z] [VEHICLE_ID:I4-5003] [ERROR] [CODE:P0301] Cylinder 1 misfire detected
+[2026-02-17T08:49:54.850Z] [VEHICLE_ID:MNI-2002] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-21T05:34:34.010Z] [VEHICLE_ID:M3-6001] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
+[2026-02-20T08:22:20.576Z] [VEHICLE_ID:I4-5003] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-16T23:33:57.057Z] [VEHICLE_ID:MNI-2004] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-19T23:37:31.259Z] [VEHICLE_ID:S7-8002] [ERROR] [CODE:B1567] Passenger seat occupancy sensor fault
+[2026-02-17T02:23:00.793Z] [VEHICLE_ID:M3-6001] [WARN] [CODE:P0442] Evaporative emission control system leak detected (small leak)
+[2026-02-19T05:48:39.978Z] [VEHICLE_ID:BMW-1002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-19T02:46:20.414Z] [VEHICLE_ID:IX-7002] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-20T23:44:03.924Z] [VEHICLE_ID:X5-4004] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-20T03:08:14.252Z] [VEHICLE_ID:BMW-1004] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-21T17:31:20.832Z] [VEHICLE_ID:MNI-2002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-20T01:14:47.760Z] [VEHICLE_ID:BMW-1006] [INFO] [CODE:C0000] Chassis stability control system operational
+[2026-02-14T21:11:37.534Z] [VEHICLE_ID:X5-4001] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-19T08:07:54.293Z] [VEHICLE_ID:I4-5002] [ERROR] [CODE:U0401] Invalid data received from ECM/PCM
+[2026-02-20T03:16:12.727Z] [VEHICLE_ID:IX-7001] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-15T18:54:14.352Z] [VEHICLE_ID:X5-4003] [INFO] [CODE:U0000] Network communication bus check passed
+[2026-02-17T18:47:42.936Z] [VEHICLE_ID:X5-4003] [WARN] [CODE:C0050] Right rear wheel speed sensor circuit malfunction
+[2026-02-21T09:48:24.992Z] [VEHICLE_ID:BMW-1005] [ERROR] [CODE:P0420] Catalyst system efficiency below threshold (Bank 1)
+[2026-02-20T10:05:50.708Z] [VEHICLE_ID:S7-8001] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-17T03:35:50.375Z] [VEHICLE_ID:M3-6003] [WARN] [CODE:B1234] Interior ambient temperature sensor circuit malfunction
+[2026-02-16T00:56:03.015Z] [VEHICLE_ID:RR-3001] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-20T16:58:45.856Z] [VEHICLE_ID:MNI-2002] [INFO] [CODE:B0000] Comfort module self-test completed successfully
+[2026-02-16T11:38:03.388Z] [VEHICLE_ID:BMW-1004] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-19T12:49:18.677Z] [VEHICLE_ID:BMW-1005] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-17T14:21:06.713Z] [VEHICLE_ID:IX-7001] [WARN] [CODE:P0456] Evaporative emission system — very small leak detected
+[2026-02-21T05:03:30.026Z] [VEHICLE_ID:BMW-1003] [ERROR] [CODE:P0300] Random/multiple cylinder misfire detected
+[2026-02-15T01:06:28.227Z] [VEHICLE_ID:BMW-1006] [INFO] [CODE:P0000] Vehicle systems nominal — all checks passed
+[2026-02-18T23:58:28.496Z] [VEHICLE_ID:BMW-1006] [WARN] [CODE:P0128] Coolant thermostat temperature below regulating
+[2026-02-18T13:29:04.072Z] [VEHICLE_ID:M3-6002] [INFO] [CODE:C0000] Chassis stability control system operational

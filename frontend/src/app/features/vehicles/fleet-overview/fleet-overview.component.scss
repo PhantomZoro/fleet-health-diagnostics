@@ -4,19 +4,142 @@
   padding: 24px;
 }
 
+.page-header {
+  margin-bottom: 20px;
+}
+
 h2 {
   font-size: 20px;
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--text-dark);
+  margin-bottom: 2px;
+}
+
+.page-subtitle {
+  display: block;
+  font-size: 12px;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+}
+
+// ─── Search bar ──────────────────────────────────────────
+
+.search-wrapper {
+  position: relative;
   margin-bottom: 20px;
 }
+
+.search-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  width: 16px;
+  height: 16px;
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 36px 10px 36px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-family: inherit;
+  background: var(--surface-card);
+  color: var(--text-dark);
+  transition: border-color 0.15s, box-shadow 0.15s;
+
+  &::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--bmw-blue);
+    box-shadow: 0 0 0 3px var(--bmw-blue-light);
+  }
+}
+
+.search-clear {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  border-radius: var(--radius);
+  transition: color 0.15s, background 0.15s;
+
+  &:hover {
+    color: var(--text-dark);
+    background: rgba(0, 0, 0, 0.05);
+  }
+}
+
+// ─── Autocomplete dropdown ───────────────────────────────
+
+.autocomplete-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  margin: 4px 0 0;
+  padding: 4px 0;
+  list-style: none;
+  background: var(--surface-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-elevated);
+
+  li {
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: background 0.1s;
+
+    &:hover {
+      background: var(--bmw-blue-light);
+    }
+  }
+}
+
+.suggestion-id {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark);
+  letter-spacing: 0.02em;
+}
+
+// ─── Filter status ───────────────────────────────────────
+
+.filter-status {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  letter-spacing: 0.01em;
+}
+
+// ─── Grid ────────────────────────────────────────────────
 
 .fleet-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
 }
+
+// ─── States ──────────────────────────────────────────────
 
 .error-state {
   background: rgba(198, 40, 40, 0.05);
@@ -33,4 +156,21 @@ h2 {
   padding: 48px 24px;
   color: var(--text-secondary);
   font-size: 16px;
+}
+
+.empty-hint {
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
 }

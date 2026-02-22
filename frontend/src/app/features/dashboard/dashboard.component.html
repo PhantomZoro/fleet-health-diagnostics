@@ -7,95 +7,130 @@
     (filtersReset)="onFiltersReset()">
   </app-filter-panel>
 
+  <app-active-filters-bar
+    [filters]="(filters$ | async) ?? {}"
+    (clearAll)="onFiltersReset()">
+  </app-active-filters-bar>
+
   <div class="dashboard-content">
     @if (loading$ | async) {
       <app-loading-spinner />
     }
 
     @if ((aggregations$ | async); as agg) {
-      <!-- Summary Cards -->
-      <div class="summary-cards">
-        <div class="card">
-          <span class="card-value">{{ (total$ | async) ?? 0 }}</span>
-          <span class="card-label">Total Events</span>
+      <!-- Filtered Results Section — responds to all active filters -->
+      <section class="dashboard-section" aria-labelledby="filtered-heading">
+        <div class="section-header">
+          <h3 id="filtered-heading" class="section-title">Filtered Results</h3>
+          <span class="section-subtitle">Responds to all active filters</span>
         </div>
-        <div class="card">
-          <span class="card-value">{{ agg.errorsPerVehicle.length }}</span>
-          <span class="card-label">Total Vehicles</span>
-        </div>
-        <div class="card card--critical">
-          <span class="card-value">{{ agg.criticalVehicles.length }}</span>
-          <span class="card-label">Critical Vehicles</span>
-        </div>
-        <div class="card">
-          <span class="card-value">{{ agg.topCodes[0] ? agg.topCodes[0].code : 'N/A' }}</span>
-          <span class="card-label">Most Common Code</span>
-        </div>
-      </div>
 
-      <app-severity-legend />
+        <div class="summary-cards" [class.summary-cards--half]="!(hasCodeFilter$ | async)">
+          <div class="card">
+            <span class="card-value">{{ (total$ | async) ?? 0 }}</span>
+            <span class="card-label">Total Events</span>
+          </div>
+          @if (!(hasCodeFilter$ | async)) {
+            <div class="card">
+              <span class="card-value">{{ agg.topCodes[0] ? agg.topCodes[0].code : 'N/A' }}</span>
+              <span class="card-label">Most Common Code</span>
+            </div>
+          }
+        </div>
 
-      <!-- Errors Per Vehicle -->
-      <section class="panel">
-        <h3>Errors Per Vehicle</h3>
-        @if (agg.errorsPerVehicle.length > 0) {
-          <ul class="bar-list">
-            @for (vehicle of agg.errorsPerVehicle; track vehicle.vehicleId) {
-              <li class="bar-item">
-                <a class="bar-label" [routerLink]="['/vehicles', vehicle.vehicleId]">{{ vehicle.vehicleId }}</a>
-                <div class="bar-track">
-                  <div class="bar-fill bar-fill--error" [style.width]="getBarWidth(vehicle.errorCount, agg.errorsPerVehicle[0].total)"></div>
-                  <div class="bar-fill bar-fill--warn" [style.width]="getBarWidth(vehicle.warnCount, agg.errorsPerVehicle[0].total)"></div>
-                  <div class="bar-fill bar-fill--info" [style.width]="getBarWidth(vehicle.infoCount, agg.errorsPerVehicle[0].total)"></div>
-                </div>
-                <span class="bar-count">{{ vehicle.total }}</span>
-              </li>
-            }
-          </ul>
-        } @else {
-          <p class="empty-state">No vehicle data available.</p>
-        }
+        <!-- Top Error Codes -->
+        <div class="panel">
+          <h4 class="panel-title">Top Error Codes</h4>
+          @if (agg.topCodes.length > 0) {
+            <ul class="code-list">
+              @for (code of agg.topCodes; track code.code) {
+                <li class="code-item">
+                  <code>{{ code.code }}</code>
+                  <app-severity-badge [level]="code.level" />
+                  <span class="code-count">{{ code.count }} occurrences</span>
+                </li>
+              }
+            </ul>
+          } @else {
+            <p class="empty-state">No error codes found.</p>
+          }
+        </div>
       </section>
 
-      <!-- Top Error Codes -->
-      <section class="panel">
-        <h3>Top Error Codes</h3>
-        @if (agg.topCodes.length > 0) {
-          <ul class="code-list">
-            @for (code of agg.topCodes; track code.code) {
-              <li class="code-item">
-                <code>{{ code.code }}</code>
-                <app-severity-badge [level]="code.level" />
-                <span class="code-count">{{ code.count }} occurrences</span>
-              </li>
-            }
-          </ul>
-        } @else {
-          <p class="empty-state">No error codes found.</p>
-        }
+      <hr class="section-divider" />
+
+      <!-- Fleet-Wide Section — not affected by vehicleId/code/level filters -->
+      <section class="dashboard-section" aria-labelledby="fleet-heading">
+        <div class="section-header">
+          <h3 id="fleet-heading" class="section-title">Fleet-Wide Overview</h3>
+          <span class="section-subtitle">Aggregate fleet data (only date range filters apply)</span>
+        </div>
+
+        <div class="summary-cards summary-cards--half">
+          <div class="card">
+            <span class="card-value">{{ agg.errorsPerVehicle.length }}</span>
+            <span class="card-label">Total Vehicles</span>
+          </div>
+          <div class="card card--critical">
+            <span class="card-value">{{ agg.criticalVehicles.length }}</span>
+            <span class="card-label">Critical Vehicles</span>
+          </div>
+        </div>
+
+        <app-severity-legend />
+
+        <!-- Errors Per Vehicle -->
+        <div class="panel">
+          <h4 class="panel-title">Errors Per Vehicle</h4>
+          @if (agg.errorsPerVehicle.length > 0) {
+            <ul class="bar-list">
+              @for (vehicle of agg.errorsPerVehicle; track vehicle.vehicleId) {
+                <li class="bar-item">
+                  <a class="bar-label" [routerLink]="['/vehicles', vehicle.vehicleId]">{{ vehicle.vehicleId }}</a>
+                  <div class="bar-track">
+                    <div class="bar-fill bar-fill--error" [style.width]="getBarWidth(vehicle.errorCount, agg.errorsPerVehicle[0].total)"></div>
+                    <div class="bar-fill bar-fill--warn" [style.width]="getBarWidth(vehicle.warnCount, agg.errorsPerVehicle[0].total)"></div>
+                    <div class="bar-fill bar-fill--info" [style.width]="getBarWidth(vehicle.infoCount, agg.errorsPerVehicle[0].total)"></div>
+                  </div>
+                  <span class="bar-count">{{ vehicle.total }}</span>
+                </li>
+              }
+            </ul>
+          } @else {
+            <p class="empty-state">No vehicle data available.</p>
+          }
+        </div>
       </section>
 
-      <!-- Critical Vehicles -->
-      <section class="panel panel--critical">
-        <h3>Critical Vehicles</h3>
-        @if (agg.criticalVehicles.length > 0) {
-          <ul class="critical-list">
-            @for (cv of agg.criticalVehicles; track cv.vehicleId) {
-              <li class="critical-item">
-                <button
-                  class="critical-link"
-                  (click)="onCriticalVehicleClick(cv.vehicleId)"
-                  [attr.aria-label]="'View events for ' + cv.vehicleId">
-                  <span class="critical-vehicle-id">{{ cv.vehicleId }}</span>
-                  <span class="critical-error-count">{{ cv.errorCount }} errors</span>
-                  <span class="critical-latest">Latest: {{ cv.latestError | date:'short' }}</span>
-                </button>
-              </li>
-            }
-          </ul>
-        } @else {
-          <p class="empty-state">No critical vehicles detected.</p>
-        }
+      <hr class="section-divider" />
+
+      <!-- Critical Vehicles Section -->
+      <section class="dashboard-section" aria-labelledby="critical-heading">
+        <div class="section-header">
+          <h3 id="critical-heading" class="section-title section-title--critical">Critical Vehicles</h3>
+          <span class="section-subtitle">Vehicles with 3+ critical events in the last 24 hours</span>
+        </div>
+
+        <div class="panel panel--critical">
+          @if (agg.criticalVehicles.length > 0) {
+            <ul class="critical-list">
+              @for (cv of agg.criticalVehicles; track cv.vehicleId) {
+                <li class="critical-item">
+                  <button
+                    class="critical-link"
+                    (click)="onCriticalVehicleClick(cv.vehicleId)"
+                    [attr.aria-label]="'View events for ' + cv.vehicleId">
+                    <span class="critical-vehicle-id">{{ cv.vehicleId }}</span>
+                    <span class="critical-error-count">{{ cv.errorCount }} critical events</span>
+                    <span class="critical-latest">Latest: {{ cv.latestError | date:'short' }}</span>
+                  </button>
+                </li>
+              }
+            </ul>
+          } @else {
+            <p class="empty-state">No critical vehicles detected.</p>
+          }
+        </div>
       </section>
     }
   </div>

@@ -38,7 +38,7 @@ export function validateParams(schema: z.ZodType): RequestHandler {
 export const eventsQuerySchema = z.object({
   vehicleId: z.string().optional(),
   code: z.string().optional(),
-  level: z.enum(['ERROR', 'WARN', 'INFO']).optional(),
+  level: z.string().transform(v => v.toUpperCase()).pipe(z.enum(['ERROR', 'WARN', 'INFO'])).optional(),
   from: z.string().datetime().optional(),
   to: z.string().datetime().optional(),
   page: z.coerce.number().int().positive().default(1),

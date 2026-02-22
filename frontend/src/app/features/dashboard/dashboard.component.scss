@@ -16,11 +16,51 @@ h2 {
   min-height: 300px;
 }
 
+// ─── Section structure ──────────────────────────────────
+
+.dashboard-section {
+  margin-top: 24px;
+}
+
+.section-header {
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 2px;
+  letter-spacing: -0.01em;
+
+  &--critical {
+    color: var(--error);
+  }
+}
+
+.section-subtitle {
+  display: block;
+  font-size: 12px;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+}
+
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: 28px 0 4px;
+}
+
+// ─── Summary cards ──────────────────────────────────────
+
 .summary-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
-  margin-top: 20px;
+
+  &--half {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .card {
@@ -63,31 +103,35 @@ h2 {
   }
 }
 
+// ─── Panels ──────────────────────────────────────────────
+
 .panel {
   background: var(--surface-card);
   border-radius: var(--radius);
   padding: 20px;
-  margin-top: 20px;
+  margin-top: 16px;
   box-shadow: var(--shadow-card);
   transition: box-shadow 0.2s;
 
   &:hover {
     box-shadow: var(--shadow-card-hover);
   }
+}
 
-  h3 {
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 16px;
-    color: var(--text-secondary);
-  }
+.panel-title {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 16px;
+  color: var(--text-secondary);
 }
 
 .panel--critical {
   border-left: 3px solid var(--error);
 }
+
+// ─── Bar chart ───────────────────────────────────────────
 
 .bar-list {
   list-style: none;
@@ -144,6 +188,8 @@ h2 {
   color: var(--text-dark);
 }
 
+// ─── Code list ───────────────────────────────────────────
+
 .code-list {
   list-style: none;
   padding: 0;
@@ -175,6 +221,8 @@ h2 {
   color: var(--text-secondary);
   margin-left: auto;
 }
+
+// ─── Critical vehicles ──────────────────────────────────
 
 .critical-list {
   list-style: none;
@@ -223,6 +271,8 @@ h2 {
   color: var(--text-secondary);
   margin-left: auto;
 }
+
+// ─── Empty state ─────────────────────────────────────────
 
 .empty-state {
   text-align: center;

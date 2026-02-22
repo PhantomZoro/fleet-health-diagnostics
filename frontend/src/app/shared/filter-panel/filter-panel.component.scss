@@ -1,8 +1,10 @@
 .filter-panel {
-  border: none;
-  border-bottom: 1px solid var(--border-light);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
   padding: 16px;
   margin: 0;
+  background: var(--surface-card);
+  transition: border-color 0.2s, box-shadow 0.2s;
 
   legend {
     font-weight: 600;
@@ -11,6 +13,15 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 0 4px;
+  }
+
+  &--active {
+    border-color: var(--bmw-blue);
+    box-shadow: 0 0 0 1px var(--bmw-blue-light);
+
+    legend {
+      color: var(--bmw-blue);
+    }
   }
 }
 

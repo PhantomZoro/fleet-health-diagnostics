@@ -1,5 +1,5 @@
 <form (ngSubmit)="onApply()">
-  <fieldset class="filter-panel">
+  <fieldset class="filter-panel" [class.filter-panel--active]="hasActiveFilters">
     <legend>Filters</legend>
 
     <div class="filter-fields">

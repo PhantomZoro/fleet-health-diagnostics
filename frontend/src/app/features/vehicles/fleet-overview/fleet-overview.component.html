@@ -1,5 +1,50 @@
 <section class="fleet-overview">
-  <h2>Fleet Overview</h2>
+  <div class="page-header">
+    <h2>Fleet Overview</h2>
+    @if ((fleetCards$ | async); as cards) {
+      @if (cards.length > 0) {
+        <span class="page-subtitle">{{ cards.length }} vehicles in fleet</span>
+      }
+    }
+  </div>
+
+  <!-- Search bar -->
+  <div class="search-wrapper">
+    <div class="search-field">
+      <svg class="search-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M12.5 12.5L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Search vehicles (e.g. VH-1001)"
+        aria-label="Search vehicles by ID"
+        [ngModel]="searchValue"
+        (ngModelChange)="onSearchInput($event)"
+        (keydown.enter)="onSearchSubmit($event)"
+        (keydown.escape)="onDismissSuggestions()"
+        (focus)="onSearchFocus()"
+        (blur)="onSearchBlur()"
+        autocomplete="off"
+      />
+      @if (searchValue) {
+        <button class="search-clear" (click)="onSearchClear()" aria-label="Clear search">&times;</button>
+      }
+    </div>
+
+    @if (showSuggestions && (suggestions$ | async); as suggestions) {
+      @if (suggestions.length > 0) {
+        <ul class="autocomplete-list" role="listbox" aria-label="Vehicle suggestions">
+          @for (id of suggestions; track id) {
+            <li role="option" (mousedown)="onSuggestionSelect(id)">
+              <span class="suggestion-id">{{ id }}</span>
+            </li>
+          }
+        </ul>
+      }
+    }
+  </div>
 
   @if (loading$ | async) {
     <app-loading-spinner />
@@ -11,7 +56,12 @@
     </div>
   }
 
-  @if ((fleetCards$ | async); as cards) {
+  @if ((filteredCards$ | async); as cards) {
+    @if (searchValue) {
+      <p class="filter-status" role="status">
+        {{ cards.length }} vehicle{{ cards.length !== 1 ? 's' : '' }} matching "{{ searchValue }}"
+      </p>
+    }
     @if (cards.length > 0) {
       <div class="fleet-grid">
         @for (card of cards; track card.vehicleId) {
@@ -23,7 +73,12 @@
     } @else {
       @if (!(loading$ | async)) {
         <div class="empty-state" role="status">
-          <p>No vehicles found.</p>
+          @if (searchValue) {
+            <p>No vehicles match "{{ searchValue }}"</p>
+            <p class="empty-hint">Try a different search term or <button class="link-btn" (click)="onSearchClear()">clear the search</button></p>
+          } @else {
+            <p>No vehicles found.</p>
+          }
         </div>
       }
     }

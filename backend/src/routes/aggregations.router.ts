@@ -12,7 +12,9 @@ const timeRangeSchema = z.object({
 });
 
 const topCodesSchema = timeRangeSchema.extend({
-  level: z.enum(['ERROR', 'WARN', 'INFO']).optional(),
+  level: z.string().transform(v => v.toUpperCase()).pipe(z.enum(['ERROR', 'WARN', 'INFO'])).optional(),
+  vehicleId: z.string().optional(),
+  code: z.string().optional(),
 });
 
 /**
@@ -81,6 +83,11 @@ aggregationsRouter.get(
  *           enum: [ERROR, WARN, INFO]
  *         description: Filter by severity level
  *       - in: query
+ *         name: vehicleId
+ *         schema:
+ *           type: string
+ *         description: Filter by vehicle ID
+ *       - in: query
  *         name: from
  *         schema:
  *           type: string
@@ -116,6 +123,8 @@ aggregationsRouter.get(
   async (_req, res) => {
     const params = res.locals.validated as {
       level?: DiagnosticLevel;
+      vehicleId?: string;
+      code?: string;
     } & AggregationTimeRange;
     const result = await AggregationService.topCodes(params);
     res.json(result);

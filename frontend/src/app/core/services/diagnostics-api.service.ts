@@ -49,9 +49,11 @@ export class DiagnosticsApiService {
     return this.http.get<ErrorsPerVehicle[]>(`${this.baseUrl}/aggregations/errors-per-vehicle`, { params });
   }
 
-  getTopCodes(level?: string, from?: string, to?: string): Observable<TopCode[]> {
+  getTopCodes(level?: string, from?: string, to?: string, vehicleId?: string, code?: string): Observable<TopCode[]> {
     let params = new HttpParams();
     if (level) params = params.set('level', level);
+    if (vehicleId) params = params.set('vehicleId', vehicleId);
+    if (code) params = params.set('code', code);
     if (from) params = params.set('from', from);
     if (to) params = params.set('to', to);
 

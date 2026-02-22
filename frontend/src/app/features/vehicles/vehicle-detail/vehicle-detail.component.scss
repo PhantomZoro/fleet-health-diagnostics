@@ -124,6 +124,13 @@
   font-weight: 600;
 }
 
+// Section divider
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: 24px 0 4px;
+}
+
 // Panel
 .panel {
   background: var(--surface-card);
